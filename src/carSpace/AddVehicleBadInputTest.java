@@ -15,7 +15,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 	private String vehicleModel = "Highlander";
 	
 	/**
-	 * Verify the functionality of the invalid year and required input field modals
+	 * Verify the functionality of the invalid year and required input field modal
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -23,27 +23,27 @@ public class AddVehicleBadInputTest extends BaseClass {
 	private void addVehicleBadInputTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		maximizeWindow(driver);
 		driver.get(URL);
-		driver.findElement(By.id(signIn)).click();
-		driver.findElement(By.id(emailTextInput)).sendKeys(userEmail);
-		driver.findElement(By.id(passwordTextInput)).sendKeys(password);
-		driver.findElement(By.id(signInButton)).click();
+		clickOnElementUsingId(driver, signIn);
+		fillInputFieldUsingId(driver, emailTextInput, userEmail);
+        fillInputFieldUsingId(driver, passwordTextInput, password);
+		clickOnElementUsingId(driver, signInButton);
 		Thread.sleep(1000);
-		driver.findElement(By.id(vehicleMakeInput)).sendKeys(vehicleMake);
-		driver.findElement(By.id(vehicleModelInput)).sendKeys(vehicleModel);
-		driver.findElement(By.id(addVehicleButton)).click();
+		fillInputFieldUsingId(driver, vehicleMakeInput, vehicleMake);
+		fillInputFieldUsingId(driver, vehicleModelInput, vehicleModel);
+		clickOnElementUsingId(driver, addVehicleButton);
 		String expectedMessage = addVehicleInputErrorMessage;
-		String actualMessage = driver.findElement(By.xpath(addVehicleErrorModal)).getText();
+		String actualMessage = getTextUsingXpath(driver, addVehicleErrorModal);
 		assertTrue(actualMessage.contains(expectedMessage));
-		driver.findElement(By.xpath(AddVehicleErrorModalOkayButton)).click();
-		driver.findElement(By.id(vehicleYearInput)).sendKeys(invalidVehicleYear);
+		clickOnElementUsingXpath(driver, AddVehicleErrorModalOkayButton);
+		fillInputFieldUsingId(driver, vehicleYearInput, invalidVehicleYear);
 		Thread.sleep(1000);
-		driver.findElement(By.id(addVehicleButton)).click();
+		clickOnElementUsingId(driver, addVehicleButton);
 		expectedMessage = addVehicleInvalidYearMessage;
-		actualMessage = driver.findElement(By.xpath(addVehicleErrorModal)).getText();
+		actualMessage = getTextUsingXpath(driver, addVehicleErrorModal);
 		assertTrue(actualMessage.contains(expectedMessage));
-		driver.findElement(By.xpath(AddVehicleErrorModalOkayButton)).click();
+		clickOnElementUsingXpath(driver, AddVehicleErrorModalOkayButton);
 		driver.close();
 	}
 }

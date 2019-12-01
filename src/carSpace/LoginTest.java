@@ -18,15 +18,15 @@ public class LoginTest extends BaseClass {
 	private void signInTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		maximizeWindow(driver);
         driver.get(URL);
-        driver.findElement(By.id(signIn)).click();
-        driver.findElement(By.id(emailTextInput)).sendKeys(userEmail);
-        driver.findElement(By.id(passwordTextInput)).sendKeys(password);
-        driver.findElement(By.id(signInButton)).click();
+        clickOnElementUsingId(driver, signIn);
+        fillInputFieldUsingId(driver, emailTextInput, userEmail);
+        fillInputFieldUsingId(driver, passwordTextInput, password);
+        clickOnElementUsingId(driver, signInButton);
         Thread.sleep(1000);
-        driver.findElement(By.id(signOutButton)).click();
-        driver.findElement(By.id(confirmSignOut)).click();
+        clickOnElementUsingId(driver, signOutButton);
+        clickOnElementUsingId(driver, confirmSignOut);
         driver.close();
 	}
 }
