@@ -1,5 +1,7 @@
 package carSpace;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -9,7 +11,7 @@ import baseClass.BaseClass;
 public class LoginTest extends BaseClass {
 	
 	/**
-	 * This test verifies the sign-in capability and then logs the user out
+	 * Verify the sign-in capability and logs out
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -18,12 +20,15 @@ public class LoginTest extends BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
-        driver.get(URL);
+        driver.get(carSpaceUrl);
         clickOnElementUsingId(driver, signIn);
         fillInputFieldUsingId(driver, emailTextInput, userEmail);
         fillInputFieldUsingId(driver, passwordTextInput, password);
         clickOnElementUsingId(driver, signInButton);
         Thread.sleep(1000);
+        String expectedUserEmail = userEmail;
+		String actualUserEmail = getTextUsingId(driver, userEmailDisplay);
+		assertTrue(actualUserEmail.contains(expectedUserEmail));
         clickOnElementUsingId(driver, signOutButton);
         clickOnElementUsingId(driver, confirmSignOut);
         driver.close();

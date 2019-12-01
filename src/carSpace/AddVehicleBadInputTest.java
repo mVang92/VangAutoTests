@@ -23,7 +23,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
-		driver.get(URL);
+		driver.get(carSpaceUrl);
 		clickOnElementUsingId(driver, signIn);
 		fillInputFieldUsingId(driver, emailTextInput, userEmail);
         fillInputFieldUsingId(driver, passwordTextInput, password);

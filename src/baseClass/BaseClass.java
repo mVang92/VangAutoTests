@@ -5,13 +5,15 @@ import org.openqa.selenium.WebDriver;
 
 public class BaseClass {
 	
-	public String URL = "https://car-space.herokuapp.com/";
+	public String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
 	
 	public String userEmail = "sally@thing.com";
 	public String password = "123123";
 	
 	public String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
+	public String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
+	public String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
 	public String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	
@@ -29,6 +31,7 @@ public class BaseClass {
 	public String vehicleModelInput = "vehicleModelInput";
 	public String addVehicleButton = "addVehicleButton";
 	public String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
+	public String userEmailDisplay = "userEmail";
 	
 	public String vehicleList = "//*[@title='View Service Logs']";
 	public String deleteVehicleButton = "//*[@class='deleteBtn']";
@@ -38,25 +41,67 @@ public class BaseClass {
 	public String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
 	public String toastNotificationBody = "//*[@class='Toastify__toast-body']";
+	public String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
 	
+	/**
+	 * Maximize the browser window
+	 * 
+	 * @param driver Web driver
+	 */
 	public void maximizeWindow(WebDriver driver) {
 		driver.manage().window().maximize();
 	}
 	
+	/**
+	 * Click on an element using the id of the element
+	 * 
+	 * @param driver Web driver
+	 */
 	public void clickOnElementUsingId(WebDriver driver, String id) {
 		driver.findElement(By.id(id)).click();
 	}
 	
+	/**
+	 * Click on an element using the xpath of the element
+	 * 
+	 * @param driver Web driver
+	 */
 	public void clickOnElementUsingXpath(WebDriver driver, String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
 	}
 	
+	/**
+	 * Fill in the input field using the id to the input field
+	 * 
+	 * @param driver     Web driver
+	 * @param inputField Input field to target
+	 * @param inputValue Input value to fill the input field
+	 */
 	public void fillInputFieldUsingId(WebDriver driver, String inputField, String inputValue) {
 		driver.findElement(By.id(inputField)).sendKeys(inputValue);
 	}
 	
+	/**
+	 * Get the text from the xpath of the element
+	 * 
+	 * @param driver Web driver
+	 * @param xpath  Xpath of the element
+	 * @return       Return the text from the element
+	 */
 	public String getTextUsingXpath(WebDriver driver, String xpath) {
 		String text = driver.findElement(By.xpath(xpath)).getText();
+		return text;
+	}
+	
+	/**
+	 * Get the text from the id of the element
+	 * 
+	 * @param driver Web driver
+	 * @param id     id of the element
+	 * @return       Return the text from the element
+	 */
+	public String getTextUsingId(WebDriver driver, String id) {
+		String text = driver.findElement(By.id(id)).getText();
 		return text;
 	}
 }

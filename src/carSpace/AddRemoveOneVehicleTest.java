@@ -2,7 +2,6 @@ package carSpace;
 
 import static org.testng.Assert.assertTrue;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -24,7 +23,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
-		driver.get(URL);
+		driver.get(carSpaceUrl);
 		clickOnElementUsingId(driver, signIn);
 		fillInputFieldUsingId(driver, emailTextInput, userEmail);
         fillInputFieldUsingId(driver, passwordTextInput, password);
@@ -51,7 +50,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
-		driver.get(URL);
+		driver.get(carSpaceUrl);
 		clickOnElementUsingId(driver, signIn);
 		fillInputFieldUsingId(driver, emailTextInput, userEmail);
         fillInputFieldUsingId(driver, passwordTextInput, password);
