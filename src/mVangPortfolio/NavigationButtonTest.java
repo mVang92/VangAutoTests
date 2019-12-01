@@ -8,19 +8,20 @@ import baseClass.BaseClass;
 
 public class NavigationButtonTest extends BaseClass {
 	
+	/**
+	 * Verifies the functionality of the navigation buttons
+	 * 
+	 * @throws InterruptedException
+	 */
 	@Test
-	private void navigationButtonTest() throws InterruptedException {
+	private void navigationButtonTest() {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(mVangPortfolioUrl);
-		clickOnElementUsingXpath(driver, aboueMeNavButton);
-		Thread.sleep(250);
-		clickOnElementUsingXpath(driver, myProjectsNavButton);
-		Thread.sleep(250);
 		clickOnElementUsingXpath(driver, contactNavButton);
-		Thread.sleep(500);
-		clickOnElementUsingId(driver, backToTopButton);
+		clickOnElementUsingXpath(driver, myProjectsNavButton);
+		clickOnElementUsingXpath(driver, aboueMeNavButton);
 		driver.close();
 	}
 }
