@@ -7,10 +7,7 @@ import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
 
-public class LoginTest {
-	BaseClass baseClass = new BaseClass();
-	private String emailAddress = "sally@thing.com";
-	private String password = "123123";
+public class LoginTest extends BaseClass {
 	
 	/**
 	 * This test verifies the sign-in capability and then logs the user out
@@ -18,18 +15,18 @@ public class LoginTest {
 	 * @throws InterruptedException
 	 */
 	@Test
-	private void test() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", baseClass.chromeDriverPath);
+	private void signInTest() throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-        driver.get("https://car-space.herokuapp.com/");
-        driver.findElement(By.id(baseClass.signIn)).click();
-        driver.findElement(By.id(baseClass.emailTextInput)).sendKeys(emailAddress);
-        driver.findElement(By.id(baseClass.passwordTextInput)).sendKeys(password);
-        driver.findElement(By.id(baseClass.signInButton)).click();
+        driver.get(URL);
+        driver.findElement(By.id(signIn)).click();
+        driver.findElement(By.id(emailTextInput)).sendKeys(userEmail);
+        driver.findElement(By.id(passwordTextInput)).sendKeys(password);
+        driver.findElement(By.id(signInButton)).click();
         Thread.sleep(1000);
-        driver.findElement(By.id(baseClass.signOutButton)).click();
-        driver.findElement(By.id(baseClass.confirmSignOut)).click();
+        driver.findElement(By.id(signOutButton)).click();
+        driver.findElement(By.id(confirmSignOut)).click();
         driver.close();
 	}
 }

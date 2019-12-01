@@ -1,6 +1,10 @@
 package baseClass;
 
 public class BaseClass {
+	public String userEmail = "sally@thing.com";
+	public String password = "123123";
+	
+	public String URL = "https://car-space.herokuapp.com/";
 	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
 	
 	public String signIn = "signInNavButton";
@@ -12,6 +16,16 @@ public class BaseClass {
 	public String signUpButton = "signUpButton";
 	public String confirmSignOut = "doSignOutButton";
 	public String closeSignUpModal = "closeSignUpModal";
-	public String userEmail = "//span[@id=\"userEmail\"]/text()[1]";
+	public String vehicleYearInput = "vehicleYearInput";
+	public String vehicleMakeInput = "vehicleMakeInput";
+	public String vehicleModelInput = "vehicleModelInput";
+	public String addVehicleButton = "addVehicleButton";
+	public String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
+	
+	public String vehicleList = "//*[@title='View Service Logs']";
+	public String deleteVehicleButton = "//*[@class='deleteBtn']";
+	
 	public String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
+	public String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
+	public String toastNotificationBody = "//*[@class='Toastify__toast-body']";
 }
