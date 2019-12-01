@@ -16,6 +16,7 @@ public class BaseClass {
 	public String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
 	public String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
+	public String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
 	
 	public String signIn = "signInNavButton";
 	public String signUp = "signUpNavButton";
@@ -32,6 +33,7 @@ public class BaseClass {
 	public String addVehicleButton = "addVehicleButton";
 	public String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
 	public String userEmailDisplay = "userEmail";
+	public String vehicleCountForUser = "vehicleCountForUser";
 	
 	public String vehicleList = "//*[@title='View Service Logs']";
 	public String deleteVehicleButton = "//*[@class='deleteBtn']";
