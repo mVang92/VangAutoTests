@@ -63,7 +63,6 @@ public class BaseClass {
 	 * Click on an element using the id of the element
 	 * 
 	 * @param driver Web driver
-	 * @throws InterruptedException 
 	 */
 	public void clickOnElementUsingId(WebDriver driver, String id) {
 		driver.findElement(By.id(id)).click();
@@ -73,7 +72,6 @@ public class BaseClass {
 	 * Click on an element using the xpath of the element
 	 * 
 	 * @param driver Web driver
-	 * @throws InterruptedException 
 	 */
 	public void clickOnElementUsingXpath(WebDriver driver, String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
