@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class BaseClass {
 	
 	public String carSpaceUrl = "https://car-space.herokuapp.com/";
+	public String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
 	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
 	
 	public String userEmail = "sally@thing.com";
@@ -34,11 +35,15 @@ public class BaseClass {
 	public String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
 	public String userEmailDisplay = "userEmail";
 	public String vehicleCountForUser = "vehicleCountForUser";
+	public String backToTopButton = "topImg";
 	
 	public String vehicleList = "//*[@title='View Service Logs']";
 	public String deleteVehicleButton = "//*[@class='deleteBtn']";
 	public String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
+	public String aboueMeNavButton = "//a[@href='#aboutMe']";
+	public String myProjectsNavButton = "//a[@href='#portfolio']";
+	public String contactNavButton = "//a[@href='#contact']";
 	
 	public String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -58,6 +63,7 @@ public class BaseClass {
 	 * Click on an element using the id of the element
 	 * 
 	 * @param driver Web driver
+	 * @throws InterruptedException 
 	 */
 	public void clickOnElementUsingId(WebDriver driver, String id) {
 		driver.findElement(By.id(id)).click();
@@ -67,6 +73,7 @@ public class BaseClass {
 	 * Click on an element using the xpath of the element
 	 * 
 	 * @param driver Web driver
+	 * @throws InterruptedException 
 	 */
 	public void clickOnElementUsingXpath(WebDriver driver, String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
