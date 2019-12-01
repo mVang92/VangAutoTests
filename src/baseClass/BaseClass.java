@@ -10,6 +10,8 @@ public class BaseClass {
 	
 	public String userEmail = "sally@thing.com";
 	public String password = "123123";
+	
+	public String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
 	public String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	

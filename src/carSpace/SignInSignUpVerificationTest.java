@@ -20,7 +20,7 @@ public class SignInSignUpVerificationTest extends BaseClass {
 	private void verifyReactStatesResetAfterClosingSignUpModal() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		maximizeWindow(driver);
         driver.get(URL);
         driver.findElement(By.id(signUp)).click();
         driver.findElement(By.id(emailTextInput)).sendKeys(userEmail);

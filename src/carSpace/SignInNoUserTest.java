@@ -1,31 +1,35 @@
 package carSpace;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
 
-public class LoginTest extends BaseClass {
+public class SignInNoUserTest extends BaseClass {
+	private String noRecordUserEmail = "noUser@gmail.com";
 	
 	/**
-	 * This test verifies the sign-in capability and then logs the user out
+	 * Verify the toast error message upon signing in with an account not on record
 	 * 
 	 * @throws InterruptedException
 	 */
 	@Test
-	private void signInTest() throws InterruptedException {
+	public void signInNoUserTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
         driver.get(URL);
         clickOnElementUsingId(driver, signIn);
-        fillInputFieldUsingId(driver, emailTextInput, userEmail);
+        fillInputFieldUsingId(driver, emailTextInput, noRecordUserEmail);
         fillInputFieldUsingId(driver, passwordTextInput, password);
         clickOnElementUsingId(driver, signInButton);
         Thread.sleep(1000);
-        clickOnElementUsingId(driver, signOutButton);
-        clickOnElementUsingId(driver, confirmSignOut);
-        driver.close();
+        String expectedMessage = noUserOnRecordSignInErrorMessage;
+		String actualMessage = getTextUsingXpath(driver, toastNotificationBody);
+		assertTrue(actualMessage.contains(expectedMessage));
+		driver.close();
 	}
 }

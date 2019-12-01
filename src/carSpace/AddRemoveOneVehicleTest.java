@@ -23,20 +23,20 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private void addOneVehicleTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		maximizeWindow(driver);
 		driver.get(URL);
-		driver.findElement(By.id(signIn)).click();
-		driver.findElement(By.id(emailTextInput)).sendKeys(userEmail);
-		driver.findElement(By.id(passwordTextInput)).sendKeys(password);
-		driver.findElement(By.id(signInButton)).click();
+		clickOnElementUsingId(driver, signIn);
+		fillInputFieldUsingId(driver, emailTextInput, userEmail);
+        fillInputFieldUsingId(driver, passwordTextInput, password);
+        clickOnElementUsingId(driver, signInButton);
 		Thread.sleep(1000);
-		driver.findElement(By.id(vehicleYearInput)).sendKeys(vehicleYear);
-		driver.findElement(By.id(vehicleMakeInput)).sendKeys(vehicleMake);
-		driver.findElement(By.id(vehicleModelInput)).sendKeys(vehicleModel);
-		driver.findElement(By.id(addVehicleButton)).click();
+		fillInputFieldUsingId(driver, vehicleYearInput, vehicleYear);
+		fillInputFieldUsingId(driver, vehicleMakeInput, vehicleMake);
+		fillInputFieldUsingId(driver, vehicleModelInput, vehicleModel);
+		clickOnElementUsingId(driver, addVehicleButton);
 		Thread.sleep(1000);
 		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
-		String toastNotificationMessage = driver.findElement(By.xpath(toastNotificationSuccess)).getText();
+		String toastNotificationMessage = getTextUsingXpath(driver, toastNotificationBody);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
 		driver.close();
 	}
@@ -50,24 +50,23 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private void deleteOneVehicleTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		maximizeWindow(driver);
 		driver.get(URL);
-		driver.findElement(By.id(signIn)).click();
-		driver.findElement(By.id(emailTextInput)).sendKeys(userEmail);
-		driver.findElement(By.id(passwordTextInput)).sendKeys(password);
-		driver.findElement(By.id(signInButton)).click();
+		clickOnElementUsingId(driver, signIn);
+		fillInputFieldUsingId(driver, emailTextInput, userEmail);
+        fillInputFieldUsingId(driver, passwordTextInput, password);
+        clickOnElementUsingId(driver, signInButton);
 		Thread.sleep(1000);
-		String vehicleToDelete = driver.findElement(By.xpath(vehicleList)).getText();
+		String vehicleToDelete = getTextUsingXpath(driver, vehicleList);
 		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		if (vehicleToDelete.equals(actualVehicleToDelete)) {
-			driver.findElement(By.xpath(vehicleList)).click();
-			driver.findElement(By.xpath(deleteVehicleButton)).click();
-			driver.findElement(By.id(confirmDeleteVehicleButton)).click();
+			clickOnElementUsingXpath(driver, vehicleList);
+			clickOnElementUsingXpath(driver, deleteVehicleButton);
+			clickOnElementUsingId(driver, confirmDeleteVehicleButton);
 		}
 		Thread.sleep(1000);
 		String expectedMessage = "Vehicle Deleted Successfully";
-		String toastNotificationMessage = driver.findElement(By.xpath(toastNotificationSuccess)).getText();
-		driver.findElement(By.xpath(toastNotificationSuccess)).getText();
+		String toastNotificationMessage = getTextUsingXpath(driver, toastNotificationBody);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
 		driver.close();
 	}
