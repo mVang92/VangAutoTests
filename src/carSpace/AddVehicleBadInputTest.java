@@ -14,6 +14,11 @@ public class AddVehicleBadInputTest extends BaseClass {
 	private String vehicleMake = "Toyota";
 	private String vehicleModel = "Highlander";
 	
+	/**
+	 * Verify the functionality of the invalid year and required input field modals
+	 * 
+	 * @throws InterruptedException
+	 */
 	@Test
 	private void addVehicleBadInputTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);

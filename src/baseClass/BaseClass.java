@@ -1,13 +1,13 @@
 package baseClass;
 
 public class BaseClass {
+	public String URL = "https://car-space.herokuapp.com/";
+	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
+	
 	public String userEmail = "sally@thing.com";
 	public String password = "123123";
 	public String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
-	
-	public String URL = "https://car-space.herokuapp.com/";
-	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
 	
 	public String signIn = "signInNavButton";
 	public String signUp = "signUpNavButton";
