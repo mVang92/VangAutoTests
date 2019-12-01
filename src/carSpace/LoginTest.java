@@ -20,17 +20,17 @@ public class LoginTest extends BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
-        driver.get(carSpaceUrl);
-        clickOnElementUsingId(driver, signIn);
-        fillInputFieldUsingId(driver, emailTextInput, userEmail);
-        fillInputFieldUsingId(driver, passwordTextInput, password);
-        clickOnElementUsingId(driver, signInButton);
-        Thread.sleep(1000);
-        String expectedUserEmail = userEmail;
+		driver.get(carSpaceUrl);
+		clickOnElementUsingId(driver, signIn);
+		fillInputFieldUsingId(driver, emailTextInput, userEmail);
+		fillInputFieldUsingId(driver, passwordTextInput, password);
+		clickOnElementUsingId(driver, signInButton);
+		Thread.sleep(1000);
+		String expectedUserEmail = userEmail;
 		String actualUserEmail = getTextUsingId(driver, userEmailDisplay);
 		assertTrue(actualUserEmail.contains(expectedUserEmail));
-        clickOnElementUsingId(driver, signOutButton);
-        clickOnElementUsingId(driver, confirmSignOut);
-        driver.close();
+		clickOnElementUsingId(driver, signOutButton);
+		clickOnElementUsingId(driver, confirmSignOut);
+		driver.close();
 	}
 }

@@ -26,7 +26,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 		driver.get(carSpaceUrl);
 		clickOnElementUsingId(driver, signIn);
 		fillInputFieldUsingId(driver, emailTextInput, userEmail);
-        fillInputFieldUsingId(driver, passwordTextInput, password);
+		fillInputFieldUsingId(driver, passwordTextInput, password);
 		clickOnElementUsingId(driver, signInButton);
 		Thread.sleep(1000);
 		fillInputFieldUsingId(driver, vehicleMakeInput, vehicleMake);
