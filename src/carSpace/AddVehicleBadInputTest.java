@@ -20,15 +20,11 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test
 	private void addVehicleBadInputTest() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(carSpaceUrl);
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, userEmail);
-		fillInputFieldUsingId(driver, passwordTextInput, password);
-		clickOnElementUsingId(driver, signInButton);
-		Thread.sleep(1000);
+		doSignIn(driver);
 		fillInputFieldUsingId(driver, vehicleMakeInput, vehicleMake);
 		fillInputFieldUsingId(driver, vehicleModelInput, vehicleModel);
 		clickOnElementUsingId(driver, addVehicleButton);

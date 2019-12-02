@@ -20,27 +20,24 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 */
 	@Test(priority = 1)
 	private void addOneVehicleTest() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(carSpaceUrl);
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, userEmail);
-		fillInputFieldUsingId(driver, passwordTextInput, password);
-		clickOnElementUsingId(driver, signInButton);
-		Thread.sleep(1000);
+		doSignIn(driver);
 		String vehicleCount = getTextUsingId(driver, vehicleCountForUser);
 		fillInputFieldUsingId(driver, vehicleYearInput, vehicleYear);
 		fillInputFieldUsingId(driver, vehicleMakeInput, vehicleMake);
 		fillInputFieldUsingId(driver, vehicleModelInput, vehicleModel);
 		clickOnElementUsingId(driver, addVehicleButton);
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
 		String toastNotificationMessage = getTextUsingXpath(driver, toastNotificationBody);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
-		int vehicleCountAfterAddingNewVehicle = Integer.parseInt(vehicleCount) + 1;
+		int vehicleCountAfterAddingOneVehicle = Integer.parseInt(vehicleCount) + 1;
 		vehicleCount = getTextUsingId(driver, vehicleCountForUser);
-		assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterAddingNewVehicle)));
+		Thread.sleep(500);
+		assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterAddingOneVehicle)));
 		driver.close();
 	}
 
@@ -51,15 +48,11 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 */
 	@Test(priority = 2)
 	private void deleteOneVehicleTest() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(carSpaceUrl);
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, userEmail);
-		fillInputFieldUsingId(driver, passwordTextInput, password);
-		clickOnElementUsingId(driver, signInButton);
-		Thread.sleep(1000);
+		doSignIn(driver);
 		String vehicleCount = getTextUsingId(driver, vehicleCountForUser);
 		String vehicleToDelete = getTextUsingXpath(driver, vehicleList);
 		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
@@ -67,13 +60,14 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 			clickOnElementUsingXpath(driver, vehicleList);
 			clickOnElementUsingXpath(driver, deleteVehicleButton);
 			clickOnElementUsingId(driver, confirmDeleteVehicleButton);
-			Thread.sleep(1000);
+			Thread.sleep(500);
 			String expectedMessage = vehicleDeletedSuccessfullyMessage;
 			String toastNotificationMessage = getTextUsingXpath(driver, toastNotificationBody);
 			assertTrue(toastNotificationMessage.contains(expectedMessage));
-			int vehicleCountAfterAddingNewVehicle = Integer.parseInt(vehicleCount) - 1;
+			int vehicleCountAfterDeletingOneVehicle = Integer.parseInt(vehicleCount) - 1;
 			vehicleCount = getTextUsingId(driver, vehicleCountForUser);
-			assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterAddingNewVehicle)));
+			Thread.sleep(500);
+			assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterDeletingOneVehicle)));
 		}
 		driver.close();
 	}

@@ -9,7 +9,8 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class SignInNoUserTest extends BaseClass {
-	private String noRecordUserEmail = "noUser@gmail.com";
+	private String noRecordUserEmail = "noRecordUser@gmail.com";
+	private String noRecordUserpassword = "123456";
 	
 	/**
 	 * Verify the toast error message upon signing in with an account not on record
@@ -18,14 +19,11 @@ public class SignInNoUserTest extends BaseClass {
 	 */
 	@Test
 	public void signInNoUserTest() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(carSpaceUrl);
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, noRecordUserEmail);
-		fillInputFieldUsingId(driver, passwordTextInput, password);
-		clickOnElementUsingId(driver, signInButton);
+		doSignIn(driver, noRecordUserEmail, noRecordUserpassword);
 		Thread.sleep(1000);
 		String expectedMessage = noUserOnRecordSignInErrorMessage;
 		String actualMessage = getTextUsingXpath(driver, toastNotificationBody);

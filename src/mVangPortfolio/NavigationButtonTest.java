@@ -10,7 +10,7 @@ public class NavigationButtonTest extends BaseClass {
 	
 	@Test
 	private void navigationButtonTest() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(mVangPortfolioUrl);
