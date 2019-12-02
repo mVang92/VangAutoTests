@@ -4,12 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class BaseClass {
-	
 	public String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
 	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
 	
-	public String userEmail = "sally@thing.com";
+	public String email = "sally@thing.com";
 	public String password = "123123";
 	
 	public String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
@@ -49,6 +48,53 @@ public class BaseClass {
 	public String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
 	public String toastNotificationBody = "//*[@class='Toastify__toast-body']";
 	public String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
+	
+	/**
+	 * Sign the user out
+	 * 
+	 * @param driver Web driver
+	 */
+	public void doSignOut(WebDriver driver) {
+		clickOnElementUsingId(driver, signOutButton);
+		clickOnElementUsingId(driver, confirmSignOut);
+	}
+	
+	/**
+	 * Sign in with a specific user
+	 * 
+	 * @param driver Web driver Web driver
+	 * @param specificEmail The specific user email to use
+	 * @param specificPassword  The specific user password to use
+	 * @throws InterruptedException
+	 */
+	public void doSignIn(WebDriver driver, String specificEmail, String specificPassword) throws InterruptedException {
+		clickOnElementUsingId(driver, signIn);
+		fillInputFieldUsingId(driver, emailTextInput, specificEmail);
+		fillInputFieldUsingId(driver, passwordTextInput, specificPassword);
+		clickOnElementUsingId(driver, signInButton);
+		Thread.sleep(1000);
+	}
+	
+	/**
+	 * Sign the user in
+	 * 
+	 * @param driver
+	 * @throws InterruptedException
+	 */
+	public void doSignIn(WebDriver driver) throws InterruptedException {
+		clickOnElementUsingId(driver, signIn);
+		fillInputFieldUsingId(driver, emailTextInput, email);
+		fillInputFieldUsingId(driver, passwordTextInput, password);
+		clickOnElementUsingId(driver, signInButton);
+		Thread.sleep(1000);
+	}
+	
+	/**
+	 * Set the system property to use the Chrome driver
+	 */
+	public void setProperty() {
+		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+	}
 	
 	/**
 	 * Maximize the browser window

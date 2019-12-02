@@ -18,12 +18,12 @@ public class SignInSignUpVerificationTest extends BaseClass {
 	 */
 	@Test
 	private void verifyReactStatesResetAfterClosingSignUpModal() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(carSpaceUrl);
 		clickOnElementUsingId(driver, signUp);
-		fillInputFieldUsingId(driver, emailTextInput, userEmail);
+		fillInputFieldUsingId(driver, emailTextInput, email);
 		clickOnElementUsingId(driver, signUpButton);
 		Thread.sleep(1000);
 		String expectedMessage = invalidPasswordErrorMessage;

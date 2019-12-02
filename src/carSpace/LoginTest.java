@@ -17,20 +17,15 @@ public class LoginTest extends BaseClass {
 	 */
 	@Test
 	private void signInTest() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
 		driver.get(carSpaceUrl);
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, userEmail);
-		fillInputFieldUsingId(driver, passwordTextInput, password);
-		clickOnElementUsingId(driver, signInButton);
-		Thread.sleep(1000);
-		String expectedUserEmail = userEmail;
+		doSignIn(driver);
+		String expectedUserEmail = email;
 		String actualUserEmail = getTextUsingId(driver, userEmailDisplay);
 		assertTrue(actualUserEmail.contains(expectedUserEmail));
-		clickOnElementUsingId(driver, signOutButton);
-		clickOnElementUsingId(driver, confirmSignOut);
+		doSignOut(driver);
 		driver.close();
 	}
 }
