@@ -12,9 +12,11 @@ public class LoginTest extends BaseClass {
 	
 	/**
 	 * Verify the sign-in capability and logs out
+	 *
+	 * @throws InterruptedException
 	 */
 	@Test
-	private void signInTest() {
+	private void signInTest() throws InterruptedException {
 		setProperty();
 		WebDriver driver = new ChromeDriver();
 		maximizeWindow(driver);
