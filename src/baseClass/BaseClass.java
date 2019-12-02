@@ -14,6 +14,7 @@ public class BaseClass {
 	public String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
 	public String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
 	public String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
+	public String resetFieldsSuccessMessage = "Input Fields Reset";
 	public String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	public String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
@@ -34,6 +35,7 @@ public class BaseClass {
 	public String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
 	public String userEmailDisplay = "userEmail";
 	public String vehicleCountForUser = "vehicleCountForUser";
+	public String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
 	public String backToTopButton = "topImg";
 	
 	public String vehicleList = "//*[@title='View Service Logs']";
