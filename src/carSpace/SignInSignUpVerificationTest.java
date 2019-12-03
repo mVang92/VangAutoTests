@@ -1,14 +1,16 @@
 package carSpace;
 
 import static org.testng.Assert.assertTrue;
+
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class SignInSignUpVerificationTest extends BaseClass {
 
 	/**
-	 * This test ensures the email and password states reset for SignIn after
-	 * attempting to SignUp with bad credentials
+	 * Verify the email and password states reset for SignIn after attempting to
+	 * SignUp with bad credentials
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -16,7 +18,7 @@ public class SignInSignUpVerificationTest extends BaseClass {
 	private void verifyReactStatesResetAfterClosingSignUpModal() throws InterruptedException {
 		setProperty();
 		maximizeWindow();
-		testCarSpace();
+		useCarSpaceUrl();
 		clickOnElementUsingId(signUp);
 		fillInputFieldUsingId(emailTextInput, email);
 		clickOnElementUsingId(signUpButton);
@@ -34,6 +36,10 @@ public class SignInSignUpVerificationTest extends BaseClass {
 		actualMessage = getTextUsingXpath(toastNotificationBody);
 		assertTrue(actualMessage.contains(expectedMessage));
 		clickOnElementUsingXpath(toastNotificationCloseButton);
+	}
+
+	@AfterClass(alwaysRun = true)
+	private void teardown() {
 		close();
 	}
 }

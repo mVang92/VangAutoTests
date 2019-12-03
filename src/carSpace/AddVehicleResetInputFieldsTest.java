@@ -2,6 +2,9 @@ package carSpace;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
@@ -9,7 +12,12 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 	private String vehicleYear = "2003";
 	private String vehicleMake = "Toyota";
 	private String vehicleModel = "Highlander";
-	
+
+	@BeforeClass
+	private void setup() throws InterruptedException {
+		doSignIn();
+	}
+
 	/**
 	 * Verifies the functionality of the reset button while adding a vehicle
 	 * 
@@ -17,10 +25,6 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 	 */
 	@Test
 	private void addVehicleResetInputFieldsTest() throws InterruptedException {
-		setProperty();
-		maximizeWindow();
-		testCarSpace();
-		doSignIn();
 		fillInputFieldUsingId(vehicleYearInput, vehicleYear);
 		fillInputFieldUsingId(vehicleMakeInput, vehicleMake);
 		fillInputFieldUsingId(vehicleModelInput, vehicleModel);
@@ -35,6 +39,10 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 		assertEquals(vehicleYearInputAfterReset, "");
 		assertEquals(vehicleMakeInputAfterReset, "");
 		assertEquals(vehicleModelInputAfterReset, "");
+	}
+
+	@AfterClass(alwaysRun = true)
+	private void teardown() {
 		close();
 	}
 }
