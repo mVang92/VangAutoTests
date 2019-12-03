@@ -2,8 +2,11 @@ package baseClass;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseClass {
+	WebDriver driver;
+	
 	public String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
 	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
@@ -52,42 +55,59 @@ public class BaseClass {
 	public String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
 	
 	/**
-	 * Sign the user out
-	 * 
-	 * @param driver Web driver
+	 * Close the browser window
 	 */
-	public void doSignOut(WebDriver driver) {
-		clickOnElementUsingId(driver, signOutButton);
-		clickOnElementUsingId(driver, confirmSignOut);
+	public void close() {
+		driver.close();
+	}
+	
+	/**
+	 * Run Portfolio test
+	 */
+	public void testPortfolio() {
+		driver.get(mVangPortfolioUrl);
+	}
+	
+	/**
+	 * Run CarSpace test
+	 */
+	public void testCarSpace() {
+		driver.get(carSpaceUrl);
+	}
+	
+	/**
+	 * Sign the user out
+	 */
+	public void doSignOut() {
+		clickOnElementUsingId(signOutButton);
+		clickOnElementUsingId(confirmSignOut);
 	}
 	
 	/**
 	 * Sign in with a specific user
 	 * 
-	 * @param driver Web driver Web driver
-	 * @param specificEmail The specific user email to use
-	 * @param specificPassword  The specific user password to use
+	 * @param specificEmail         The specific user email to use
+	 * @param specificPassword      The specific user password to use
 	 * @throws InterruptedException
 	 */
-	public void doSignIn(WebDriver driver, String specificEmail, String specificPassword) throws InterruptedException {
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, specificEmail);
-		fillInputFieldUsingId(driver, passwordTextInput, specificPassword);
-		clickOnElementUsingId(driver, signInButton);
+	public void doSignIn(String specificEmail, String specificPassword) throws InterruptedException {
+		clickOnElementUsingId(signIn);
+		fillInputFieldUsingId(emailTextInput, specificEmail);
+		fillInputFieldUsingId(passwordTextInput, specificPassword);
+		clickOnElementUsingId(signInButton);
 		Thread.sleep(1000);
 	}
 	
 	/**
 	 * Sign the user in
 	 * 
-	 * @param driver
 	 * @throws InterruptedException
 	 */
-	public void doSignIn(WebDriver driver) throws InterruptedException {
-		clickOnElementUsingId(driver, signIn);
-		fillInputFieldUsingId(driver, emailTextInput, email);
-		fillInputFieldUsingId(driver, passwordTextInput, password);
-		clickOnElementUsingId(driver, signInButton);
+	public void doSignIn() throws InterruptedException {
+		clickOnElementUsingId(signIn);
+		fillInputFieldUsingId(emailTextInput, email);
+		fillInputFieldUsingId(passwordTextInput, password);
+		clickOnElementUsingId(signInButton);
 		Thread.sleep(1000);
 	}
 	
@@ -95,55 +115,52 @@ public class BaseClass {
 	 * Set the system property to use the Chrome driver
 	 */
 	public void setProperty() {
-		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+		System.setProperty("webdriver.chrome.driver", chromeDriverPath); 
+		driver = new ChromeDriver();
 	}
 	
 	/**
 	 * Maximize the browser window
-	 * 
-	 * @param driver Web driver
 	 */
-	public void maximizeWindow(WebDriver driver) {
+	public void maximizeWindow() {
 		driver.manage().window().maximize();
 	}
 	
 	/**
 	 * Click on an element using the id of the element
 	 * 
-	 * @param driver Web driver
+	 * @param id The element id
 	 */
-	public void clickOnElementUsingId(WebDriver driver, String id) {
+	public void clickOnElementUsingId(String id) {
 		driver.findElement(By.id(id)).click();
 	}
 	
 	/**
 	 * Click on an element using the xpath of the element
 	 * 
-	 * @param driver Web driver
+	 * @param xpath The element xpath
 	 */
-	public void clickOnElementUsingXpath(WebDriver driver, String xpath) {
+	public void clickOnElementUsingXpath(String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
 	}
 	
 	/**
 	 * Fill in the input field using the id to the input field
 	 * 
-	 * @param driver     Web driver
 	 * @param inputField Input field to target
 	 * @param inputValue Input value to fill the input field
 	 */
-	public void fillInputFieldUsingId(WebDriver driver, String inputField, String inputValue) {
+	public void fillInputFieldUsingId(String inputField, String inputValue) {
 		driver.findElement(By.id(inputField)).sendKeys(inputValue);
 	}
 	
 	/**
 	 * Get the text from the xpath of the element
 	 * 
-	 * @param driver Web driver
-	 * @param xpath  Xpath of the element
-	 * @return       Return the text from the element
+	 * @param xpath The element xpath
+	 * @return      Return the text from the element
 	 */
-	public String getTextUsingXpath(WebDriver driver, String xpath) {
+	public String getTextUsingXpath(String xpath) {
 		String text = driver.findElement(By.xpath(xpath)).getText();
 		return text;
 	}
@@ -151,11 +168,10 @@ public class BaseClass {
 	/**
 	 * Get the text from the id of the element
 	 * 
-	 * @param driver Web driver
-	 * @param id     id of the element
-	 * @return       Return the text from the element
+	 * @param id The element id
+	 * @return   Return the text from the element
 	 */
-	public String getTextUsingId(WebDriver driver, String id) {
+	public String getTextUsingId(String id) {
 		String text = driver.findElement(By.id(id)).getText();
 		return text;
 	}
