@@ -1,26 +1,22 @@
 package mVangPortfolio;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-
 import baseClass.BaseClass;
 
 public class NavigationButtonTest extends BaseClass {
-	
+
 	@Test
 	private void navigationButtonTest() throws InterruptedException {
 		setProperty();
-		WebDriver driver = new ChromeDriver();
-		maximizeWindow(driver);
-		driver.get(mVangPortfolioUrl);
-		clickOnElementUsingXpath(driver, aboueMeNavButton);
+		maximizeWindow();
+		testPortfolio();
+		clickOnElementUsingXpath(aboueMeNavButton);
 		Thread.sleep(250);
-		clickOnElementUsingXpath(driver, myProjectsNavButton);
+		clickOnElementUsingXpath(myProjectsNavButton);
 		Thread.sleep(250);
-		clickOnElementUsingXpath(driver, contactNavButton);
+		clickOnElementUsingXpath(contactNavButton);
 		Thread.sleep(500);
-		clickOnElementUsingId(driver, backToTopButton);
-		driver.close();
+		clickOnElementUsingId(backToTopButton);
+		close();
 	}
 }

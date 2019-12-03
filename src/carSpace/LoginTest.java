@@ -1,15 +1,11 @@
 package carSpace;
 
 import static org.testng.Assert.assertTrue;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-
 import baseClass.BaseClass;
 
 public class LoginTest extends BaseClass {
-	
+
 	/**
 	 * Verify the sign-in capability and logs out
 	 *
@@ -18,14 +14,13 @@ public class LoginTest extends BaseClass {
 	@Test
 	private void signInTest() throws InterruptedException {
 		setProperty();
-		WebDriver driver = new ChromeDriver();
-		maximizeWindow(driver);
-		driver.get(carSpaceUrl);
-		doSignIn(driver);
+		maximizeWindow();
+		testCarSpace();
+		doSignIn();
 		String expectedUserEmail = email;
-		String actualUserEmail = getTextUsingId(driver, userEmailDisplay);
+		String actualUserEmail = getTextUsingId(userEmailDisplay);
 		assertTrue(actualUserEmail.contains(expectedUserEmail));
-		doSignOut(driver);
-		driver.close();
+		doSignOut();
+		close();
 	}
 }
