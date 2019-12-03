@@ -53,6 +53,18 @@ public class BaseClass {
 	public String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
 	public String toastNotificationBody = "//*[@class='Toastify__toast-body']";
 	public String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
+	
+	/**
+	 * Setup system property, maximize window, select test URL, and sign-in
+	 * 
+	 * @throws InterruptedException
+	 */
+	public void doSignIn(String specificEmail, String specificPassword) throws InterruptedException {
+		setProperty();
+		maximizeWindow();
+		useCarSpaceUrl();
+		signIn(specificEmail, specificPassword);
+	}
 
 	/**
 	 * Setup system property, maximize window, select test URL, and sign-in
@@ -102,7 +114,7 @@ public class BaseClass {
 	 * @param specificPassword      The specific user password to use
 	 * @throws InterruptedException
 	 */
-	public void doSignIn(String specificEmail, String specificPassword) throws InterruptedException {
+	public void signIn(String specificEmail, String specificPassword) throws InterruptedException {
 		clickOnElementUsingId(signIn);
 		fillInputFieldUsingId(emailTextInput, specificEmail);
 		fillInputFieldUsingId(passwordTextInput, specificPassword);
