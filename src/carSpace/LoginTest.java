@@ -1,10 +1,18 @@
 package carSpace;
 
 import static org.testng.Assert.assertTrue;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class LoginTest extends BaseClass {
+
+	@BeforeClass
+	private void setup() throws InterruptedException {
+		doSignIn();
+	}
 
 	/**
 	 * Verify the sign-in capability and logs out
@@ -13,14 +21,14 @@ public class LoginTest extends BaseClass {
 	 */
 	@Test
 	private void signInTest() throws InterruptedException {
-		setProperty();
-		maximizeWindow();
-		testCarSpace();
-		doSignIn();
 		String expectedUserEmail = email;
 		String actualUserEmail = getTextUsingId(userEmailDisplay);
 		assertTrue(actualUserEmail.contains(expectedUserEmail));
 		doSignOut();
+	}
+
+	@AfterClass(alwaysRun = true)
+	private void teardown() {
 		close();
 	}
 }

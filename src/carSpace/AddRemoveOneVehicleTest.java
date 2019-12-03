@@ -1,6 +1,8 @@
 package carSpace;
 
 import static org.testng.Assert.assertTrue;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
@@ -9,6 +11,11 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private String vehicleMake = "Toyota";
 	private String vehicleModel = "Highlander";
 
+	@BeforeClass
+	private void setup() throws InterruptedException {
+		doSignIn();
+	}
+
 	/**
 	 * Add a vehicle to the user's record
 	 * 
@@ -16,10 +23,6 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 */
 	@Test(priority = 0)
 	private void addOneVehicleTest() throws InterruptedException {
-		setProperty();
-		maximizeWindow();
-		testCarSpace();
-		doSignIn();
 		String vehicleCount = getTextUsingId(vehicleCountForUser);
 		fillInputFieldUsingId(vehicleYearInput, vehicleYear);
 		fillInputFieldUsingId(vehicleMakeInput, vehicleMake);
@@ -40,7 +43,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Test(priority = 1, dependsOnMethods="addOneVehicleTest")
+	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() throws InterruptedException {
 		String vehicleCount = getTextUsingId(vehicleCountForUser);
 		String vehicleToDelete = getTextUsingXpath(vehicleList);
@@ -58,6 +61,10 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 			Thread.sleep(500);
 			assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterDeletingOneVehicle)));
 		}
+	}
+
+	@AfterClass(alwaysRun = true)
+	private void teardown() {
 		close();
 	}
 }
