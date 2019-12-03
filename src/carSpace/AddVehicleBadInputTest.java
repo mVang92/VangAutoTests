@@ -39,7 +39,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Test(priority = 1)
+	@Test(priority = 1, dependsOnMethods = "addVehicleBadInputTest")
 	private void addVehicleBadYearInputTest() throws InterruptedException {
 		fillInputFieldUsingId(vehicleYearInput, invalidVehicleYear);
 		Thread.sleep(1000);
