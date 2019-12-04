@@ -55,7 +55,7 @@ public class BaseClass {
 	public String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
 	
 	/**
-	 * Setup system property, maximize window, select test URL, and sign-in
+	 * Setup system property, maximize window, select test URL, and sign-in using a specific user
 	 * 
 	 * @throws InterruptedException
 	 */
