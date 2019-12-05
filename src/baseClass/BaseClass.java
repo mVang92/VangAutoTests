@@ -43,6 +43,8 @@ public class BaseClass {
 	public static String vehicleCountForUser = "vehicleCountForUser";
 	public static String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
 	public static String backToTopButton = "topImg";
+	public static String portfolioCommentInput= "commentInput";
+	public static String portfolioResetButton = "resetButton";
 
 	public static String vehicleList = "//*[@title='View Service Logs']";
 	public static String deleteVehicleButton = "//*[@class='deleteBtn']";
@@ -192,7 +194,7 @@ public class BaseClass {
 	 * 
 	 * @param element The element to target
 	 * @param locator The type of locator to look for
-	 * @return Return the text
+	 * @return        Return the text
 	 */
 	public String getText(String element, String locator) {
 		String text = null;
@@ -204,5 +206,24 @@ public class BaseClass {
 				text = driver.findElement(By.id(element)).getText();
 		}
 		return text;
+	}
+	
+	/**
+	 * Get the value from the input box using the element and locator
+	 * 
+	 * @param element The element to target
+	 * @param locator The type of locator to look for
+	 * @return        Return the value
+	 */
+	public String getValue(String element, String locator) {
+		String value = null;
+		switch (locator) {
+			case "xpath":
+				value = driver.findElement(By.xpath(element)).getAttribute("value");
+				break;
+			case "id":
+				value = driver.findElement(By.id(element)).getAttribute("value");
+		}
+		return value;
 	}
 }
