@@ -33,9 +33,9 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 		String expectedMessage = resetFieldsSuccessMessage;
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
-		String vehicleYearInputAfterReset = getText(vehicleYearInput, id);
-		String vehicleMakeInputAfterReset = getText(vehicleMakeInput, id);
-		String vehicleModelInputAfterReset = getText(vehicleModelInput, id);
+		String vehicleYearInputAfterReset = getValue(vehicleYearInput, id);
+		String vehicleMakeInputAfterReset = getValue(vehicleMakeInput, id);
+		String vehicleModelInputAfterReset = getValue(vehicleModelInput, id);
 		assertEquals(vehicleYearInputAfterReset, "");
 		assertEquals(vehicleMakeInputAfterReset, "");
 		assertEquals(vehicleModelInputAfterReset, "");
