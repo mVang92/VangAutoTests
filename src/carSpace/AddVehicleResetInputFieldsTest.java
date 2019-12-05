@@ -9,9 +9,6 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class AddVehicleResetInputFieldsTest extends BaseClass {
-	private String vehicleYear = "2003";
-	private String vehicleMake = "Toyota";
-	private String vehicleModel = "Highlander";
 
 	@BeforeClass
 	private void setup() throws InterruptedException {
@@ -25,6 +22,9 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 	 */
 	@Test
 	private void addVehicleResetInputFieldsTest() throws InterruptedException {
+		String vehicleYear = "2003";
+		String vehicleMake = "Toyota";
+		String vehicleModel = "Highlander";
 		fillInputField(vehicleYearInput, vehicleYear, id);
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);

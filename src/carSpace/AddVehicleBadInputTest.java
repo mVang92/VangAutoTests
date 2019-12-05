@@ -8,10 +8,7 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class AddVehicleBadInputTest extends BaseClass {
-	private String invalidVehicleYear = "nan";
-	private String vehicleMake = "Toyota";
-	private String vehicleModel = "Highlander";
-
+	
 	@BeforeClass
 	private void setup() throws InterruptedException {
 		doSignIn();
@@ -25,6 +22,8 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test(priority = 0)
 	private void addVehicleBadInputTest() throws InterruptedException {
+		String vehicleMake = "Toyota";
+		String vehicleModel = "Highlander";
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
@@ -41,6 +40,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test(priority = 1, dependsOnMethods = "addVehicleBadInputTest")
 	private void addVehicleBadYearInputTest() throws InterruptedException {
+		String invalidVehicleYear = "nan";
 		fillInputField(vehicleYearInput, invalidVehicleYear, id);
 		Thread.sleep(1000);
 		clickOnElement(addVehicleButton, id);
