@@ -162,11 +162,11 @@ public class BaseClass {
 	 */
 	public void clickOnElement(String element, String locator) {
 		switch (locator) {
-		case "xpath":
-			driver.findElement(By.xpath(element)).click();
-			break;
-		case "id":
-			driver.findElement(By.id(element)).click();
+			case "xpath":
+				driver.findElement(By.xpath(element)).click();
+				break;
+			case "id":
+				driver.findElement(By.id(element)).click();
 		}
 	}
 
@@ -179,11 +179,11 @@ public class BaseClass {
 	 */
 	public void fillInputField(String inputField, String inputValue, String locator) {
 		switch (locator) {
-		case "xpath":
-			driver.findElement(By.xpath(inputField)).sendKeys(inputValue);
-			break;
-		case "id":
-			driver.findElement(By.id(inputField)).sendKeys(inputValue);
+			case "xpath":
+				driver.findElement(By.xpath(inputField)).sendKeys(inputValue);
+				break;
+			case "id":
+				driver.findElement(By.id(inputField)).sendKeys(inputValue);
 		}
 	}
 
@@ -197,11 +197,11 @@ public class BaseClass {
 	public String getText(String element, String locator) {
 		String text = null;
 		switch (locator) {
-		case "xpath":
-			text = driver.findElement(By.xpath(element)).getText();
-			break;
-		case "id":
-			text = driver.findElement(By.id(element)).getText();
+			case "xpath":
+				text = driver.findElement(By.xpath(element)).getText();
+				break;
+			case "id":
+				text = driver.findElement(By.id(element)).getText();
 		}
 		return text;
 	}
