@@ -8,11 +8,11 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class SignInNoUserTest extends BaseClass {
-	private String noRecordUserEmail = "noRecordUser@gmail.com";
-	private String noRecordUserpassword = "123456";
-	
+
 	@BeforeClass
-	public void setup() throws InterruptedException {
+	private void setup() throws InterruptedException {
+		String noRecordUserEmail = "noRecordUser@gmail.com";
+		String noRecordUserpassword = "123456";
 		doSignIn(noRecordUserEmail, noRecordUserpassword);
 	}
 
@@ -22,12 +22,12 @@ public class SignInNoUserTest extends BaseClass {
 	 * @throws InterruptedException
 	 */
 	@Test
-	public void signInNoUserTest() throws InterruptedException {
+	private void signInNoUserTest() throws InterruptedException {
 		String expectedMessage = noUserOnRecordSignInErrorMessage;
 		String actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
-	
+
 	@AfterClass(alwaysRun = true)
 	private void teardown() {
 		close();
