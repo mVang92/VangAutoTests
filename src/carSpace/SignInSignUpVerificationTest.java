@@ -19,23 +19,23 @@ public class SignInSignUpVerificationTest extends BaseClass {
 		setProperty();
 		maximizeWindow();
 		useCarSpaceUrl();
-		clickOnElementUsingId(signUp);
-		fillInputFieldUsingId(emailTextInput, email);
-		clickOnElementUsingId(signUpButton);
+		clickOnElement(signUp, id);
+		fillInputField(emailTextInput, email, id);
+		clickOnElement(signUpButton, id);
 		Thread.sleep(1000);
 		String expectedMessage = invalidPasswordErrorMessage;
-		String actualMessage = getTextUsingXpath(toastNotificationBody);
+		String actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElementUsingXpath(toastNotificationCloseButton);
-		clickOnElementUsingId(closeSignUpModal);
-		clickOnElementUsingId(signIn);
-		fillInputFieldUsingId(passwordTextInput, password);
-		clickOnElementUsingId(signInButton);
+		clickOnElement(toastNotificationCloseButton, xpath);
+		clickOnElement(closeSignUpModal, id);
+		clickOnElement(signIn, id);
+		fillInputField(passwordTextInput, password, id);
+		clickOnElement(signInButton, id);
 		Thread.sleep(1000);
 		expectedMessage = invalidEmailErrorMessage;
-		actualMessage = getTextUsingXpath(toastNotificationBody);
+		actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElementUsingXpath(toastNotificationCloseButton);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 
 	@AfterClass(alwaysRun = true)

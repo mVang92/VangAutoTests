@@ -23,17 +23,17 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 */
 	@Test(priority = 0)
 	private void addOneVehicleTest() throws InterruptedException {
-		String vehicleCount = getTextUsingId(vehicleCountForUser);
-		fillInputFieldUsingId(vehicleYearInput, vehicleYear);
-		fillInputFieldUsingId(vehicleMakeInput, vehicleMake);
-		fillInputFieldUsingId(vehicleModelInput, vehicleModel);
-		clickOnElementUsingId(addVehicleButton);
+		String vehicleCount = getText(vehicleCountForUser, id);
+		fillInputField(vehicleYearInput, vehicleYear, id);
+		fillInputField(vehicleMakeInput, vehicleMake, id);
+		fillInputField(vehicleModelInput, vehicleModel, id);
+		clickOnElement(addVehicleButton, id);
 		Thread.sleep(500);
 		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
-		String toastNotificationMessage = getTextUsingXpath(toastNotificationBody);
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
 		int vehicleCountAfterAddingOneVehicle = Integer.parseInt(vehicleCount) + 1;
-		vehicleCount = getTextUsingId(vehicleCountForUser);
+		vehicleCount = getText(vehicleCountForUser, id);
 		Thread.sleep(500);
 		assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterAddingOneVehicle)));
 	}
@@ -45,19 +45,19 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 */
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() throws InterruptedException {
-		String vehicleCount = getTextUsingId(vehicleCountForUser);
-		String vehicleToDelete = getTextUsingXpath(vehicleList);
+		String vehicleCount = getText(vehicleCountForUser, id);
+		String vehicleToDelete = getText(vehicleList, xpath);
 		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		if (vehicleToDelete.equals(actualVehicleToDelete)) {
-			clickOnElementUsingXpath(vehicleList);
-			clickOnElementUsingXpath(deleteVehicleButton);
-			clickOnElementUsingId(confirmDeleteVehicleButton);
+			clickOnElement(vehicleList, xpath);
+			clickOnElement(deleteVehicleButton, xpath);
+			clickOnElement(confirmDeleteVehicleButton, id);
 			Thread.sleep(500);
 			String expectedMessage = vehicleDeletedSuccessfullyMessage;
-			String toastNotificationMessage = getTextUsingXpath(toastNotificationBody);
+			String toastNotificationMessage = getText(toastNotificationBody, xpath);
 			assertTrue(toastNotificationMessage.contains(expectedMessage));
 			int vehicleCountAfterDeletingOneVehicle = Integer.parseInt(vehicleCount) - 1;
-			vehicleCount = getTextUsingId(vehicleCountForUser);
+			vehicleCount = getText(vehicleCountForUser, id);
 			Thread.sleep(500);
 			assertTrue(vehicleCount.contains(Integer.toString(vehicleCountAfterDeletingOneVehicle)));
 		}

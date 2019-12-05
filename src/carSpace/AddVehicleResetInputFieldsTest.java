@@ -25,17 +25,17 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 	 */
 	@Test
 	private void addVehicleResetInputFieldsTest() throws InterruptedException {
-		fillInputFieldUsingId(vehicleYearInput, vehicleYear);
-		fillInputFieldUsingId(vehicleMakeInput, vehicleMake);
-		fillInputFieldUsingId(vehicleModelInput, vehicleModel);
-		clickOnElementUsingId(resetVehicleInputFieldsButton);
+		fillInputField(vehicleYearInput, vehicleYear, id);
+		fillInputField(vehicleMakeInput, vehicleMake, id);
+		fillInputField(vehicleModelInput, vehicleModel, id);
+		clickOnElement(resetVehicleInputFieldsButton, id);
 		Thread.sleep(500);
 		String expectedMessage = resetFieldsSuccessMessage;
-		String toastNotificationMessage = getTextUsingXpath(toastNotificationBody);
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
-		String vehicleYearInputAfterReset = getTextUsingId(vehicleYearInput);
-		String vehicleMakeInputAfterReset = getTextUsingId(vehicleMakeInput);
-		String vehicleModelInputAfterReset = getTextUsingId(vehicleModelInput);
+		String vehicleYearInputAfterReset = getText(vehicleYearInput, id);
+		String vehicleMakeInputAfterReset = getText(vehicleMakeInput, id);
+		String vehicleModelInputAfterReset = getText(vehicleModelInput, id);
 		assertEquals(vehicleYearInputAfterReset, "");
 		assertEquals(vehicleMakeInputAfterReset, "");
 		assertEquals(vehicleModelInputAfterReset, "");
