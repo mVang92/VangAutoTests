@@ -7,55 +7,59 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BaseClass {
 	WebDriver driver;
 
-	public String carSpaceUrl = "https://car-space.herokuapp.com/";
-	public String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
-	public String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
+	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
+	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
+	public static String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
 
-	public String email = "sally@thing.com";
-	public String password = "123123";
+	public static String id = "id";
+	public static String xpath = "xpath";
 
-	public String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
-	public String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
-	public String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
-	public String resetFieldsSuccessMessage = "Input Fields Reset";
-	public String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
-	public String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
-	public String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
+	public static String email = "sally@thing.com";
+	public static String password = "123123";
 
-	public String signIn = "signInNavButton";
-	public String signUp = "signUpNavButton";
-	public String emailTextInput = "emailInput";
-	public String passwordTextInput = "passwordInput";
-	public String signInButton = "signInButton";
-	public String signOutButton = "signOutNavButton";
-	public String signUpButton = "signUpButton";
-	public String confirmSignOut = "doSignOutButton";
-	public String closeSignUpModal = "closeSignUpModal";
-	public String vehicleYearInput = "vehicleYearInput";
-	public String vehicleMakeInput = "vehicleMakeInput";
-	public String vehicleModelInput = "vehicleModelInput";
-	public String addVehicleButton = "addVehicleButton";
-	public String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
-	public String userEmailDisplay = "userEmail";
-	public String vehicleCountForUser = "vehicleCountForUser";
-	public String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
-	public String backToTopButton = "topImg";
+	public static String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
+	public static String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
+	public static String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
+	public static String resetFieldsSuccessMessage = "Input Fields Reset";
+	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
+	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
+	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
 
-	public String vehicleList = "//*[@title='View Service Logs']";
-	public String deleteVehicleButton = "//*[@class='deleteBtn']";
-	public String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
-	public String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
-	public String aboueMeNavButton = "//a[@href='#aboutMe']";
-	public String myProjectsNavButton = "//a[@href='#portfolio']";
-	public String contactNavButton = "//a[@href='#contact']";
+	public static String signIn = "signInNavButton";
+	public static String signUp = "signUpNavButton";
+	public static String emailTextInput = "emailInput";
+	public static String passwordTextInput = "passwordInput";
+	public static String signInButton = "signInButton";
+	public static String signOutButton = "signOutNavButton";
+	public static String signUpButton = "signUpButton";
+	public static String confirmSignOut = "doSignOutButton";
+	public static String closeSignUpModal = "closeSignUpModal";
+	public static String vehicleYearInput = "vehicleYearInput";
+	public static String vehicleMakeInput = "vehicleMakeInput";
+	public static String vehicleModelInput = "vehicleModelInput";
+	public static String addVehicleButton = "addVehicleButton";
+	public static String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
+	public static String userEmailDisplay = "userEmail";
+	public static String vehicleCountForUser = "vehicleCountForUser";
+	public static String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
+	public static String backToTopButton = "topImg";
 
-	public String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
-	public String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
-	public String toastNotificationBody = "//*[@class='Toastify__toast-body']";
-	public String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
-	
+	public static String vehicleList = "//*[@title='View Service Logs']";
+	public static String deleteVehicleButton = "//*[@class='deleteBtn']";
+	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
+	public static String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
+	public static String aboueMeNavButton = "//a[@href='#aboutMe']";
+	public static String myProjectsNavButton = "//a[@href='#portfolio']";
+	public static String contactNavButton = "//a[@href='#contact']";
+
+	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
+	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
+	public static String toastNotificationBody = "//*[@class='Toastify__toast-body']";
+	public static String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
+
 	/**
-	 * Setup system property, maximize window, select test URL, and sign-in using a specific user
+	 * Setup system property, maximize window, select test URL, and sign-in using a
+	 * specific user
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -103,22 +107,22 @@ public class BaseClass {
 	 * Sign the user out
 	 */
 	public void doSignOut() {
-		clickOnElementUsingId(signOutButton);
-		clickOnElementUsingId(confirmSignOut);
+		clickOnElement(signOutButton, id);
+		clickOnElement(confirmSignOut, id);
 	}
 
 	/**
 	 * Sign in with a specific user
 	 * 
-	 * @param specificEmail         The specific user email to use
-	 * @param specificPassword      The specific user password to use
+	 * @param specificEmail    The specific user email to use
+	 * @param specificPassword The specific user password to use
 	 * @throws InterruptedException
 	 */
 	public void signIn(String specificEmail, String specificPassword) throws InterruptedException {
-		clickOnElementUsingId(signIn);
-		fillInputFieldUsingId(emailTextInput, specificEmail);
-		fillInputFieldUsingId(passwordTextInput, specificPassword);
-		clickOnElementUsingId(signInButton);
+		clickOnElement(signIn, id);
+		fillInputField(emailTextInput, specificEmail, id);
+		fillInputField(passwordTextInput, specificPassword, id);
+		clickOnElement(signInButton, id);
 		Thread.sleep(1000);
 	}
 
@@ -128,10 +132,10 @@ public class BaseClass {
 	 * @throws InterruptedException
 	 */
 	private void signIn() throws InterruptedException {
-		clickOnElementUsingId(signIn);
-		fillInputFieldUsingId(emailTextInput, email);
-		fillInputFieldUsingId(passwordTextInput, password);
-		clickOnElementUsingId(signInButton);
+		clickOnElement(signIn, id);
+		fillInputField(emailTextInput, email, id);
+		fillInputField(passwordTextInput, password, id);
+		clickOnElement(signInButton, id);
 		Thread.sleep(1000);
 	}
 
@@ -151,21 +155,19 @@ public class BaseClass {
 	}
 
 	/**
-	 * Click on an element using the id of the element
+	 * Click on an element by specifying it and its locator
 	 * 
-	 * @param id The element id
+	 * @param element The element to target
+	 * @param locator The type of locator to look for
 	 */
-	public void clickOnElementUsingId(String id) {
-		driver.findElement(By.id(id)).click();
-	}
-
-	/**
-	 * Click on an element using the xpath of the element
-	 * 
-	 * @param xpath The element xpath
-	 */
-	public void clickOnElementUsingXpath(String xpath) {
-		driver.findElement(By.xpath(xpath)).click();
+	public void clickOnElement(String element, String locator) {
+		switch (locator) {
+		case "xpath":
+			driver.findElement(By.xpath(element)).click();
+			break;
+		case "id":
+			driver.findElement(By.id(element)).click();
+		}
 	}
 
 	/**
@@ -173,30 +175,34 @@ public class BaseClass {
 	 * 
 	 * @param inputField Input field to target
 	 * @param inputValue Input value to fill the input field
+	 * @param locator    The type of locator to look for
 	 */
-	public void fillInputFieldUsingId(String inputField, String inputValue) {
-		driver.findElement(By.id(inputField)).sendKeys(inputValue);
+	public void fillInputField(String inputField, String inputValue, String locator) {
+		switch (locator) {
+		case "xpath":
+			driver.findElement(By.xpath(inputField)).sendKeys(inputValue);
+			break;
+		case "id":
+			driver.findElement(By.id(inputField)).sendKeys(inputValue);
+		}
 	}
 
 	/**
-	 * Get the text from the xpath of the element
+	 * Get the text of the element using a specific locator
 	 * 
-	 * @param  xpath The element xpath
-	 * @return Return the text from the element
+	 * @param element The element to target
+	 * @param locator The type of locator to look for
+	 * @return Return the text
 	 */
-	public String getTextUsingXpath(String xpath) {
-		String text = driver.findElement(By.xpath(xpath)).getText();
-		return text;
-	}
-
-	/**
-	 * Get the text from the id of the element
-	 * 
-	 * @param id The element id
-	 * @return   Return the text from the element
-	 */
-	public String getTextUsingId(String id) {
-		String text = driver.findElement(By.id(id)).getText();
+	public String getText(String element, String locator) {
+		String text = null;
+		switch (locator) {
+		case "xpath":
+			text = driver.findElement(By.xpath(element)).getText();
+			break;
+		case "id":
+			text = driver.findElement(By.id(element)).getText();
+		}
 		return text;
 	}
 }

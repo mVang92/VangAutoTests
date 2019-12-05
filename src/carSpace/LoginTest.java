@@ -22,7 +22,7 @@ public class LoginTest extends BaseClass {
 	@Test
 	private void signInTest() throws InterruptedException {
 		String expectedUserEmail = email;
-		String actualUserEmail = getTextUsingId(userEmailDisplay);
+		String actualUserEmail = getText(userEmailDisplay, id);
 		assertTrue(actualUserEmail.contains(expectedUserEmail));
 		doSignOut();
 	}

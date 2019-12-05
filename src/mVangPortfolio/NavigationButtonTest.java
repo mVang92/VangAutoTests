@@ -16,13 +16,13 @@ public class NavigationButtonTest extends BaseClass {
 		setProperty();
 		maximizeWindow();
 		usePortfolioUrl();
-		clickOnElementUsingXpath(aboueMeNavButton);
+		clickOnElement(aboueMeNavButton, xpath);
 		Thread.sleep(500);
-		clickOnElementUsingXpath(myProjectsNavButton);
+		clickOnElement(myProjectsNavButton, xpath);
 		Thread.sleep(500);
-		clickOnElementUsingXpath(contactNavButton);
+		clickOnElement(contactNavButton, xpath);
 		Thread.sleep(1000);
-		clickOnElementUsingId(backToTopButton);
+		clickOnElement(backToTopButton, id);
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -24,7 +24,7 @@ public class SignInNoUserTest extends BaseClass {
 	@Test
 	public void signInNoUserTest() throws InterruptedException {
 		String expectedMessage = noUserOnRecordSignInErrorMessage;
-		String actualMessage = getTextUsingXpath(toastNotificationBody);
+		String actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 	

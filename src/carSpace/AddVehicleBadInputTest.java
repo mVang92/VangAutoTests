@@ -25,13 +25,13 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test(priority = 0)
 	private void addVehicleBadInputTest() throws InterruptedException {
-		fillInputFieldUsingId(vehicleMakeInput, vehicleMake);
-		fillInputFieldUsingId(vehicleModelInput, vehicleModel);
-		clickOnElementUsingId(addVehicleButton);
+		fillInputField(vehicleMakeInput, vehicleMake, id);
+		fillInputField(vehicleModelInput, vehicleModel, id);
+		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInputErrorMessage;
-		String actualMessage = getTextUsingXpath(addVehicleErrorModal);
+		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElementUsingXpath(AddVehicleErrorModalOkayButton);
+		clickOnElement(AddVehicleErrorModalOkayButton, xpath);
 	}
 
 	/**
@@ -41,13 +41,13 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test(priority = 1, dependsOnMethods = "addVehicleBadInputTest")
 	private void addVehicleBadYearInputTest() throws InterruptedException {
-		fillInputFieldUsingId(vehicleYearInput, invalidVehicleYear);
+		fillInputField(vehicleYearInput, invalidVehicleYear, id);
 		Thread.sleep(1000);
-		clickOnElementUsingId(addVehicleButton);
+		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
-		String actualMessage = getTextUsingXpath(addVehicleErrorModal);
+		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElementUsingXpath(AddVehicleErrorModalOkayButton);
+		clickOnElement(AddVehicleErrorModalOkayButton, xpath);
 	}
 
 	@AfterClass(alwaysRun = true)
