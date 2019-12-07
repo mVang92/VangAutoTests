@@ -18,15 +18,17 @@ public class BaseClass {
 	public static String password = "123123";
 
 	public static String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
+	public static String invalidPasswordOrNoPasswordErrorMessage = "Error: The password is invalid or the user does not have a password.";
 	public static String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
 	public static String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
+	public static String passwordsDoNotMatchErrorMessage = "Error: Passwords do not match.";
 	public static String resetFieldsSuccessMessage = "Input Fields Reset";
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
 
-	public static String signIn = "signInNavButton";
-	public static String signUp = "signUpNavButton";
+	public static String signInNavButton = "signInNavButton";
+	public static String signUpNavButton = "signUpNavButton";
 	public static String emailTextInput = "emailInput";
 	public static String passwordTextInput = "passwordInput";
 	public static String signInButton = "signInButton";
@@ -121,7 +123,7 @@ public class BaseClass {
 	 * @throws InterruptedException
 	 */
 	public void signIn(String specificEmail, String specificPassword) throws InterruptedException {
-		clickOnElement(signIn, id);
+		clickOnElement(signInNavButton, id);
 		fillInputField(emailTextInput, specificEmail, id);
 		fillInputField(passwordTextInput, specificPassword, id);
 		clickOnElement(signInButton, id);
@@ -134,7 +136,7 @@ public class BaseClass {
 	 * @throws InterruptedException
 	 */
 	private void signIn() throws InterruptedException {
-		clickOnElement(signIn, id);
+		clickOnElement(signInNavButton, id);
 		fillInputField(emailTextInput, email, id);
 		fillInputField(passwordTextInput, password, id);
 		clickOnElement(signInButton, id);
