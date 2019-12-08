@@ -16,7 +16,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 
 	/**
 	 * Verify the functionality of the error message while trying to submit empty
-	 * input fields
+	 * input fields when adding a vehicle
 	 * 
 	 * @throws InterruptedException
 	 */
