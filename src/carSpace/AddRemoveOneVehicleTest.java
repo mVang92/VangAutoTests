@@ -50,7 +50,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		if (vehicleToDelete.equals(actualVehicleToDelete)) {
 			clickOnElement(vehicleList, xpath);
-			clickOnElement(deleteVehicleButton, xpath);
+			clickOnElement(addLogDeleteVehicleButton, id);
 			clickOnElement(confirmDeleteVehicleButton, id);
 			Thread.sleep(500);
 			String expectedMessage = vehicleDeletedSuccessfullyMessage;

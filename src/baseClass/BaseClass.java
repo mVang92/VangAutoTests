@@ -1,5 +1,7 @@
 package baseClass;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +28,7 @@ public class BaseClass {
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
+	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
 
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
@@ -47,11 +50,19 @@ public class BaseClass {
 	public static String backToTopButton = "topImg";
 	public static String portfolioCommentInput= "commentInput";
 	public static String portfolioResetButton = "resetButton";
+	public static String serviceLogDateInput = "serviceLogDateInput";
+	public static String serviceLogMileageInput = "serviceLogMileageInput";
+	public static String serviceLogServiceInput = "serviceLogServiceInput";
+	public static String serviceLogCommentsInput = "serviceLogCommentsInput";
+	public static String addLogResetInputFieldsButton = "addLogResetInputFieldsButton";
+	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
+	public static String addServiceLogButton = "addServiceLogButton";
 
 	public static String vehicleList = "//*[@title='View Service Logs']";
-	public static String deleteVehicleButton = "//*[@class='deleteBtn']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
+	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
+	public static String AddLogErrorModalOkayButton = "//button[@title='Okay']";
 	public static String aboueMeNavButton = "//a[@href='#aboutMe']";
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
@@ -227,5 +238,24 @@ public class BaseClass {
 				value = driver.findElement(By.id(element)).getAttribute("value");
 		}
 		return value;
+	}
+	
+	/**
+	 * Add a vehicle to the database
+	 * 
+	 * @param year  The vehicle year
+	 * @param make  The vehicle make
+	 * @param model The vehicle model
+	 * @throws InterruptedException 
+	 */
+	public void addOneVehicle(String year, String make, String model) throws InterruptedException {
+		fillInputField(vehicleYearInput, year, id);
+		fillInputField(vehicleMakeInput, make, id);
+		fillInputField(vehicleModelInput, model, id);
+		clickOnElement(addVehicleButton, id);
+		Thread.sleep(500);
+		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
+		assertTrue(toastNotificationMessage.contains(expectedMessage));
 	}
 }
