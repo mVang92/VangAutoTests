@@ -11,7 +11,7 @@ public class BaseClass {
 
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
-	public static String chromeDriverPath = "C:\\chromedriver\\chromedriver.exe";
+	public static String chromeDriverPath = "C:\\Selenium\\selenium\\chromedriver\\chromedriver.exe";
 
 	public static String id = "id";
 	public static String xpath = "xpath";
