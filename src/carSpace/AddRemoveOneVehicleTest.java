@@ -28,7 +28,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
@@ -46,13 +46,14 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() throws InterruptedException {
 		String vehicleCount = getText(vehicleCountForUser, id);
-		String vehicleToDelete = getText(vehicleList, xpath);
+		String vehicleToDelete = getText(vehicleList, id);
 		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		if (vehicleToDelete.equals(actualVehicleToDelete)) {
-			clickOnElement(vehicleList, xpath);
+			clickOnElement(vehicleList, id);
+			clickOnElement(editVehicleNameButton, id);
 			clickOnElement(addLogDeleteVehicleButton, id);
 			clickOnElement(confirmDeleteVehicleButton, id);
-			Thread.sleep(500);
+			Thread.sleep(1000);
 			String expectedMessage = vehicleDeletedSuccessfullyMessage;
 			String toastNotificationMessage = getText(toastNotificationBody, xpath);
 			assertTrue(toastNotificationMessage.contains(expectedMessage));

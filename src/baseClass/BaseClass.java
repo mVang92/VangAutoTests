@@ -27,7 +27,7 @@ public class BaseClass {
 	public static String resetFieldsSuccessMessage = "Input Fields Reset";
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
-	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully";
+	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully.";
 	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
 
 	public static String signInNavButton = "signInNavButton";
@@ -57,8 +57,9 @@ public class BaseClass {
 	public static String addLogResetInputFieldsButton = "addLogResetInputFieldsButton";
 	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
 	public static String addServiceLogButton = "addServiceLogButton";
-
-	public static String vehicleList = "//*[@title='View Service Logs']";
+	public static String vehicleList = "vehicleList";
+	public static String editVehicleNameButton = "editVehicleNameButton";
+	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
