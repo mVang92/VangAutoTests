@@ -46,10 +46,11 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() throws InterruptedException {
 		String vehicleCount = getText(vehicleCountForUser, id);
-		String vehicleToDelete = getText(vehicleList, id);
+		String vehicleToDelete = getText(vehicleList, xpath);
 		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		if (vehicleToDelete.equals(actualVehicleToDelete)) {
-			clickOnElement(vehicleList, id);
+			clickOnElement(vehicleList, xpath);
+			Thread.sleep(500);
 			clickOnElement(editVehicleNameButton, id);
 			clickOnElement(addLogDeleteVehicleButton, id);
 			clickOnElement(confirmDeleteVehicleButton, id);

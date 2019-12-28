@@ -24,7 +24,7 @@ public class BaseClass {
 	public static String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
 	public static String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
 	public static String passwordsDoNotMatchErrorMessage = "Error: Passwords do not match.";
-	public static String resetFieldsSuccessMessage = "Input Fields Reset";
+	public static String resetFieldsSuccessMessage = "Input Fields Reset.";
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully.";
@@ -57,9 +57,9 @@ public class BaseClass {
 	public static String addLogResetInputFieldsButton = "addLogResetInputFieldsButton";
 	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
 	public static String addServiceLogButton = "addServiceLogButton";
-	public static String vehicleList = "vehicleList";
 	public static String editVehicleNameButton = "editVehicleNameButton";
 	
+	public static String vehicleList = "//*[@class='list-group-item vehicleItemList']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
