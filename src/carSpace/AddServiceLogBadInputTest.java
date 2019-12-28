@@ -43,6 +43,7 @@ public class AddServiceLogBadInputTest extends BaseClass {
 	
 	@AfterClass(alwaysRun = true)
 	private void teardown() {
+		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
 		close();
