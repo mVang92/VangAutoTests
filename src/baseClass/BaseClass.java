@@ -32,6 +32,7 @@ public class BaseClass {
 
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
+	public static String accountNavButton = "accountNavButton";
 	public static String emailTextInput = "emailInput";
 	public static String passwordTextInput = "passwordInput";
 	public static String signInButton = "signInButton";
@@ -44,7 +45,7 @@ public class BaseClass {
 	public static String vehicleModelInput = "vehicleModelInput";
 	public static String addVehicleButton = "addVehicleButton";
 	public static String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
-	public static String userEmailDisplay = "userEmail";
+	public static String accountPageUserEmail = "accountPageUserEmail";
 	public static String vehicleCountForUser = "vehicleCountForUser";
 	public static String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
 	public static String backToTopButton = "topImg";
