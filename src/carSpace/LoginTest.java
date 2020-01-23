@@ -21,8 +21,9 @@ public class LoginTest extends BaseClass {
 	 */
 	@Test
 	private void signInTest() throws InterruptedException {
+		clickOnElement(accountNavButton, id);
 		String expectedUserEmail = email;
-		String actualUserEmail = getText(userEmailDisplay, id);
+		String actualUserEmail = getText(accountPageUserEmail, id);
 		assertTrue(actualUserEmail.contains(expectedUserEmail));
 		doSignOut();
 	}
