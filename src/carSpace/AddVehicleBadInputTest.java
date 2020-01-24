@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class AddVehicleBadInputTest extends BaseClass {
+	String vehicleMake = "Toyota";
+	String vehicleModel = "Highlander";
 	
 	@BeforeClass
 	private void setup() throws InterruptedException {
@@ -22,8 +24,6 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test(priority = 0)
 	private void addVehicleBadInputTest() throws InterruptedException {
-		String vehicleMake = "Toyota";
-		String vehicleModel = "Highlander";
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
@@ -39,9 +39,28 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 * @throws InterruptedException
 	 */
 	@Test(priority = 1, dependsOnMethods = "addVehicleBadInputTest")
+	private void addVehicleNanYearInputTest() throws InterruptedException {
+		String nanVehicleYear = "nan";
+		fillInputField(vehicleYearInput, nanVehicleYear, id);
+		Thread.sleep(1000);
+		clickOnElement(addVehicleButton, id);
+		String expectedMessage = addVehicleInvalidYearMessage;
+		String actualMessage = getText(addVehicleErrorModal, xpath);
+		assertTrue(actualMessage.contains(expectedMessage));
+		clickOnElement(AddVehicleErrorModalOkayButton, xpath);
+	}
+	
+	/**
+	 * Verify the user cannot add a vehicle if year is less than 1885
+	 * 
+	 * @throws InterruptedException
+	 */
+	@Test(priority = 2)
 	private void addVehicleBadYearInputTest() throws InterruptedException {
-		String invalidVehicleYear = "nan";
+		String invalidVehicleYear = "1884";
 		fillInputField(vehicleYearInput, invalidVehicleYear, id);
+		fillInputField(vehicleMakeInput, vehicleMake, id);
+		fillInputField(vehicleModelInput, vehicleModel, id);
 		Thread.sleep(1000);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
