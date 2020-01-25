@@ -30,6 +30,7 @@ public class AddServiceLogBadInputTest extends BaseClass {
 		String date = "01012020";
 		String service = "Transmission Fluid Change";
 		clickOnElement(vehicleList, xpath);
+		Thread.sleep(500);
 		fillInputField(serviceLogDateInput, date, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
@@ -41,12 +42,9 @@ public class AddServiceLogBadInputTest extends BaseClass {
 		Thread.sleep(500);
 	}
 	
-	@AfterClass(alwaysRun = true)
-	private void teardown() {
-		clickOnElement(editVehicleNameButton, id);
-		clickOnElement(addLogDeleteVehicleButton, id);
-		clickOnElement(confirmDeleteVehicleButton, id);
+	@AfterClass
+	private void teardown() throws InterruptedException {
+		deleteCurrentVehicle();
 		close();
 	}
-
 }
