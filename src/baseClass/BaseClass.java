@@ -63,8 +63,8 @@ public class BaseClass {
 	public static String vehicleList = "//*[@class='list-group-item vehicleItemList']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
-	public static String AddVehicleErrorModalOkayButton = "//button[@title='Okay']";
-	public static String AddLogErrorModalOkayButton = "//button[@title='Okay']";
+	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
+	public static String addLogErrorModalOkayButton = "//button[@title='Okay']";
 	public static String aboueMeNavButton = "//a[@href='#aboutMe']";
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
