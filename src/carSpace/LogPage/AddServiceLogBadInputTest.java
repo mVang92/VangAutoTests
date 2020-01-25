@@ -1,4 +1,4 @@
-package carSpace;
+package carSpace.LogPage;
 
 import static org.testng.Assert.assertTrue;
 

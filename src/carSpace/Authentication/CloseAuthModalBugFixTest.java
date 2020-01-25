@@ -1,4 +1,4 @@
-package carSpace;
+package carSpace.Authentication;
 
 import static org.testng.Assert.assertTrue;
 
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
 
-public class AuthCloseModalBugFixTest extends BaseClass {
+public class CloseAuthModalBugFixTest extends BaseClass {
 
 	@BeforeClass
 	private void setup() {

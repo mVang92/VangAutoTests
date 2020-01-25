@@ -29,6 +29,8 @@ public class BaseClass {
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully.";
 	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
+	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
+	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
 
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
@@ -59,6 +61,11 @@ public class BaseClass {
 	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
 	public static String addServiceLogButton = "addServiceLogButton";
 	public static String editVehicleNameButton = "editVehicleNameButton";
+	public static String submitNewProfilePictureButton = "submitNewProfilePictureButton";
+	public static String submitNewDisplayNameButton = "submitNewDisplayNameButton";
+	public static String submitNewPasswordButton = "submitNewPasswordButton";
+	public static String closeUpdatePictureModalButton = "closeUpdatePictureModalButton";
+	public static String closeUpdateDisplayNameModalButton = "closeUpdateDisplayNameModalButton";
 	
 	public static String vehicleList = "//*[@class='vehicleItemList']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -68,6 +75,7 @@ public class BaseClass {
 	public static String aboueMeNavButton = "//a[@href='#aboutMe']";
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
+	public static String modalTitle = "//*[@class='row modal-header']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -269,7 +277,7 @@ public class BaseClass {
 	public void deleteCurrentVehicle() throws InterruptedException {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
-		Thread.sleep(4500);
+		Thread.sleep(4250);
 		clickOnElement(confirmDeleteVehicleButton, id);
 	}
 }
