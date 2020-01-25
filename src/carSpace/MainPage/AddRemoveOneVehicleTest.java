@@ -1,4 +1,4 @@
-package carSpace;
+package carSpace.MainPage;
 
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.AfterClass;
@@ -53,6 +53,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 			Thread.sleep(500);
 			clickOnElement(editVehicleNameButton, id);
 			clickOnElement(addLogDeleteVehicleButton, id);
+			Thread.sleep(4250);
 			clickOnElement(confirmDeleteVehicleButton, id);
 			Thread.sleep(1000);
 			String expectedMessage = vehicleDeletedSuccessfullyMessage;

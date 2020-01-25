@@ -1,4 +1,4 @@
-package carSpace;
+package carSpace.MainPage;
 
 import static org.testng.Assert.assertTrue;
 

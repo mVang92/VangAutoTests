@@ -1,4 +1,4 @@
-package carSpace;
+package carSpace.Authentication;
 
 import static org.testng.Assert.assertTrue;
 
@@ -23,9 +23,8 @@ public class SignInNoUserTest extends BaseClass {
 	 */
 	@Test
 	private void signInNoUserTest() throws InterruptedException {
-		String expectedMessage = noUserOnRecordSignInErrorMessage;
 		String actualMessage = getText(toastNotificationBody, xpath);
-		assertTrue(actualMessage.contains(expectedMessage));
+		assertTrue(actualMessage.contains(noUserOnRecordSignInErrorMessage));
 	}
 
 	@AfterClass(alwaysRun = true)
