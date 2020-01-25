@@ -60,7 +60,7 @@ public class BaseClass {
 	public static String addServiceLogButton = "addServiceLogButton";
 	public static String editVehicleNameButton = "editVehicleNameButton";
 	
-	public static String vehicleList = "//*[@class='list-group-item vehicleItemList']";
+	public static String vehicleList = "//*[@class='vehicleItemList']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
@@ -259,5 +259,17 @@ public class BaseClass {
 		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
+	}
+	
+	/**
+	 * Deletes the currently selected vehicle from record
+	 * 
+	 * @throws InterruptedException
+	 */
+	public void deleteCurrentVehicle() throws InterruptedException {
+		clickOnElement(editVehicleNameButton, id);
+		clickOnElement(addLogDeleteVehicleButton, id);
+		Thread.sleep(4500);
+		clickOnElement(confirmDeleteVehicleButton, id);
 	}
 }
