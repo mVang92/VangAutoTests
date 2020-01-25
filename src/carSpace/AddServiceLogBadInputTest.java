@@ -37,7 +37,7 @@ public class AddServiceLogBadInputTest extends BaseClass {
 		String expectedMessage = addLogsMissingFieldsErrorMessage;
 		String actualMessage = getText(addLogErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElement(AddLogErrorModalOkayButton, xpath);
+		clickOnElement(addLogErrorModalOkayButton, xpath);
 		Thread.sleep(500);
 	}
 	

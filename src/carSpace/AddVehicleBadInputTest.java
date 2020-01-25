@@ -30,7 +30,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 		String expectedMessage = addVehicleInputErrorMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElement(AddVehicleErrorModalOkayButton, xpath);
+		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElement(AddVehicleErrorModalOkayButton, xpath);
+		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class AddVehicleBadInputTest extends BaseClass {
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElement(AddVehicleErrorModalOkayButton, xpath);
+		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 
 	@AfterClass(alwaysRun = true)
