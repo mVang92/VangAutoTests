@@ -31,6 +31,7 @@ public class BaseClass {
 	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
 	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
 	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
+	public static String expectedUpdateDisplayNameModalTitle = "Display name updated!";
 
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
@@ -66,6 +67,10 @@ public class BaseClass {
 	public static String submitNewPasswordButton = "submitNewPasswordButton";
 	public static String closeUpdatePictureModalButton = "closeUpdatePictureModalButton";
 	public static String closeUpdateDisplayNameModalButton = "closeUpdateDisplayNameModalButton";
+	public static String confirmUpdateDisplayNameButton = "confirmUpdateDisplayNameButton";
+	public static String closeUpdateDisplayNameSuccessModalButton = "closeUpdateDisplayNameSuccessModalButton";
+	public static String newDisplayNameInput = "newDisplayNameInput";
+	public static String displayName = "displayName";
 	
 	public static String vehicleList = "//*[@class='vehicleItemList']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";

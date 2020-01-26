@@ -37,7 +37,7 @@ public class AccountPageVerificationTest extends BaseClass {
 		clickOnElement(closeUpdateDisplayNameModalButton, id);
 		Thread.sleep(250);
 		clickOnElement(submitNewPasswordButton, id);
-		Thread.sleep(250);
+		Thread.sleep(500);
 		String actualErrorMessage = getText(toastNotificationBody, xpath);
 		assertEquals(actualErrorMessage, invalidPasswordErrorMessage);
 	}
