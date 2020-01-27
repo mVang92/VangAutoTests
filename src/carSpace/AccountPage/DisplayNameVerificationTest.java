@@ -17,6 +17,7 @@ public class DisplayNameVerificationTest extends BaseClass {
 	
 	/**
 	 * Verify the functionality of the update display name feature
+	 * 
 	 * @throws InterruptedException 
 	 */
 	@Test
@@ -30,6 +31,8 @@ public class DisplayNameVerificationTest extends BaseClass {
 		assertEquals(actualTitle, expectedUpdateDisplayNameModalTitle);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		Thread.sleep(1000);
+		String displayNameInMainPage = getText(displayName, id);
+		assertEquals(displayNameInMainPage, defaultDisplayName);
 		clickOnElement(accountNavButton, id);
 		fillInputField(newDisplayNameInput, userDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
@@ -40,7 +43,7 @@ public class DisplayNameVerificationTest extends BaseClass {
 		Thread.sleep(500);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		Thread.sleep(1000);
-		String displayNameInMainPage = getText(displayName, id);
+		displayNameInMainPage = getText(displayName, id);
 		assertEquals(displayNameInMainPage, userDisplayName);
 	}
 	

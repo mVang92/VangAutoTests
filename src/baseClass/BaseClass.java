@@ -18,6 +18,7 @@ public class BaseClass {
 
 	public static String email = "sally@thing.com";
 	public static String password = "123123";
+	public static String defaultDisplayName = "CarSpace User";
 
 	public static String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
 	public static String invalidPasswordOrNoPasswordErrorMessage = "Error: The password is invalid or the user does not have a password.";
