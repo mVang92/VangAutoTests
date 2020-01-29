@@ -1,3 +1,4 @@
+git checkout master &&
 git pull &&
 git checkout mv/bugFix &&
 git merge master &&
