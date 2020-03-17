@@ -22,7 +22,7 @@ public class SignInNoUserTest extends BaseClass {
 	 * @throws InterruptedException
 	 */
 	@Test
-	private void signInNoUserTest() throws InterruptedException {
+	private void signInNoUserTest() {
 		String actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(noUserOnRecordSignInErrorMessage));
 	}

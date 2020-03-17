@@ -24,11 +24,10 @@ public class CloseAuthModalBugFixTest extends BaseClass {
 	 * @throws InterruptedException
 	 */
 	@Test
-	private void verifyReactStatesResetAfterClosingSignUpModal() throws InterruptedException {
+	private void verifyReactStatesResetAfterClosingSignUpModal() {
 		clickOnElement(signUpNavButton, id);
 		fillInputField(emailTextInput, email, id);
 		clickOnElement(signUpButton, id);
-		Thread.sleep(1000);
 		String expectedMessage = invalidPasswordErrorMessage;
 		String actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
@@ -37,7 +36,6 @@ public class CloseAuthModalBugFixTest extends BaseClass {
 		clickOnElement(signInNavButton, id);
 		fillInputField(passwordTextInput, password, id);
 		clickOnElement(signInButton, id);
-		Thread.sleep(1000);
 		expectedMessage = invalidEmailErrorMessage;
 		actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));

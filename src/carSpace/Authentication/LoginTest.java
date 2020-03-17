@@ -20,7 +20,8 @@ public class LoginTest extends BaseClass {
 	 * @throws InterruptedException
 	 */
 	@Test
-	private void signInTest() throws InterruptedException {
+	private void signInTest() {
+		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		String expectedUserEmail = email;
 		String actualUserEmail = getText(accountPageUserEmail, id);
