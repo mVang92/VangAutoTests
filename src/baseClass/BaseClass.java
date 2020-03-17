@@ -4,10 +4,14 @@ import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
 	WebDriver driver;
+	WebElement webElement;
 
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
@@ -37,6 +41,7 @@ public class BaseClass {
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
 	public static String accountNavButton = "accountNavButton";
+	public static String menuDropdownButton = "menuDropdownButton";
 	public static String emailTextInput = "emailInput";
 	public static String passwordTextInput = "passwordInput";
 	public static String signInButton = "signInButton";
@@ -138,6 +143,7 @@ public class BaseClass {
 	 * Sign the user out
 	 */
 	public void doSignOut() {
+		clickOnElement(menuDropdownButton, id);
 		clickOnElement(signOutButton, id);
 		clickOnElement(confirmSignOut, id);
 	}
@@ -226,13 +232,16 @@ public class BaseClass {
 	 * @return        Return the text
 	 */
 	public String getText(String element, String locator) {
+		WebDriverWait wait = new WebDriverWait(driver, 5000);
 		String text = null;
 		switch (locator) {
 			case "xpath":
-				text = driver.findElement(By.xpath(element)).getText();
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+				text = webElement.getText();
 				break;
 			case "id":
-				text = driver.findElement(By.id(element)).getText();
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
+				text = webElement.getText();
 		}
 		return text;
 	}
