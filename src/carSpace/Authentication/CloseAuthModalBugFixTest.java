@@ -20,8 +20,6 @@ public class CloseAuthModalBugFixTest extends BaseClass {
 	/**
 	 * Verify the email and password states reset for SignIn after attempting to
 	 * SignUp with bad credentials after clicking the modal Close button
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test
 	private void verifyReactStatesResetAfterClosingSignUpModal() {

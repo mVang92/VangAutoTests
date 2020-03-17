@@ -18,8 +18,6 @@ public class SignInNoUserTest extends BaseClass {
 
 	/**
 	 * Verify the toast error message upon signing in with an account not on record
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test
 	private void signInNoUserTest() {

@@ -19,11 +19,9 @@ public class AddVehicleBadInputTest extends BaseClass {
 	/**
 	 * Verify the functionality of the error message while trying to submit empty
 	 * input fields when adding a vehicle
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test(priority = 0)
-	private void addVehicleBadInputTest() throws InterruptedException {
+	private void addVehicleBadInputTest() {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
@@ -35,33 +33,28 @@ public class AddVehicleBadInputTest extends BaseClass {
 
 	/**
 	 * Verify the functionality of the NaN error for the Year input
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test(priority = 1, dependsOnMethods = "addVehicleBadInputTest")
-	private void addVehicleNanYearInputTest() throws InterruptedException {
+	private void addVehicleNanYearInputTest() {
 		String nanVehicleYear = "nan";
 		fillInputField(vehicleYearInput, nanVehicleYear, id);
-		Thread.sleep(1000);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
 		clickOnElement(addVehicleErrorModalOkayButton, xpath);
+		clickOnElement(resetVehicleInputFieldsButton, id);
 	}
 	
 	/**
-	 * Verify the user cannot add a vehicle if year is less than 1885
-	 * 
-	 * @throws InterruptedException
+	 * Verify the user cannot add a vehicle before 1885
 	 */
 	@Test(priority = 2)
-	private void addVehicleBadYearInputTest() throws InterruptedException {
+	private void addVehicleBadYearInputTest() {
 		String invalidVehicleYear = "1884";
 		fillInputField(vehicleYearInput, invalidVehicleYear, id);
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
-		Thread.sleep(1000);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
