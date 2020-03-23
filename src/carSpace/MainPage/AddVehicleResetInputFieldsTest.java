@@ -17,19 +17,13 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 
 	/**
 	 * Verifies the functionality of the reset button while adding a vehicle
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test
-	private void addVehicleResetInputFieldsTest() throws InterruptedException {
-		String vehicleYear = "2003";
-		String vehicleMake = "Toyota";
-		String vehicleModel = "Highlander";
-		fillInputField(vehicleYearInput, vehicleYear, id);
-		fillInputField(vehicleMakeInput, vehicleMake, id);
-		fillInputField(vehicleModelInput, vehicleModel, id);
+	private void addVehicleResetInputFieldsTest() {
+		fillInputField(vehicleYearInput, "2003", id);
+		fillInputField(vehicleMakeInput, "Toyota", id);
+		fillInputField(vehicleModelInput, "Highlander", id);
 		clickOnElement(resetVehicleInputFieldsButton, id);
-		Thread.sleep(500);
 		String expectedMessage = resetFieldsSuccessMessage;
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
