@@ -22,28 +22,21 @@ public class AddServiceLogBadInputTest extends BaseClass {
 	/**
 	 * Verify the functionality of the error message while trying to submit empty
 	 * input fields when adding a service log
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test
-	private void addServiceLogBadInputTest() throws InterruptedException {
-		String date = "01012020";
-		String service = "Transmission Fluid Change";
-		clickOnElement(vehicleList, xpath);
-		Thread.sleep(500);
-		fillInputField(serviceLogDateInput, date, id);
-		fillInputField(serviceLogServiceInput, service, id);
+	private void addServiceLogBadInputTest() {
+		clickOnElement(vehicleOnRecord, xpath);
+		fillInputField(serviceLogDateInput, "01012020", id);
+		fillInputField(serviceLogServiceInput, "Transmission Fluid Change", id);
 		clickOnElement(addServiceLogButton, id);
-		Thread.sleep(500);
 		String expectedMessage = addLogsMissingFieldsErrorMessage;
 		String actualMessage = getText(addLogErrorModal, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
 		clickOnElement(addLogErrorModalOkayButton, xpath);
-		Thread.sleep(500);
 	}
 	
 	@AfterClass
-	private void teardown() throws InterruptedException {
+	private void teardown() {
 		deleteCurrentVehicle();
 		close();
 	}
