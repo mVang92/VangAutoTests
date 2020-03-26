@@ -11,8 +11,8 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private String vehicleYear = "2003";
 	private String vehicleMake = "Toyota";
 	private String vehicleModel = "Highlander";
-	private String actualVehicleCount = "";
-	private int vehicleCount = 0;
+	private int actualVehicleCount;
+	private int vehicleCount;
 
 	@BeforeClass
 	private void setup() throws InterruptedException {
@@ -26,8 +26,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private void addOneVehicleTest() {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		actualVehicleCount = getText(accountPageVehicleCount, id);
-		vehicleCount = Integer.parseInt(actualVehicleCount);
+		vehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
 		clickOnElement(backHomeBtn, xpath);
 		fillInputField(vehicleYearInput, vehicleYear, id);
 		fillInputField(vehicleMakeInput, vehicleMake, id);
@@ -39,8 +38,8 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		actualVehicleCount = getText(accountPageVehicleCount, id);
-		assertEquals((vehicleCount + 1), Integer.parseInt(actualVehicleCount));
+		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
+		assertEquals((vehicleCount + 1), actualVehicleCount);
 		clickOnElement(backHomeBtn, xpath);
 	}
 
@@ -62,8 +61,8 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 			clickOnElement(toastNotificationSuccessCloseButton, xpath);
 			clickOnElement(menuDropdownButton, id);
 			clickOnElement(accountNavButton, id);
-			actualVehicleCount = getText(accountPageVehicleCount, id);
-			assertEquals((vehicleCount), Integer.parseInt(actualVehicleCount));
+			actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
+			assertEquals(vehicleCount, actualVehicleCount);
 		}
 	}
 

@@ -87,7 +87,7 @@ public class BaseClass {
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
 	public static String addLogErrorModalOkayButton = "//button[@title='Okay']";
-	public static String aboueMeNavButton = "//a[@href='#aboutMe']";
+	public static String aboutMeNavButton = "//a[@href='#aboutMe']";
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
 	public static String modalTitle = "//*[@class='row modal-header']";
@@ -266,10 +266,14 @@ public class BaseClass {
 		String value = null;
 		switch (locator) {
 			case "xpath":
-				value = driver.findElement(By.xpath(element)).getAttribute("value");
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+				value = webElement.getAttribute("value");
+//				value = driver.findElement(By.xpath(element)).getAttribute("value");
 				break;
 			case "id":
-				value = driver.findElement(By.id(element)).getAttribute("value");
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
+				value = webElement.getAttribute("value");
+//				value = driver.findElement(By.id(element)).getAttribute("value");
 		}
 		return value;
 	}
