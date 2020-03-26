@@ -9,12 +9,9 @@ import baseClass.BaseClass;
 public class AddServiceLogBadInputTest extends BaseClass {
 	
 	@BeforeClass
-	private void setup() throws InterruptedException {
-		String vehicleYear = "2014";
-		String vehicleMake = "Honda";
-		String vehicleModel = "Accord";
+	private void setup() {
 		doSignIn();
-		addOneVehicle(vehicleYear, vehicleMake, vehicleModel);
+		addOneVehicle("2014", "Honda", "Accord");
 	}
 	
 	/**

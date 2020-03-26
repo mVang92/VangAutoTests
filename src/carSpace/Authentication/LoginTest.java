@@ -1,6 +1,6 @@
 package carSpace.Authentication;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -9,7 +9,7 @@ import baseClass.BaseClass;
 public class LoginTest extends BaseClass {
 
 	@BeforeClass
-	private void setup() throws InterruptedException {
+	private void setup() {
 		doSignIn();
 	}
 
@@ -22,7 +22,7 @@ public class LoginTest extends BaseClass {
 		clickOnElement(accountNavButton, id);
 		String expectedUserEmail = email;
 		String actualUserEmail = getText(accountPageUserEmail, id);
-		assertTrue(actualUserEmail.contains(expectedUserEmail));
+		assertEquals(expectedUserEmail, actualUserEmail);
 		doSignOut();
 	}
 

@@ -101,12 +101,9 @@ public class BaseClass {
 	public static String toastNotificationErrorCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
 
 	/**
-	 * Setup system property, maximize window, select test URL, and sign-in using a
-	 * specific user
-	 * 
-	 * @throws InterruptedException
+	 * Setup system property, maximize window, select test URL, and sign-in using a specific user
 	 */
-	public void doSignIn(String specificEmail, String specificPassword) throws InterruptedException {
+	public void doSignIn(String specificEmail, String specificPassword) {
 		setProperty();
 		maximizeWindow();
 		useCarSpaceUrl();
@@ -115,10 +112,8 @@ public class BaseClass {
 
 	/**
 	 * Setup system property, maximize window, select test URL, and sign-in
-	 * 
-	 * @throws InterruptedException
 	 */
-	public void doSignIn() throws InterruptedException {
+	public void doSignIn() {
 		setProperty();
 		maximizeWindow();
 		useCarSpaceUrl();
@@ -268,12 +263,10 @@ public class BaseClass {
 			case "xpath":
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
 				value = webElement.getAttribute("value");
-//				value = driver.findElement(By.xpath(element)).getAttribute("value");
 				break;
 			case "id":
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				value = webElement.getAttribute("value");
-//				value = driver.findElement(By.id(element)).getAttribute("value");
 		}
 		return value;
 	}
@@ -284,7 +277,6 @@ public class BaseClass {
 	 * @param year  The vehicle year
 	 * @param make  The vehicle make
 	 * @param model The vehicle model
-	 * @throws InterruptedException 
 	 */
 	public void addOneVehicle(String year, String make, String model) {
 		fillInputField(vehicleYearInput, year, id);
@@ -298,8 +290,6 @@ public class BaseClass {
 	
 	/**
 	 * Deletes the currently selected vehicle from record
-	 * 
-	 * @throws InterruptedException
 	 */
 	public void deleteCurrentVehicle() {
 		clickOnElement(editVehicleNameButton, id);

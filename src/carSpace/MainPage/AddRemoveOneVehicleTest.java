@@ -15,7 +15,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private int vehicleCount;
 
 	@BeforeClass
-	private void setup() throws InterruptedException {
+	private void setup() {
 		doSignIn();
 	}
 
