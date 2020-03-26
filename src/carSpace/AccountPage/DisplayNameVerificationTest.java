@@ -11,14 +11,12 @@ import baseClass.BaseClass;
 public class DisplayNameVerificationTest extends BaseClass {
 
 	@BeforeClass
-	private void setup() throws InterruptedException {
+	private void setup() {
 		doSignIn();
 	}
 	
 	/**
 	 * Verify the functionality of the update display name feature
-	 * 
-	 * @throws InterruptedException 
 	 */
 	@Test
 	public void displayNameVerificationTest() {

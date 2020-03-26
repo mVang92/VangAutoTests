@@ -11,7 +11,7 @@ import baseClass.BaseClass;
 public class AddVehicleResetInputFieldsTest extends BaseClass {
 
 	@BeforeClass
-	private void setup() throws InterruptedException {
+	private void setup() {
 		doSignIn();
 	}
 

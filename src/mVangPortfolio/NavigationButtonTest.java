@@ -12,16 +12,13 @@ public class NavigationButtonTest extends BaseClass {
 	 * @throws InterruptedException
 	 */
 	@Test
-	private void navigationButtonTest() throws InterruptedException {
+	private void navigationButtonTest() {
 		setProperty();
 		maximizeWindow();
 		usePortfolioUrl();
-		clickOnElement(aboueMeNavButton, xpath);
-		Thread.sleep(500);
+		clickOnElement(aboutMeNavButton, xpath);
 		clickOnElement(myProjectsNavButton, xpath);
-		Thread.sleep(500);
 		clickOnElement(contactNavButton, xpath);
-		Thread.sleep(1000);
 		clickOnElement(backToTopButton, id);
 	}
 

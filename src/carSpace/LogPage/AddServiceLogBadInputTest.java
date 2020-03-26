@@ -1,22 +1,17 @@
 package carSpace.LogPage;
 
 import static org.testng.Assert.assertTrue;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import baseClass.BaseClass;
 
 public class AddServiceLogBadInputTest extends BaseClass {
 	
 	@BeforeClass
-	private void setup() throws InterruptedException {
-		String vehicleYear = "2014";
-		String vehicleMake = "Honda";
-		String vehicleModel = "Accord";
+	private void setup() {
 		doSignIn();
-		addOneVehicle(vehicleYear, vehicleMake, vehicleModel);
+		addOneVehicle("2014", "Honda", "Accord");
 	}
 	
 	/**

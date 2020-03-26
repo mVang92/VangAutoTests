@@ -12,7 +12,7 @@ import baseClass.BaseClass;
 public class AccountPageVerificationTest extends BaseClass {
 	
 	@BeforeClass
-	private void setup() throws InterruptedException {
+	private void setup() {
 		doSignIn();
 	}
 	

@@ -87,7 +87,7 @@ public class BaseClass {
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
 	public static String addLogErrorModalOkayButton = "//button[@title='Okay']";
-	public static String aboueMeNavButton = "//a[@href='#aboutMe']";
+	public static String aboutMeNavButton = "//a[@href='#aboutMe']";
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
 	public static String modalTitle = "//*[@class='row modal-header']";
@@ -101,12 +101,9 @@ public class BaseClass {
 	public static String toastNotificationErrorCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
 
 	/**
-	 * Setup system property, maximize window, select test URL, and sign-in using a
-	 * specific user
-	 * 
-	 * @throws InterruptedException
+	 * Setup system property, maximize window, select test URL, and sign-in using a specific user
 	 */
-	public void doSignIn(String specificEmail, String specificPassword) throws InterruptedException {
+	public void doSignIn(String specificEmail, String specificPassword) {
 		setProperty();
 		maximizeWindow();
 		useCarSpaceUrl();
@@ -115,10 +112,8 @@ public class BaseClass {
 
 	/**
 	 * Setup system property, maximize window, select test URL, and sign-in
-	 * 
-	 * @throws InterruptedException
 	 */
-	public void doSignIn() throws InterruptedException {
+	public void doSignIn() {
 		setProperty();
 		maximizeWindow();
 		useCarSpaceUrl();
@@ -266,10 +261,12 @@ public class BaseClass {
 		String value = null;
 		switch (locator) {
 			case "xpath":
-				value = driver.findElement(By.xpath(element)).getAttribute("value");
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+				value = webElement.getAttribute("value");
 				break;
 			case "id":
-				value = driver.findElement(By.id(element)).getAttribute("value");
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
+				value = webElement.getAttribute("value");
 		}
 		return value;
 	}
@@ -280,7 +277,6 @@ public class BaseClass {
 	 * @param year  The vehicle year
 	 * @param make  The vehicle make
 	 * @param model The vehicle model
-	 * @throws InterruptedException 
 	 */
 	public void addOneVehicle(String year, String make, String model) {
 		fillInputField(vehicleYearInput, year, id);
@@ -294,8 +290,6 @@ public class BaseClass {
 	
 	/**
 	 * Deletes the currently selected vehicle from record
-	 * 
-	 * @throws InterruptedException
 	 */
 	public void deleteCurrentVehicle() {
 		clickOnElement(editVehicleNameButton, id);
