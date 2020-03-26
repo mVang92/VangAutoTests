@@ -18,11 +18,10 @@ public class AccountPageVerificationTest extends BaseClass {
 	
 	/**
 	 * Verify the functionality of the Account page
-	 * 
-	 * @throws InterruptedException 
 	 */
 	@Test
-	public void accountPageVerificationTest() throws InterruptedException {
+	public void accountPageVerificationTest() {
+		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		String actualUserEmail = getText(accountPageUserEmail, id);
 		assertTrue(actualUserEmail.contains(email));
@@ -30,14 +29,11 @@ public class AccountPageVerificationTest extends BaseClass {
 		String actualDefaultPictureModalTitle = getText(modalTitle, xpath);
 		assertEquals(actualDefaultPictureModalTitle, expectedDefaultPictureModalTitle);
 		clickOnElement(closeUpdatePictureModalButton, id);
-		Thread.sleep(250);
 		clickOnElement(submitNewDisplayNameButton, id);
 		String actualDefaultNameModalTitle = getText(modalTitle, xpath);
 		assertEquals(actualDefaultNameModalTitle, expectedDefaultNameModalTitle);
 		clickOnElement(closeUpdateDisplayNameModalButton, id);
-		Thread.sleep(250);
 		clickOnElement(submitNewPasswordButton, id);
-		Thread.sleep(500);
 		String actualErrorMessage = getText(toastNotificationBody, xpath);
 		assertEquals(actualErrorMessage, invalidPasswordErrorMessage);
 	}

@@ -3,6 +3,7 @@ package baseClass;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseClass {
 	WebDriver driver;
 	WebElement webElement;
+	WebDriverWait wait;
+	JavascriptExecutor js;
 
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
@@ -56,6 +59,7 @@ public class BaseClass {
 	public static String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
 	public static String accountPageUserEmail = "accountPageUserEmail";
 	public static String vehicleCountForUser = "vehicleCountForUser";
+	public static String accountPageVehicleCount = "accountPageVehicleCount";
 	public static String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
 	public static String backToTopButton = "topImg";
 	public static String portfolioCommentInput= "commentInput";
@@ -78,7 +82,7 @@ public class BaseClass {
 	public static String newDisplayNameInput = "newDisplayNameInput";
 	public static String displayName = "displayName";
 	
-	public static String vehicleList = "//*[@class='vehicleItemList']";
+	public static String vehicleOnRecord = "//*[@class='vehicleOnRecord']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
@@ -87,11 +91,14 @@ public class BaseClass {
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
 	public static String modalTitle = "//*[@class='row modal-header']";
+	public static String backHomeBtn = "//*[@class='backHomeBtn']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
 	public static String toastNotificationBody = "//*[@class='Toastify__toast-body']";
-	public static String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
+	public static String toastNotificationInfoCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--info']";
+	public static String toastNotificationSuccessCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--success']";
+	public static String toastNotificationErrorCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
 
 	/**
 	 * Setup system property, maximize window, select test URL, and sign-in using a
@@ -153,27 +160,22 @@ public class BaseClass {
 	 * 
 	 * @param specificEmail    The specific user email to use
 	 * @param specificPassword The specific user password to use
-	 * @throws InterruptedException
 	 */
-	public void signIn(String specificEmail, String specificPassword) throws InterruptedException {
+	public void signIn(String specificEmail, String specificPassword) {
 		clickOnElement(signInNavButton, id);
 		fillInputField(emailTextInput, specificEmail, id);
 		fillInputField(passwordTextInput, specificPassword, id);
 		clickOnElement(signInButton, id);
-		Thread.sleep(1000);
 	}
 
 	/**
 	 * Sign the user in
-	 * 
-	 * @throws InterruptedException
 	 */
-	private void signIn() throws InterruptedException {
+	private void signIn() {
 		clickOnElement(signInNavButton, id);
 		fillInputField(emailTextInput, email, id);
 		fillInputField(passwordTextInput, password, id);
 		clickOnElement(signInButton, id);
-		Thread.sleep(1000);
 	}
 
 	/**
@@ -182,6 +184,8 @@ public class BaseClass {
 	public void setProperty() {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		driver = new ChromeDriver();
+		js = (JavascriptExecutor) driver;
+		wait = new WebDriverWait(driver, 35);
 	}
 
 	/**
@@ -200,10 +204,14 @@ public class BaseClass {
 	public void clickOnElement(String element, String locator) {
 		switch (locator) {
 			case "xpath":
-				driver.findElement(By.xpath(element)).click();
+				webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
+				js.executeScript("arguments[0].scrollIntoView();", webElement);
+				webElement.click();
 				break;
 			case "id":
-				driver.findElement(By.id(element)).click();
+				webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
+				js.executeScript("arguments[0].scrollIntoView();", webElement);
+				webElement.click();
 		}
 	}
 
@@ -217,10 +225,12 @@ public class BaseClass {
 	public void fillInputField(String inputField, String inputValue, String locator) {
 		switch (locator) {
 			case "xpath":
-				driver.findElement(By.xpath(inputField)).sendKeys(inputValue);
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(inputField)));
+				webElement.sendKeys(inputValue);
 				break;
 			case "id":
-				driver.findElement(By.id(inputField)).sendKeys(inputValue);
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(inputField)));
+				webElement.sendKeys(inputValue);
 		}
 	}
 
@@ -232,7 +242,6 @@ public class BaseClass {
 	 * @return        Return the text
 	 */
 	public String getText(String element, String locator) {
-		WebDriverWait wait = new WebDriverWait(driver, 5000);
 		String text = null;
 		switch (locator) {
 			case "xpath":
@@ -273,12 +282,11 @@ public class BaseClass {
 	 * @param model The vehicle model
 	 * @throws InterruptedException 
 	 */
-	public void addOneVehicle(String year, String make, String model) throws InterruptedException {
+	public void addOneVehicle(String year, String make, String model) {
 		fillInputField(vehicleYearInput, year, id);
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
 		clickOnElement(addVehicleButton, id);
-		Thread.sleep(500);
 		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertTrue(toastNotificationMessage.contains(expectedMessage));
@@ -289,10 +297,9 @@ public class BaseClass {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void deleteCurrentVehicle() throws InterruptedException {
+	public void deleteCurrentVehicle() {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
-		Thread.sleep(4250);
 		clickOnElement(confirmDeleteVehicleButton, id);
 	}
 }

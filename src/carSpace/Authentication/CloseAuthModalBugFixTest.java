@@ -29,7 +29,7 @@ public class CloseAuthModalBugFixTest extends BaseClass {
 		String expectedMessage = invalidPasswordErrorMessage;
 		String actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElement(toastNotificationCloseButton, xpath);
+		clickOnElement(toastNotificationErrorCloseButton, xpath);
 		clickOnElement(closeSignUpModal, id);
 		clickOnElement(signInNavButton, id);
 		fillInputField(passwordTextInput, password, id);
@@ -37,7 +37,7 @@ public class CloseAuthModalBugFixTest extends BaseClass {
 		expectedMessage = invalidEmailErrorMessage;
 		actualMessage = getText(toastNotificationBody, xpath);
 		assertTrue(actualMessage.contains(expectedMessage));
-		clickOnElement(toastNotificationCloseButton, xpath);
+		clickOnElement(toastNotificationErrorCloseButton, xpath);
 	}
 
 	@AfterClass(alwaysRun = true)
