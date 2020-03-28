@@ -22,12 +22,6 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		String actualTitle = getText(modalTitle, xpath);
 		assertEquals(actualTitle, expectedUpdateDisplayNameModalTitle);
