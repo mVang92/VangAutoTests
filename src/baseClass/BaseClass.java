@@ -200,12 +200,20 @@ public class BaseClass {
 			case "xpath":
 				webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
 				js.executeScript("arguments[0].scrollIntoView();", webElement);
-				webElement.click();
+				try {
+					webElement.click();
+				} catch (Exception e) {
+					webElement.click();
+				}
 				break;
 			case "id":
 				webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
 				js.executeScript("arguments[0].scrollIntoView();", webElement);
-				webElement.click();
+				try {
+					webElement.click();
+				} catch (Exception e) {
+					webElement.click();
+				}
 		}
 	}
 

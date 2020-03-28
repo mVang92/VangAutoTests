@@ -23,15 +23,14 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(accountNavButton, id);
 		clickOnElement(submitNewDisplayNameButton, id);
 		clickOnElement(confirmUpdateDisplayNameButton, id);
-		String actualTitle = getText(modalTitle, xpath);
-		assertEquals(actualTitle, expectedUpdateDisplayNameModalTitle);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		String displayNameInMainPage = getText(displayName, id);
 		assertEquals(displayNameInMainPage, defaultDisplayName);
+		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		fillInputField(newDisplayNameInput, userDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		actualTitle = getText(modalTitle, xpath);
+		String actualTitle = getText(modalTitle, xpath);
 		String expectedTitle = "Use \"" + userDisplayName + "\" as your name?";
 		assertEquals(actualTitle, expectedTitle);
 		clickOnElement(confirmUpdateDisplayNameButton, id);
