@@ -1,11 +1,9 @@
 package carSpace.AccountPage;
 
 import static org.testng.Assert.assertEquals;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import baseClass.BaseClass;
 
 public class DisplayNameVerificationTest extends BaseClass {
