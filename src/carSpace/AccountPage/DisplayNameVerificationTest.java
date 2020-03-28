@@ -1,11 +1,9 @@
 package carSpace.AccountPage;
 
 import static org.testng.Assert.assertEquals;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import baseClass.BaseClass;
 
 public class DisplayNameVerificationTest extends BaseClass {
@@ -24,6 +22,12 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		clickOnElement(submitNewDisplayNameButton, id);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		String actualTitle = getText(modalTitle, xpath);
 		assertEquals(actualTitle, expectedUpdateDisplayNameModalTitle);
