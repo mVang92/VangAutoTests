@@ -1,6 +1,6 @@
 package baseClass;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -179,7 +179,7 @@ public class BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		driver = new ChromeDriver();
 		js = (JavascriptExecutor) driver;
-		wait = new WebDriverWait(driver, 35);
+		wait = new WebDriverWait(driver, 5);
 	}
 
 	/**
@@ -215,6 +215,18 @@ public class BaseClass {
 					webElement.click();
 				}
 		}
+	}
+	
+	/**
+	 * Fill in the input field using the id to the input field
+	 * 
+	 * @param inputField Input field to target
+	 * @param inputValue Input value to fill the input field
+	 * @param locator    The type of locator to look for
+	 */
+	public void fillInputField(String inputField, int inputValue, String locator) {
+		String inputValueToString = String.valueOf(inputValue);
+		fillInputField(inputField, inputValueToString, locator);
 	}
 
 	/**
@@ -292,7 +304,7 @@ public class BaseClass {
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertTrue(toastNotificationMessage.contains(expectedMessage));
+		assertEquals(expectedMessage, toastNotificationMessage);
 	}
 	
 	/**
@@ -302,5 +314,18 @@ public class BaseClass {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
+	}
+	
+	/**
+	 * Check the toast notification when adding a service log
+	 * 
+	 * @param service       The type of service recorded
+	 * @param miles         The mileage to record
+	 * @param formattedDate The date to record
+	 * @return              Return the expected toast notification message
+	 */
+	public String addLogSuccessMessage (String service, int miles, String formattedDate) {
+		String expectedMessage = "Service Logged: " + service + " at " + miles + " miles on " + formattedDate + ".";
+		return expectedMessage;
 	}
 }
