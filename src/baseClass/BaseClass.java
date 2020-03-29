@@ -51,6 +51,7 @@ public class BaseClass {
 	public static String signUpButton = "signUpButton";
 	public static String confirmSignOut = "doSignOutButton";
 	public static String closeSignUpModal = "closeSignUpModal";
+	public static String vehicleNameHeader = "vehicleNameHeader";
 	public static String vehicleYearInput = "vehicleYearInput";
 	public static String vehicleMakeInput = "vehicleMakeInput";
 	public static String vehicleModelInput = "vehicleModelInput";
@@ -80,6 +81,7 @@ public class BaseClass {
 	public static String closeUpdateDisplayNameSuccessModalButton = "closeUpdateDisplayNameSuccessModalButton";
 	public static String newDisplayNameInput = "newDisplayNameInput";
 	public static String displayName = "displayName";
+	public static String deleteVehicleModalTitle = "deleteVehicleModalTitle";
 	
 	public static String vehicleOnRecord = "//*[@class='vehicleOnRecord']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";

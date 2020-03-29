@@ -49,11 +49,15 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() {
 		String vehicleToDelete = getText(vehicleOnRecord, xpath);
-		String actualVehicleToDelete = vehicleYear + " " + vehicleMake + " " + vehicleModel;
-		if (vehicleToDelete.equals(actualVehicleToDelete)) {
+		String vehicle = vehicleYear + " " + vehicleMake + " " + vehicleModel;
+		if (vehicleToDelete.equals(vehicle)) {
 			clickOnElement(vehicleOnRecord, xpath);
+			String actualVehicleName = getText(vehicleNameHeader, id);
+			assertEquals(vehicle, actualVehicleName);
 			clickOnElement(editVehicleNameButton, id);
 			clickOnElement(addLogDeleteVehicleButton, id);
+			String actualModalTitle = getText(deleteVehicleModalTitle, id);
+			assertTrue(actualModalTitle.contains(vehicle));
 			clickOnElement(confirmDeleteVehicleButton, id);
 			String expectedMessage = vehicleDeletedSuccessfullyMessage;
 			String toastNotificationMessage = getText(toastNotificationBody, xpath);
