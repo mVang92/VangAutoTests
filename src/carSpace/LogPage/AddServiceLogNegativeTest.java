@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
-public class AddServiceLogBadInputTest extends BaseClass {
+public class AddServiceLogNegativeTest extends BaseClass {
 	
 	@BeforeClass
 	private void setup() {
@@ -19,7 +19,7 @@ public class AddServiceLogBadInputTest extends BaseClass {
 	 * input fields when adding a service log
 	 */
 	@Test
-	private void addServiceLogBadInputTest() {
+	private void addServiceLogNegativeTest() {
 		clickOnElement(vehicleOnRecord, xpath);
 		fillInputField(serviceLogDateInput, "01012020", id);
 		fillInputField(serviceLogServiceInput, "Transmission Fluid Change", id);
