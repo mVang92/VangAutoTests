@@ -179,7 +179,7 @@ public class BaseClass {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		driver = new ChromeDriver();
 		js = (JavascriptExecutor) driver;
-		wait = new WebDriverWait(driver, 5);
+		wait = new WebDriverWait(driver, 35);
 	}
 
 	/**
