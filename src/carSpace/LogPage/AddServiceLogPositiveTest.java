@@ -16,8 +16,6 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	private int miles = 123456;
 	private String service = "Transmission Fluid Change";
 	private String comment = "This is a test comment.";
-	private String date;
-	private String expectedMessage;
 	private String month;
 	private String day;
 	
@@ -29,7 +27,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	}
 	
 	/**
-	 * Verify the user can add service logs successfully and the toast notifications display properly
+	 * Verify the user can add service logs successfully and the toast notification displays properly
 	 */
 	@Test
 	private void addServiceLogPositiveTest() {
@@ -41,7 +39,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 		int dayToInt = Integer.parseInt(daySubString);
 		int yearToInt = Integer.parseInt(yearSubString);
 		checkMonthAndDayEqualToOne(monthSubString, daySubString, monthToInt, dayToInt);
-		date = month + "/" + day + "/" + yearToInt;
+		String date = month + "/" + day + "/" + yearToInt;
 		fillInputField(serviceLogDateInput, date, id);
 		fillInputField(serviceLogMileageInput, miles, id);
 		fillInputField(serviceLogServiceInput, service, id);
@@ -54,7 +52,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 			day = formattedDate.substring(4, 5);
 		}
 		date = month + "/" + day + "/" + yearToInt;
-		expectedMessage = addLogSuccessMessage(service, miles, date);
+		String expectedMessage = addLogSuccessMessage(service, miles, date);
 		String actualMessage = getText(toastNotificationBody, xpath);
 		assertEquals(expectedMessage, actualMessage);
 	}
