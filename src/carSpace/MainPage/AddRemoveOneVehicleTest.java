@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class AddRemoveOneVehicleTest extends BaseClass {
-	private String vehicleYear = "2003";
 	private String vehicleMake = "Toyota";
 	private String vehicleModel = "Highlander";
+	private int vehicleYear = 2003;
 	private int actualVehicleCount;
 	private int vehicleCount;
 
