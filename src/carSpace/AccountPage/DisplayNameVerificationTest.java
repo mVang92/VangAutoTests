@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
-public class NameVerificationTest extends BaseClass {
+public class DisplayNameVerificationTest extends BaseClass {
 
 	@BeforeClass
 	private void setup() {
@@ -17,7 +17,7 @@ public class NameVerificationTest extends BaseClass {
 	 * Verify the functionality of the update display name feature
 	 */
 	@Test
-	public void nameVerificationTest() {
+	public void displayNameVerificationTest() {
 		String userDisplayName = "Sally Thing";
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
