@@ -28,6 +28,8 @@ public class DisplayNameVerificationTest extends BaseClass {
 		assertEquals(displayNameInMainPage, defaultDisplayName);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
+		String displayNameInAccountPage = getText(accountPageUserDisplayName, id);
+		assertEquals(defaultDisplayName, displayNameInAccountPage);
 		fillInputField(newDisplayNameInput, userDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
 		String actualTitle = getText(modalTitle, xpath);
