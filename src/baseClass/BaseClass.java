@@ -82,6 +82,7 @@ public class BaseClass {
 	public static String newDisplayNameInput = "newDisplayNameInput";
 	public static String displayName = "displayName";
 	public static String deleteVehicleModalTitle = "deleteVehicleModalTitle";
+	public static String accountPageUserDisplayName = "accountPageUserDisplayName";
 	
 	public static String vehicleOnRecord = "//*[@class='vehicleOnRecord']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
