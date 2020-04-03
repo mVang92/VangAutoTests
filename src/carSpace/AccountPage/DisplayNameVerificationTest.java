@@ -39,6 +39,10 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		displayNameInMainPage = getText(displayName, id);
 		assertEquals(displayNameInMainPage, userDisplayName);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		displayNameInAccountPage = getText(accountPageUserDisplayName, id);
+		assertEquals(userDisplayName, displayNameInAccountPage);
 	}
 	
 	@AfterClass(alwaysRun = true)
