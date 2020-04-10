@@ -39,7 +39,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
-		assertEquals((vehicleCount + 1), actualVehicleCount);
+		assertEquals(actualVehicleCount, (vehicleCount + 1));
 		clickOnElement(backHomeBtn, xpath);
 	}
 
@@ -53,7 +53,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		if (vehicleToDelete.equals(vehicle)) {
 			clickOnElement(vehicleOnRecord, xpath);
 			String actualVehicleName = getText(vehicleNameHeader, id);
-			assertEquals(vehicle, actualVehicleName);
+			assertEquals(actualVehicleName, vehicle);
 			clickOnElement(editVehicleNameButton, id);
 			clickOnElement(addLogDeleteVehicleButton, id);
 			String actualModalTitle = getText(deleteVehicleModalTitle, id);
@@ -66,7 +66,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 			clickOnElement(menuDropdownButton, id);
 			clickOnElement(accountNavButton, id);
 			actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
-			assertEquals(vehicleCount, actualVehicleCount);
+			assertEquals(actualVehicleCount, vehicleCount);
 		}
 	}
 

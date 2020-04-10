@@ -22,7 +22,7 @@ public class LoginTest extends BaseClass {
 		clickOnElement(accountNavButton, id);
 		String expectedUserEmail = email;
 		String actualUserEmail = getText(accountPageUserEmail, id);
-		assertEquals(expectedUserEmail, actualUserEmail);
+		assertEquals(actualUserEmail, expectedUserEmail);
 		doSignOut();
 	}
 
