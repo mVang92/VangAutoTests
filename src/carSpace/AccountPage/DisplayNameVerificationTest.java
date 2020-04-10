@@ -29,7 +29,7 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		String displayNameInAccountPage = getText(accountPageUserDisplayName, id);
-		assertEquals(defaultDisplayName, displayNameInAccountPage);
+		assertEquals(displayNameInAccountPage, defaultDisplayName);
 		fillInputField(newDisplayNameInput, userDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
 		String actualTitle = getText(modalTitle, xpath);
@@ -42,7 +42,7 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		displayNameInAccountPage = getText(accountPageUserDisplayName, id);
-		assertEquals(userDisplayName, displayNameInAccountPage);
+		assertEquals(displayNameInAccountPage, userDisplayName);
 	}
 	
 	@AfterClass(alwaysRun = true)

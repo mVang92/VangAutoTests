@@ -307,7 +307,7 @@ public class BaseClass {
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(expectedMessage, toastNotificationMessage);
+		assertEquals(toastNotificationMessage, expectedMessage);
 	}
 	
 	/**
