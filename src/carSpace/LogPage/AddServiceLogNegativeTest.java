@@ -11,7 +11,7 @@ public class AddServiceLogNegativeTest extends BaseClass {
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		addOneVehicle("2014", "Honda", "Accord");
+		addOneVehicle(2014, "Honda", "Accord");
 	}
 	
 	/**
