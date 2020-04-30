@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseClass {
 	WebDriver driver;
 	WebElement webElement;
-	WebDriverWait wait;
 	JavascriptExecutor js;
+	WebDriverWait wait;
 
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
@@ -83,6 +83,9 @@ public class BaseClass {
 	public static String displayName = "displayName";
 	public static String deleteVehicleModalTitle = "deleteVehicleModalTitle";
 	public static String accountPageUserDisplayName = "accountPageUserDisplayName";
+	public static String addLogSortLogsButton = "addLogSortLogsButton";
+	public static String printPageButton = "printPageButton";
+	public static String printPageViaDeleteButton = "printPageViaDeleteButton";
 	
 	public static String vehicleOnRecord = "//*[@class='vehicleOnRecord']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -94,6 +97,7 @@ public class BaseClass {
 	public static String contactNavButton = "//a[@href='#contact']";
 	public static String modalTitle = "//*[@class='row modal-header']";
 	public static String backHomeBtn = "//*[@class='backHomeBtn']";
+	public static String cancelButton = "//button[contains(text(),'Cancel')]";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -300,7 +304,7 @@ public class BaseClass {
 	 * @param make  The vehicle make
 	 * @param model The vehicle model
 	 */
-	public void addOneVehicle(String year, String make, String model) {
+	public void addOneVehicle(int year, String make, String model) {
 		fillInputField(vehicleYearInput, year, id);
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
@@ -330,5 +334,61 @@ public class BaseClass {
 	public String addLogSuccessMessage (String service, int miles, String formattedDate) {
 		String expectedMessage = "Service Logged: " + service + " at " + miles + " miles on " + formattedDate + ".";
 		return expectedMessage;
+	}
+	
+	/**
+	 * Checks to see if the button is enabled
+	 * 
+	 * @param button  The button to check
+	 * @param locator The type of locator to look for
+	 * @return        Return true/false if the button is enabled/disabled
+	 */
+	public Boolean isButtonEnabled(String button, String locator) {
+		Boolean enabled = false;
+		switch (locator) {
+			case "xpath":
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(button)));
+				enabled = webElement.isEnabled();
+				break;
+			case "id":
+				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(button)));
+				enabled = webElement.isEnabled();
+		}
+		return enabled;
+	}
+	
+	/**
+	 * Adds one service log to the vehicle
+	 * 
+	 * @param date     The date of the service log
+	 * @param mileage  The mileage of the vehicle
+	 * @param service  The type of service
+	 * @param comments Comments to address during service
+	 */
+	public void addOneServiceLog(String date, int mileage, String service, String comments) {
+		fillInputField(serviceLogDateInput, date, id);
+		fillInputField(serviceLogMileageInput, mileage, id);
+		fillInputField(serviceLogServiceInput, service, id);
+		fillInputField(serviceLogCommentsInput, comments, id);
+		clickOnElement(addServiceLogButton, id);
+	}
+	
+	/**
+	 * Check to see if the element is displayed
+	 * 
+	 * @param element The element to look for
+	 * @param locator The type of locator to look for
+	 * @return        Return true/false depending if the element is present or not
+	 */
+	public Boolean isElementDisplayed(String element, String locator) {
+		Boolean isDisplayed = false;
+		switch (locator) {
+			case "xpath":
+				isDisplayed = driver.findElements(By.xpath(element)).size() > 0;
+				break;
+			case "id":
+				isDisplayed = driver.findElements(By.id(element)).size() > 0;
+		}
+		return isDisplayed;
 	}
 }

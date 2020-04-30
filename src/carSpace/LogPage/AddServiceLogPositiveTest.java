@@ -22,7 +22,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		addOneVehicle("1997", "Lexus", "ES300");
+		addOneVehicle(1997, "Lexus", "ES300");
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
