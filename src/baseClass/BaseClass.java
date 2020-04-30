@@ -24,6 +24,7 @@ public class BaseClass {
 
 	public static String email = "sally@thing.com";
 	public static String password = "123123";
+	public static String testUserDisplayName = "Sally Thing";
 	public static String defaultDisplayName = "CarSpace User";
 
 	public static String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
@@ -331,7 +332,7 @@ public class BaseClass {
 	 * @param formattedDate The date to record
 	 * @return              Return the expected toast notification message
 	 */
-	public String addLogSuccessMessage (String service, int miles, String formattedDate) {
+	public String addLogSuccessMessage(String service, int miles, String formattedDate) {
 		String expectedMessage = "Service Logged: " + service + " at " + miles + " miles on " + formattedDate + ".";
 		return expectedMessage;
 	}
