@@ -18,7 +18,6 @@ public class DisplayNameVerificationTest extends BaseClass {
 	 */
 	@Test
 	public void displayNameVerificationTest() {
-		String userDisplayName = "Sally Thing";
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		clickOnElement(submitNewDisplayNameButton, id);
@@ -30,19 +29,19 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(accountNavButton, id);
 		String displayNameInAccountPage = getText(accountPageUserDisplayName, id);
 		assertEquals(displayNameInAccountPage, defaultDisplayName);
-		fillInputField(newDisplayNameInput, userDisplayName, id);
+		fillInputField(newDisplayNameInput, testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
 		String actualTitle = getText(modalTitle, xpath);
-		String expectedTitle = "Use \"" + userDisplayName + "\" as your name?";
+		String expectedTitle = "Use \"" + testUserDisplayName + "\" as your name?";
 		assertEquals(actualTitle, expectedTitle);
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		displayNameInMainPage = getText(displayName, id);
-		assertEquals(displayNameInMainPage, userDisplayName);
+		assertEquals(displayNameInMainPage, testUserDisplayName);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		displayNameInAccountPage = getText(accountPageUserDisplayName, id);
-		assertEquals(displayNameInAccountPage, userDisplayName);
+		assertEquals(displayNameInAccountPage, testUserDisplayName);
 	}
 	
 	@AfterClass(alwaysRun = true)
