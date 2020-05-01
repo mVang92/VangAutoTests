@@ -8,8 +8,6 @@ public class NavigationButtonTest extends BaseClass {
 
 	/**
 	 * Verify the functionality of the navigation buttons and the back to top button
-	 * 
-	 * @throws InterruptedException
 	 */
 	@Test
 	private void navigationButtonTest() {
