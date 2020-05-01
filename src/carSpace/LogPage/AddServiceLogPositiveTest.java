@@ -83,5 +83,4 @@ public class AddServiceLogPositiveTest extends BaseClass {
 			day = daySubString;
 		}
 	}
-
 }

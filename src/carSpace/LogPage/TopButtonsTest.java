@@ -52,5 +52,4 @@ public class TopButtonsTest extends BaseClass {
 		deleteCurrentVehicle();
 		close();
 	}
-
 }

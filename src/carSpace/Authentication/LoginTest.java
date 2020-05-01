@@ -2,22 +2,17 @@ package carSpace.Authentication;
 
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class LoginTest extends BaseClass {
 
-	@BeforeClass
-	private void setup() {
-		doSignIn();
-	}
-
 	/**
-	 * Verify the sign-in capability and logs out
+	 * Verify the sign-in and sign-out capabilities
 	 */
 	@Test
 	private void signInTest() {
+		doSignIn();
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		String expectedUserEmail = email;
