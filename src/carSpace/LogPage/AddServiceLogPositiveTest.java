@@ -13,7 +13,10 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	LocalDate localDate = LocalDate.now();
 	String formattedDate = dateFormatter.format(localDate);
 	
+	private int year = 1997;
 	private int miles = 123456;
+	private String make = "Lexus";
+	private String model = "ES300";
 	private String service = "Transmission Fluid Change";
 	private String comment = "This is a test comment.";
 	private String month;
@@ -22,8 +25,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		addOneVehicle(1997, "Lexus", "ES300");
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		addVehicle(year, make, model);
 	}
 	
 	/**
@@ -31,7 +33,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	 */
 	@Test
 	private void addServiceLogPositiveTest() {
-		clickOnElement(vehicleOnRecord, xpath);
+		selectVehicle(year, make, model);
 		String monthSubString = formattedDate.substring(0, 2);
 		String daySubString = formattedDate.substring(3, 5);
 		String yearSubString = formattedDate.substring(6);
@@ -59,7 +61,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	
 	@AfterClass
 	private void teardown() {
-		deleteCurrentVehicle();
+		deleteVehicle(year, make, model);
 		close();
 	}
 	

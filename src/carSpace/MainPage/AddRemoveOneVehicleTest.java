@@ -48,26 +48,24 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	 */
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() {
-		String vehicleToDelete = getText(vehicleOnRecord, xpath);
 		String vehicle = vehicleYear + " " + vehicleMake + " " + vehicleModel;
-		if (vehicleToDelete.equals(vehicle)) {
-			clickOnElement(vehicleOnRecord, xpath);
-			String actualVehicleName = getText(vehicleNameHeader, id);
-			assertEquals(actualVehicleName, vehicle);
-			clickOnElement(editVehicleNameButton, id);
-			clickOnElement(addLogDeleteVehicleButton, id);
-			String actualModalTitle = getText(deleteVehicleModalTitle, id);
-			assertTrue(actualModalTitle.contains(vehicle));
-			clickOnElement(confirmDeleteVehicleButton, id);
-			String expectedMessage = vehicleDeletedSuccessfullyMessage;
-			String toastNotificationMessage = getText(toastNotificationBody, xpath);
-			assertTrue(toastNotificationMessage.contains(expectedMessage));
-			clickOnElement(toastNotificationSuccessCloseButton, xpath);
-			clickOnElement(menuDropdownButton, id);
-			clickOnElement(accountNavButton, id);
-			actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
-			assertEquals(actualVehicleCount, vehicleCount);
-		}
+		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
+		String actualVehicleName = getText(vehicleNameHeader, id);
+		assertEquals(actualVehicleName, vehicle);
+		clickOnElement(editVehicleNameButton, id);
+		clickOnElement(addLogDeleteVehicleButton, id);
+		String actualModalTitle = getText(deleteVehicleModalTitle, id);
+		assertTrue(actualModalTitle.contains(vehicle));
+		clickOnElement(confirmDeleteVehicleButton, id);
+		String expectedMessage = vehicleDeletedSuccessfullyMessage;
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
+		assertTrue(toastNotificationMessage.contains(expectedMessage));
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
+		assertEquals(actualVehicleCount, vehicleCount);
+		
 	}
 
 	@AfterClass(alwaysRun = true)

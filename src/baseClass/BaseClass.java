@@ -41,6 +41,7 @@ public class BaseClass {
 	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
 	public static String expectedUpdateDisplayNameModalTitle = "Display name updated!";
 
+	public static String applicationName = "applicationName";
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
 	public static String accountNavButton = "accountNavButton";
@@ -99,6 +100,7 @@ public class BaseClass {
 	public static String modalTitle = "//*[@class='row modal-header']";
 	public static String backHomeBtn = "//*[@class='backHomeBtn']";
 	public static String cancelButton = "//button[contains(text(),'Cancel')]";
+	public static String editActionButton = "//*[@class='editActionButton']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -299,13 +301,13 @@ public class BaseClass {
 	}
 	
 	/**
-	 * Add a vehicle to the database
+	 * Add a vehicle
 	 * 
 	 * @param year  The vehicle year
 	 * @param make  The vehicle make
 	 * @param model The vehicle model
 	 */
-	public void addOneVehicle(int year, String make, String model) {
+	public void addVehicle(int year, String make, String model) {
 		fillInputField(vehicleYearInput, year, id);
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
@@ -313,15 +315,23 @@ public class BaseClass {
 		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
 		assertEquals(toastNotificationMessage, expectedMessage);
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
 	/**
-	 * Deletes the currently selected vehicle from record
+	 * Delete a vehicle
+	 * 
+	 * @param year  The vehicle year
+	 * @param make  The vehicle make
+	 * @param model The vehicle model
 	 */
-	public void deleteCurrentVehicle() {
+	public void deleteVehicle(int year, String make, String model) {
+		clickOnElement(applicationName, id);
+		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
 	/**
@@ -391,5 +401,21 @@ public class BaseClass {
 				isDisplayed = driver.findElements(By.id(element)).size() > 0;
 		}
 		return isDisplayed;
+	}
+	
+	/**
+	 * Click on the selected vehicle
+	 * 
+	 * @param year  The vehicle year
+	 * @param make  The vehicle make
+	 * @param model The vehicle model
+	 */
+	public void selectVehicle(int year, String make, String model) {
+		WebElement vehicle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@title='" + year + " " + make + " " + model + "']")));
+		try {
+			vehicle.click();
+		} catch (Exception e) {
+			vehicle.click();
+		}
 	}
 }
