@@ -9,13 +9,15 @@ import baseClass.BaseClass;
 
 public class TopButtonsTest extends BaseClass {
 	private int miles = 123456;
+	private int year = 1997;
+	private String make = "Lexus";
+	private String model = "ES300";
 	private String service = "Transmission Fluid Change";
 	
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		addOneVehicle(1997, "Lexus", "ES300");
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		addVehicle(year, make, model);
 	}
 	
 	/**
@@ -24,7 +26,7 @@ public class TopButtonsTest extends BaseClass {
 	 */
 	@Test
 	private void topButtonsTest() {
-		clickOnElement(vehicleOnRecord, xpath);
+		selectVehicle(year, make, model);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertFalse(isButtonEnabled(printPageButton, id));
 		addOneServiceLog("01012000", miles, service, "First Log");
@@ -49,7 +51,7 @@ public class TopButtonsTest extends BaseClass {
 	
 	@AfterClass
 	private void teardown() {
-		deleteCurrentVehicle();
+		deleteVehicle(year, make, model);
 		close();
 	}
 }

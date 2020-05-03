@@ -7,11 +7,14 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class AddServiceLogNegativeTest extends BaseClass {
+	private int year = 2014;
+	private String make = "Honda";
+	private String model = "Accord";
 	
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		addOneVehicle(2014, "Honda", "Accord");
+		addVehicle(year, make, model);
 	}
 	
 	/**
@@ -20,7 +23,7 @@ public class AddServiceLogNegativeTest extends BaseClass {
 	 */
 	@Test
 	private void addServiceLogNegativeTest() {
-		clickOnElement(vehicleOnRecord, xpath);
+		selectVehicle(year, make, model);
 		fillInputField(serviceLogDateInput, "01012020", id);
 		fillInputField(serviceLogServiceInput, "Transmission Fluid Change", id);
 		clickOnElement(addServiceLogButton, id);
@@ -32,7 +35,7 @@ public class AddServiceLogNegativeTest extends BaseClass {
 	
 	@AfterClass
 	private void teardown() {
-		deleteCurrentVehicle();
+		deleteVehicle(year, make, model);
 		close();
 	}
 }
