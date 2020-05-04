@@ -65,7 +65,6 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		clickOnElement(accountNavButton, id);
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
 		assertEquals(actualVehicleCount, vehicleCount);
-		
 	}
 
 	@AfterClass(alwaysRun = true)
