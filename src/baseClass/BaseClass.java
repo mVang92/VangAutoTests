@@ -1,6 +1,7 @@
 package baseClass;
 
 import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -89,7 +90,6 @@ public class BaseClass {
 	public static String printPageButton = "printPageButton";
 	public static String printPageViaDeleteButton = "printPageViaDeleteButton";
 	
-	public static String vehicleOnRecord = "//*[@class='vehicleOnRecord']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
@@ -369,19 +369,72 @@ public class BaseClass {
 	}
 	
 	/**
-	 * Adds one service log to the vehicle
+	 * Format the date by removing the leading 0 for months before October and days before the 10th day
+	 * 
+	 * @param date The date to format
+	 * @return     Return the new formated date
+	 */
+	public String formatDate(String date) {
+		String month = null;
+		String day = null;
+		String monthSubString = date.substring(0, 2);
+		String daySubString = date.substring(2, 4);
+		String yearSubString = date.substring(4);
+		int monthToInt = Integer.parseInt(monthSubString);
+		int dayToInt = Integer.parseInt(daySubString);
+		int yearToInt = Integer.parseInt(yearSubString);
+		if (monthToInt < 10) {
+			month = date.substring(1, 2);
+		} else {
+			month = monthSubString;
+		}
+		if (dayToInt < 10) {
+			day = date.substring(3, 4);
+		} else {
+			day = daySubString;
+		}
+		date = month + "/" + day + "/" + yearToInt;
+		return date;
+	}
+	
+	/**
+	 * Adds one service log to the vehicle without comments
+	 * 
+	 * @param date     The date of the service log
+	 * @param mileage  The mileage of the vehicle
+	 * @param service  The type of service
+	 */
+	public void addServiceLog(String date, int mileage, String service) {
+		fillInputField(serviceLogDateInput, date, id);
+		fillInputField(serviceLogMileageInput, mileage, id);
+		fillInputField(serviceLogServiceInput, service, id);
+		clickOnElement(addServiceLogButton, id);
+		String formatedDate = formatDate(date);
+		String expectedMessage = addLogSuccessMessage(service, mileage, formatedDate);
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
+		assertEquals(toastNotificationMessage, expectedMessage);
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+	}
+	
+	/**
+	 * Adds one service log to the vehicle with comments
 	 * 
 	 * @param date     The date of the service log
 	 * @param mileage  The mileage of the vehicle
 	 * @param service  The type of service
 	 * @param comments Comments to address during service
 	 */
-	public void addOneServiceLog(String date, int mileage, String service, String comments) {
+	public void addServiceLog(String date, int mileage, String service, String comments) {
 		fillInputField(serviceLogDateInput, date, id);
 		fillInputField(serviceLogMileageInput, mileage, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		fillInputField(serviceLogCommentsInput, comments, id);
 		clickOnElement(addServiceLogButton, id);
+		String formatedDate = formatDate(date);
+		String expectedMessage = addLogSuccessMessage(service, mileage, formatedDate);
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
+		assertEquals(toastNotificationMessage, expectedMessage);
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
 	/**
