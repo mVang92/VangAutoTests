@@ -2,6 +2,7 @@ package carSpace.MainPage;
 
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
@@ -27,22 +28,21 @@ public class AddVehicleBadInputTest extends BaseClass {
 		String expectedMessage = addVehicleInputErrorMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertEquals(actualMessage, expectedMessage);
-		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 
 	/**
 	 * Verify the functionality of the NaN error for the Year input
 	 */
-	@Test(priority = 1, dependsOnMethods = "addVehicleMissingInputTest")
+	@Test(priority = 1)
 	private void addVehicleNanYearInputTest() {
 		String nanVehicleYear = "nan";
 		fillInputField(vehicleYearInput, nanVehicleYear, id);
+		fillInputField(vehicleMakeInput, vehicleMake, id);
+		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertEquals(actualMessage, expectedMessage);
-		clickOnElement(addVehicleErrorModalOkayButton, xpath);
-		clickOnElement(resetVehicleInputFieldsButton, id);
 	}
 	
 	/**
@@ -58,7 +58,6 @@ public class AddVehicleBadInputTest extends BaseClass {
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertEquals(actualMessage, expectedMessage);
-		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 	
 	/**
@@ -67,7 +66,6 @@ public class AddVehicleBadInputTest extends BaseClass {
 	@Test(priority = 3)
 	private void addVehicleEmptyInputTest() {
 		String inputWithSpaces = "     ";
-		clickOnElement(resetVehicleInputFieldsButton, id);
 		fillInputField(vehicleYearInput, 2000, id);
 		fillInputField(vehicleMakeInput, inputWithSpaces, id);
 		fillInputField(vehicleModelInput, inputWithSpaces, id);
@@ -75,7 +73,12 @@ public class AddVehicleBadInputTest extends BaseClass {
 		String expectedMessage = addVehicleInputErrorMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertEquals(actualMessage, expectedMessage);
+	}
+	
+	@AfterMethod
+	private void resetVehicleInputFields() {
 		clickOnElement(addVehicleErrorModalOkayButton, xpath);
+		clickOnElement(resetVehicleInputFieldsButton, id);
 	}
 
 	@AfterClass(alwaysRun = true)
