@@ -1,6 +1,6 @@
 package carSpace.MainPage;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -20,27 +20,27 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 * input fields when adding a vehicle
 	 */
 	@Test(priority = 0)
-	private void addVehicleBadInputTest() {
+	private void addVehicleMissingInputTest() {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInputErrorMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertTrue(actualMessage.contains(expectedMessage));
+		assertEquals(actualMessage, expectedMessage);
 		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 
 	/**
 	 * Verify the functionality of the NaN error for the Year input
 	 */
-	@Test(priority = 1, dependsOnMethods = "addVehicleBadInputTest")
+	@Test(priority = 1, dependsOnMethods = "addVehicleMissingInputTest")
 	private void addVehicleNanYearInputTest() {
 		String nanVehicleYear = "nan";
 		fillInputField(vehicleYearInput, nanVehicleYear, id);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertTrue(actualMessage.contains(expectedMessage));
+		assertEquals(actualMessage, expectedMessage);
 		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 		clickOnElement(resetVehicleInputFieldsButton, id);
 	}
@@ -50,14 +50,31 @@ public class AddVehicleBadInputTest extends BaseClass {
 	 */
 	@Test(priority = 2)
 	private void addVehicleBadYearInputTest() {
-		String invalidVehicleYear = "1884";
+		int invalidVehicleYear = 1884;
 		fillInputField(vehicleYearInput, invalidVehicleYear, id);
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertTrue(actualMessage.contains(expectedMessage));
+		assertEquals(actualMessage, expectedMessage);
+		clickOnElement(addVehicleErrorModalOkayButton, xpath);
+	}
+	
+	/**
+	 * Verify the user cannot add a vehicle if the make and model inputs contain only spaces
+	 */
+	@Test(priority = 3)
+	private void addVehicleEmptyInputTest() {
+		String inputWithSpaces = "     ";
+		clickOnElement(resetVehicleInputFieldsButton, id);
+		fillInputField(vehicleYearInput, 2000, id);
+		fillInputField(vehicleMakeInput, inputWithSpaces, id);
+		fillInputField(vehicleModelInput, inputWithSpaces, id);
+		clickOnElement(addVehicleButton, id);
+		String expectedMessage = addVehicleInputErrorMessage;
+		String actualMessage = getText(addVehicleErrorModal, xpath);
+		assertEquals(actualMessage, expectedMessage);
 		clickOnElement(addVehicleErrorModalOkayButton, xpath);
 	}
 
