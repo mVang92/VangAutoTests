@@ -331,6 +331,9 @@ public class BaseClass {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
+		String expectedMessage = vehicleDeletedSuccessfullyMessage;
+		String toastNotificationMessage = getText(toastNotificationBody, xpath);
+		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	

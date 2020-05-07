@@ -73,7 +73,7 @@ public class AddServiceLogPositiveTest extends BaseClass {
 	 * @param monthToInt     The month to check
 	 * @param dayToInt       The day to check
 	 */
-	public void checkMonthAndDayEqualToOne(String monthSubString, String daySubString, int monthToInt, int dayToInt) {
+	private void checkMonthAndDayEqualToOne(String monthSubString, String daySubString, int monthToInt, int dayToInt) {
 		if (monthToInt == 1) {
 			month = "0" + monthToInt ;
 		} else {

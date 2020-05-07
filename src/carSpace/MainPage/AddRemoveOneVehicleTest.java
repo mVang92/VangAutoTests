@@ -34,7 +34,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertTrue(toastNotificationMessage.contains(expectedMessage));
+		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
@@ -59,7 +59,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		clickOnElement(confirmDeleteVehicleButton, id);
 		String expectedMessage = vehicleDeletedSuccessfullyMessage;
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertTrue(toastNotificationMessage.contains(expectedMessage));
+		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
