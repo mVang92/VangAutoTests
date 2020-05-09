@@ -1,6 +1,6 @@
 package carSpace.Authentication;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,7 +19,7 @@ public class SignInNoUserTest extends BaseClass {
 	@Test
 	private void signInNoUserTest() {
 		String actualMessage = getText(toastNotificationBody, xpath);
-		assertTrue(actualMessage.contains(noUserOnRecordSignInErrorMessage));
+		assertEquals(actualMessage, noUserOnRecordSignInErrorMessage);
 	}
 
 	@AfterClass(alwaysRun = true)
