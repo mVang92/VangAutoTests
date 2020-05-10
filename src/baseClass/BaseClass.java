@@ -100,6 +100,7 @@ public class BaseClass {
 	public static String modalTitle = "//*[@class='row modal-header']";
 	public static String backHomeBtn = "//*[@class='backHomeBtn']";
 	public static String cancelButton = "//button[contains(text(),'Cancel')]";
+	public static String noButton = "//button[contains(text(),'No')]";
 	public static String editActionButton = "//*[@class='editActionButton']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
