@@ -33,7 +33,7 @@ public class TopButtonsTest extends BaseClass {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertFalse(isElementDisplayed(printPageViaDeleteButton, id));
-		clickOnElement(cancelButton, xpath);
+		clickOnElement(noButton, xpath);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
 		addServiceLog("05102000", miles, service, "Second Log");
@@ -41,7 +41,7 @@ public class TopButtonsTest extends BaseClass {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertTrue(isButtonEnabled(printPageViaDeleteButton, id));
-		clickOnElement(cancelButton, xpath);
+		clickOnElement(noButton, xpath);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
 		addServiceLog("11132000", miles, service, "Third Log");
 		clickOnElement(addLogSortLogsButton, id);

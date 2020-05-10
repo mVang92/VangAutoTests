@@ -27,9 +27,8 @@ public class AddServiceLogNegativeTest extends BaseClass {
 		fillInputField(serviceLogDateInput, "01012020", id);
 		fillInputField(serviceLogServiceInput, "Transmission Fluid Change", id);
 		clickOnElement(addServiceLogButton, id);
-		String expectedMessage = addLogsMissingFieldsErrorMessage;
 		String actualMessage = getText(addLogErrorModal, xpath);
-		assertTrue(actualMessage.contains(expectedMessage));
+		assertTrue(actualMessage.contains(addLogsMissingFieldsErrorMessage));
 		clickOnElement(addLogErrorModalOkayButton, xpath);
 	}
 	
