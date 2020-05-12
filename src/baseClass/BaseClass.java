@@ -209,20 +209,24 @@ public class BaseClass {
 	public void clickOnElement(String element, String locator) {
 		switch (locator) {
 			case "xpath":
-				webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
-				js.executeScript("arguments[0].scrollIntoView();", webElement);
 				try {
+					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
+					js.executeScript("arguments[0].scrollIntoView();", webElement);
 					webElement.click();
 				} catch (Exception e) {
+					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
+					js.executeScript("arguments[0].scrollIntoView();", webElement);
 					webElement.click();
 				}
 				break;
 			case "id":
-				webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
-				js.executeScript("arguments[0].scrollIntoView();", webElement);
 				try {
+					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
+					js.executeScript("arguments[0].scrollIntoView();", webElement);
 					webElement.click();
 				} catch (Exception e) {
+					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
+					js.executeScript("arguments[0].scrollIntoView();", webElement);
 					webElement.click();
 				}
 		}
