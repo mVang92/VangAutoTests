@@ -33,10 +33,10 @@ public class BaseClass {
 	public static String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
 	public static String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
 	public static String passwordsDoNotMatchErrorMessage = "Error: Passwords do not match.";
-	public static String resetFieldsSuccessMessage = "Input Fields Reset.";
+	public static String resetFieldsSuccessMessage = "Input fields reset.";
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
-	public static String vehicleDeletedSuccessfullyMessage = "Vehicle Deleted Successfully.";
+	public static String vehicleDeletedSuccessfullyMessage = "Vehicle deleted successfully.";
 	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
 	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
 	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
@@ -101,7 +101,7 @@ public class BaseClass {
 	public static String backHomeBtn = "//*[@class='backHomeBtn']";
 	public static String cancelButton = "//button[contains(text(),'Cancel')]";
 	public static String noButton = "//button[contains(text(),'No')]";
-	public static String editActionButton = "//*[@class='editActionButton']";
+	public static String editActionButton = "//button[@class='editActionButton']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
