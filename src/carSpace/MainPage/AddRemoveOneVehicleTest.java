@@ -57,9 +57,8 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		String actualModalTitle = getText(deleteVehicleModalTitle, id);
 		assertTrue(actualModalTitle.contains(vehicle));
 		clickOnElement(confirmDeleteVehicleButton, id);
-		String expectedMessage = vehicleDeletedSuccessfullyMessage;
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
+		assertEquals(toastNotificationMessage, vehicleDeletedSuccessfullyMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);

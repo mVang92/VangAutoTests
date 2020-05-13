@@ -25,9 +25,8 @@ public class AddVehicleBadInputTest extends BaseClass {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String expectedMessage = addVehicleInputErrorMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, expectedMessage);
+		assertEquals(actualMessage, addVehicleInputErrorMessage);
 	}
 
 	/**
@@ -40,9 +39,8 @@ public class AddVehicleBadInputTest extends BaseClass {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, expectedMessage);
+		assertEquals(actualMessage, addVehicleInvalidYearMessage);
 	}
 	
 	/**
@@ -55,9 +53,8 @@ public class AddVehicleBadInputTest extends BaseClass {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String expectedMessage = addVehicleInvalidYearMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, expectedMessage);
+		assertEquals(actualMessage, addVehicleInvalidYearMessage);
 	}
 	
 	/**
@@ -70,9 +67,8 @@ public class AddVehicleBadInputTest extends BaseClass {
 		fillInputField(vehicleMakeInput, inputWithSpaces, id);
 		fillInputField(vehicleModelInput, inputWithSpaces, id);
 		clickOnElement(addVehicleButton, id);
-		String expectedMessage = addVehicleInputErrorMessage;
 		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, expectedMessage);
+		assertEquals(actualMessage, addVehicleInputErrorMessage);
 	}
 	
 	@AfterMethod

@@ -22,9 +22,8 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 		fillInputField(vehicleMakeInput, "Toyota", id);
 		fillInputField(vehicleModelInput, "Highlander", id);
 		clickOnElement(resetVehicleInputFieldsButton, id);
-		String expectedMessage = resetFieldsSuccessMessage;
 		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
+		assertEquals(toastNotificationMessage, resetFieldsSuccessMessage);
 		String vehicleYearInputAfterReset = getValue(vehicleYearInput, id);
 		String vehicleMakeInputAfterReset = getValue(vehicleMakeInput, id);
 		String vehicleModelInputAfterReset = getValue(vehicleModelInput, id);
