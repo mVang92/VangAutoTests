@@ -15,13 +15,12 @@ public class LoginTest extends BaseClass {
 		doSignIn();
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		String expectedUserEmail = email;
 		String actualUserEmail = getText(accountPageUserEmail, id);
-		assertEquals(actualUserEmail, expectedUserEmail);
+		assertEquals(actualUserEmail, email);
 		doSignOut();
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
