@@ -1,6 +1,7 @@
 package carSpace.MainPage;
 
 import static org.testng.Assert.assertEquals;
+import java.util.Calendar;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -69,6 +70,21 @@ public class AddVehicleBadInputTest extends BaseClass {
 		clickOnElement(addVehicleButton, id);
 		String actualMessage = getText(addVehicleErrorModal, xpath);
 		assertEquals(actualMessage, addVehicleInputErrorMessage);
+	}
+	
+	/**
+	 * Verify the user cannot add a vehicle if the year is three or more years in the future
+	 */
+	@Test(priority = 4)
+	private void addVehicleThreeYearsInFutureTest() {
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		int futureYear = year + 3;
+		fillInputField(vehicleYearInput, futureYear, id);
+		fillInputField(vehicleMakeInput, vehicleMake, id);
+		fillInputField(vehicleModelInput, vehicleModel, id);
+		clickOnElement(addVehicleButton, id);
+		String actualMessage = getText(addVehicleErrorModal, xpath);
+		assertEquals(actualMessage, addVehicleInvalidYearMessage);
 	}
 	
 	@AfterMethod
