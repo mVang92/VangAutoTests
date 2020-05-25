@@ -44,7 +44,7 @@ public class DisplayNameVerificationTest extends BaseClass {
 		assertEquals(displayNameInAccountPage, testUserDisplayName);
 	}
 	
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
