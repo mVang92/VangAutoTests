@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
-public class TopButtonsTest extends BaseClass {
+public class ServiceLogPageTest extends BaseClass {
 	private int miles = 123456;
 	private int year = 1997;
 	private String make = "Lexus";
@@ -25,10 +25,11 @@ public class TopButtonsTest extends BaseClass {
 	 * based on the number of service logs
 	 */
 	@Test
-	private void topButtonsTest() {
+	private void buttonsVerificationTest() {
 		selectVehicle(year, make, model);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertFalse(isButtonEnabled(printPageButton, id));
+		assertFalse(isElementDisplayed(topButton, xpath));
 		addServiceLog("01012000", miles, service, "First Log");
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
@@ -36,17 +37,23 @@ public class TopButtonsTest extends BaseClass {
 		clickOnElement(noButton, xpath);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
+		assertFalse(isElementDisplayed(topButton, xpath));
 		addServiceLog("05102000", miles, service, "Second Log");
 		clickOnElement(addLogSortLogsButton, id);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertTrue(isButtonEnabled(printPageViaDeleteButton, id));
+		assertFalse(isElementDisplayed(topButton, xpath));
 		clickOnElement(noButton, xpath);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
 		addServiceLog("11132000", miles, service, "Third Log");
 		clickOnElement(addLogSortLogsButton, id);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
+		assertFalse(isElementDisplayed(topButton, xpath));
+		addServiceLog("12102000", miles, service, "Top button is displayed.");
+		clickOnElement(addLogSortLogsButton, id);
+		assertTrue(isElementDisplayed(topButton, xpath));
 	}
 	
 	@AfterClass
