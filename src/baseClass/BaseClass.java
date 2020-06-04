@@ -101,6 +101,7 @@ public class BaseClass {
 	public static String cancelButton = "//button[contains(text(),'Cancel')]";
 	public static String noButton = "//button[contains(text(),'No')]";
 	public static String editActionButton = "//button[@class='editActionButton']";
+	public static String topButton = "//button[@class='backToTopButton']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
