@@ -1,6 +1,10 @@
 package carSpace.LogPage;
 
 import static org.testng.Assert.assertTrue;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import static org.testng.Assert.assertFalse;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -8,11 +12,9 @@ import org.testng.annotations.Test;
 import baseClass.BaseClass;
 
 public class ServiceLogPageTest extends BaseClass {
-	private int miles = 123456;
 	private int year = 1997;
 	private String make = "Lexus";
 	private String model = "ES300";
-	private String service = "Transmission Fluid Change";
 	
 	@BeforeClass
 	private void setup() {
@@ -26,11 +28,13 @@ public class ServiceLogPageTest extends BaseClass {
 	 */
 	@Test
 	private void buttonsVerificationTest() {
+		int miles = 123456;
+		String service = "Transmission Fluid Change";
 		selectVehicle(year, make, model);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertFalse(isButtonEnabled(printPageButton, id));
 		assertFalse(isElementDisplayed(topButton, xpath));
-		addServiceLog("01012000", miles, service, "First Log");
+		addServiceLog(getDate(-3), miles, service, "First Log");
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertFalse(isElementDisplayed(printPageViaDeleteButton, id));
@@ -38,7 +42,7 @@ public class ServiceLogPageTest extends BaseClass {
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
 		assertFalse(isElementDisplayed(topButton, xpath));
-		addServiceLog("05102000", miles, service, "Second Log");
+		addServiceLog(getDate(-2), miles, service, "Second Log");
 		clickOnElement(addLogSortLogsButton, id);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
@@ -46,14 +50,29 @@ public class ServiceLogPageTest extends BaseClass {
 		assertFalse(isElementDisplayed(topButton, xpath));
 		clickOnElement(noButton, xpath);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
-		addServiceLog("11132000", miles, service, "Third Log");
+		addServiceLog(getDate(-1), miles, service, "Third Log");
 		clickOnElement(addLogSortLogsButton, id);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
 		assertFalse(isElementDisplayed(topButton, xpath));
-		addServiceLog("12102000", miles, service, "Top button is displayed.");
+		addServiceLog(getDate(-0), miles, service, "Top button is displayed.");
 		clickOnElement(addLogSortLogsButton, id);
 		assertTrue(isElementDisplayed(topButton, xpath));
+	}
+	
+	/**
+	 * Get the date relative to today
+	 * 
+	 * @return The requested date
+	 */
+	private String getDate(int dayOffset) {
+		final Calendar cal = Calendar.getInstance();
+	    cal.add(Calendar.DATE, dayOffset);
+	    Date dateToFormat = cal.getTime();
+	    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = dateFormat.format(dateToFormat);
+        String date = formattedDate;
+        return date = date.replace("/","");
 	}
 	
 	@AfterClass
