@@ -1,6 +1,12 @@
 package baseClass;
 
 import static org.testng.Assert.assertEquals;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -478,5 +484,19 @@ public class BaseClass {
 		} catch (Exception e) {
 			vehicle.click();
 		}
+	}
+	
+	/**
+	 * Get the date relative to today
+	 * 
+	 * @return The requested date
+	 */
+	public String getDate(int dayOffset) {
+		final Calendar cal = Calendar.getInstance();
+	    cal.add(Calendar.DATE, dayOffset);
+	    Date dateToFormat = cal.getTime();
+	    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = dateFormat.format(dateToFormat);
+        return formattedDate.replace("/","");
 	}
 }
