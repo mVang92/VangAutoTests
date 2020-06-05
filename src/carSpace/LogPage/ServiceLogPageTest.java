@@ -1,10 +1,6 @@
 package carSpace.LogPage;
 
 import static org.testng.Assert.assertTrue;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import static org.testng.Assert.assertFalse;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -55,24 +51,9 @@ public class ServiceLogPageTest extends BaseClass {
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
 		assertFalse(isElementDisplayed(topButton, xpath));
-		addServiceLog(getDate(-0), miles, service, "Top button is displayed.");
+		addServiceLog(getDate(0), miles, service, "Top button is displayed.");
 		clickOnElement(addLogSortLogsButton, id);
 		assertTrue(isElementDisplayed(topButton, xpath));
-	}
-	
-	/**
-	 * Get the date relative to today
-	 * 
-	 * @return The requested date
-	 */
-	private String getDate(int dayOffset) {
-		final Calendar cal = Calendar.getInstance();
-	    cal.add(Calendar.DATE, dayOffset);
-	    Date dateToFormat = cal.getTime();
-	    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        String formattedDate = dateFormat.format(dateToFormat);
-        String date = formattedDate;
-        return date = date.replace("/","");
 	}
 	
 	@AfterClass
