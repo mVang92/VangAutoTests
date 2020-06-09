@@ -41,6 +41,7 @@ public class BaseClass {
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
 	public static String vehicleDeletedSuccessfullyMessage = "Vehicle deleted successfully.";
 	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
+	public static String expectedDefaultBackgroundPictureModalTitle = "Reset your background picture to default?";
 	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
 	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
 	public static String expectedUpdateDisplayNameModalTitle = "Display name updated!";
@@ -78,6 +79,7 @@ public class BaseClass {
 	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
 	public static String addServiceLogButton = "addServiceLogButton";
 	public static String editVehicleNameButton = "editVehicleNameButton";
+	public static String submitNewBackgroundPictureButton = "submitNewBackgroundPictureButton";
 	public static String submitNewProfilePictureButton = "submitNewProfilePictureButton";
 	public static String submitNewDisplayNameButton = "submitNewDisplayNameButton";
 	public static String submitNewPasswordButton = "submitNewPasswordButton";
