@@ -45,6 +45,7 @@ public class BaseClass {
 	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
 	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
 	public static String expectedUpdateDisplayNameModalTitle = "Display name updated!";
+	public static String expectedUpdateBackgroundPictureModalTitle = "Use this image as your background picture?";
 
 	public static String applicationName = "applicationName";
 	public static String signInNavButton = "signInNavButton";
@@ -94,6 +95,8 @@ public class BaseClass {
 	public static String addLogSortLogsButton = "addLogSortLogsButton";
 	public static String printPageButton = "printPageButton";
 	public static String printPageViaDeleteButton = "printPageViaDeleteButton";
+	public static String newBackgroundPictureInput = "newBackgroundPictureInput";
+	public static String resetNewBackgroundPictureButton = "resetNewBackgroundPictureButton";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
