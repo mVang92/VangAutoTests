@@ -9,7 +9,6 @@ import baseClass.BaseClass;
 
 public class ResetInputFieldsTest extends BaseClass {
 	private String picture = "https://oswallpapers.com/wp-content/uploads/2016/06/img19.jpg";
-	private String displayName = "Sally Thing";
 
 	@DataProvider(name = "testData")
 	public Object[][] dataProviderMethod() {
@@ -35,10 +34,10 @@ public class ResetInputFieldsTest extends BaseClass {
 			{
 				newDisplayNameInput,
 				submitNewDisplayNameButton,
-				"Use \"" + displayName + "\" as your name?",
+				"Use \"" + testUserDisplayName + "\" as your name?",
 				resetNewDisplayNameButton,
 				expectedDefaultNameModalTitle,
-				displayName,
+				testUserDisplayName,
 				closeUpdateDisplayNameModalButton
 			}
 		};
@@ -52,11 +51,10 @@ public class ResetInputFieldsTest extends BaseClass {
 	}
 
 	/**
-	 * Verify the Reset function works for the update input fields and the react
-	 * states reset each field
+	 * Verify the Reset function works for the update input fields and the react states reset with each field
 	 */
 	@Test(dataProvider = "testData")
-	public void updateBackgroundPictureResetInputFieldTest(
+	public void resetInputFieldsTest(
 		String inputField,
 		String submitButton,
 		String expectedModalTitle,
