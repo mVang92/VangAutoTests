@@ -22,18 +22,15 @@ public class AddVehicleResetInputFieldsTest extends BaseClass {
 		fillInputField(vehicleMakeInput, "Toyota", id);
 		fillInputField(vehicleModelInput, "Highlander", id);
 		clickOnElement(resetVehicleInputFieldsButton, id);
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, resetFieldsSuccessMessage);
-		String vehicleYearInputAfterReset = getValue(vehicleYearInput, id);
-		String vehicleMakeInputAfterReset = getValue(vehicleMakeInput, id);
-		String vehicleModelInputAfterReset = getValue(vehicleModelInput, id);
-		assertEquals(vehicleYearInputAfterReset, "");
-		assertEquals(vehicleMakeInputAfterReset, "");
-		assertEquals(vehicleModelInputAfterReset, "");
+		assertEquals(getText(toastNotificationBody, xpath), resetFieldsSuccessMessage);
+		assertEquals(getValue(vehicleYearInput, id), "");
+		assertEquals(getValue(vehicleMakeInput, id), "");
+		assertEquals(getValue(vehicleModelInput, id), "");
 	}
 
 	@AfterClass(alwaysRun = true)
 	private void teardown() {
 		close();
 	}
+	
 }
