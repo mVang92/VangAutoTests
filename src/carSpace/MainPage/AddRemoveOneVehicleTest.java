@@ -33,8 +33,7 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
 		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
+		assertEquals(getText(toastNotificationBody, xpath), expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
@@ -50,15 +49,12 @@ public class AddRemoveOneVehicleTest extends BaseClass {
 	private void deleteOneVehicleTest() {
 		String vehicle = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
-		String actualVehicleName = getText(vehicleNameHeader, id);
-		assertEquals(actualVehicleName, vehicle);
+		assertEquals(getText(vehicleNameHeader, id), vehicle);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
-		String actualModalTitle = getText(deleteVehicleModalTitle, id);
-		assertTrue(actualModalTitle.contains(vehicle));
+		assertTrue(getText(deleteVehicleModalTitle, id).contains(vehicle));
 		clickOnElement(confirmDeleteVehicleButton, id);
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, vehicleDeletedSuccessfullyMessage);
+		assertEquals(getText(toastNotificationBody, xpath), vehicleDeletedSuccessfullyMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
