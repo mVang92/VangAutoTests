@@ -23,25 +23,20 @@ public class DisplayNameVerificationTest extends BaseClass {
 		clickOnElement(submitNewDisplayNameButton, id);
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
-		String displayNameInMainPage = getText(displayName, id);
-		assertEquals(displayNameInMainPage, defaultDisplayName);
+		assertEquals(getText(displayName, id), defaultDisplayName);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		String displayNameInAccountPage = getText(accountPageUserDisplayName, id);
-		assertEquals(displayNameInAccountPage, defaultDisplayName);
+		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
 		fillInputField(newDisplayNameInput, testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		String actualTitle = getText(modalTitle, xpath);
 		String expectedTitle = "Use \"" + testUserDisplayName + "\" as your name?";
-		assertEquals(actualTitle, expectedTitle);
+		assertEquals(getText(modalTitle, xpath), expectedTitle);
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
-		displayNameInMainPage = getText(displayName, id);
-		assertEquals(displayNameInMainPage, testUserDisplayName);
+		assertEquals(getText(displayName, id), testUserDisplayName);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		displayNameInAccountPage = getText(accountPageUserDisplayName, id);
-		assertEquals(displayNameInAccountPage, testUserDisplayName);
+		assertEquals(getText(accountPageUserDisplayName, id), testUserDisplayName);
 	}
 	
 	@AfterClass
