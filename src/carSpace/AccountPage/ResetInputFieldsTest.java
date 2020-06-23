@@ -74,7 +74,7 @@ public class ResetInputFieldsTest extends BaseClass {
 		clickOnElement(closeModalButton, id);
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
