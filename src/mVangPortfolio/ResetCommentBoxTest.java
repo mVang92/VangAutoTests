@@ -3,9 +3,10 @@ package mVangPortfolio;
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class ResetCommentBoxTest extends BaseClass {
+import basePage.BasePage;
+
+public class ResetCommentBoxTest extends BasePage {
 
 	/**
 	 * Verify the functionality of the reset button in the comment box

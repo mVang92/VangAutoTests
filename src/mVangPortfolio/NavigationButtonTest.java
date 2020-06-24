@@ -2,9 +2,10 @@ package mVangPortfolio;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class NavigationButtonTest extends BaseClass {
+import basePage.BasePage;
+
+public class NavigationButtonTest extends BasePage {
 
 	/**
 	 * Verify the functionality of the navigation buttons and the back to top button

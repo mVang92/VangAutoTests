@@ -5,9 +5,10 @@ import static org.testng.Assert.assertFalse;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class ServiceLogPageTest extends BaseClass {
+import basePage.BasePage;
+
+public class ServiceLogPageTest extends BasePage {
 	private int year = 1997;
 	private String make = "Lexus";
 	private String model = "ES300";

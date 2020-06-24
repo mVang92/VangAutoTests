@@ -5,9 +5,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class AddServiceLogNegativeTest extends BaseClass {
+import basePage.BasePage;
+
+public class AddServiceLogNegativeTest extends BasePage {
 	private int year = 2014;
 	private String make = "Honda";
 	private String model = "Accord";
@@ -29,8 +30,7 @@ public class AddServiceLogNegativeTest extends BaseClass {
 		fillInputField(serviceLogDateInput, date, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
-		String actualMessage = getText(addLogErrorModal, xpath);
-		assertTrue(actualMessage.contains(addLogsMissingFieldsErrorMessage));
+		assertTrue(getText(addLogErrorModal, xpath).contains(addLogsMissingFieldsErrorMessage));
 	}
 	
 	/**
@@ -43,8 +43,7 @@ public class AddServiceLogNegativeTest extends BaseClass {
 		fillInputField(serviceLogMileageInput, inputWithSpaces, id);
 		fillInputField(serviceLogServiceInput, inputWithSpaces, id);
 		clickOnElement(addServiceLogButton, id);
-		String actualMessage = getText(addLogErrorModal, xpath);
-		assertTrue(actualMessage.contains(addLogsMissingFieldsErrorMessage));
+		assertTrue(getText(addLogErrorModal, xpath).contains(addLogsMissingFieldsErrorMessage));
 	}
 	
 	/**
@@ -57,8 +56,7 @@ public class AddServiceLogNegativeTest extends BaseClass {
 		fillInputField(serviceLogMileageInput, invalidMileage, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
-		String actualMessage = getText(addLogErrorModal, xpath);
-		assertTrue(actualMessage.contains(invalidMileage + " is not a valid input for Mileage."));
+		assertTrue(getText(addLogErrorModal, xpath).contains(invalidMileage + " is not a valid input for Mileage."));
 	}
 	
 	@AfterMethod

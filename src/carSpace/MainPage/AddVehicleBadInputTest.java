@@ -6,9 +6,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class AddVehicleBadInputTest extends BaseClass {
+import basePage.BasePage;
+
+public class AddVehicleBadInputTest extends BasePage {
 	String vehicleMake = "Toyota";
 	String vehicleModel = "Highlander";
 	
