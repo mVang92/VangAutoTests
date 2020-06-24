@@ -3,10 +3,12 @@ package carSpace.AccountPage;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import static org.testng.Assert.assertEquals;
-import baseClass.BaseClass;
 
-public class AccountPageVerificationTest extends BaseClass {
+import basePage.BasePage;
+
+import static org.testng.Assert.assertEquals;
+
+public class AccountPageVerificationTest extends BasePage {
 	
 	@BeforeClass
 	private void setup() {

@@ -5,9 +5,10 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class AddRemoveOneVehicleTest extends BaseClass {
+import basePage.BasePage;
+
+public class AddRemoveOneVehicleTest extends BasePage {
 	private String vehicleMake = "Toyota";
 	private String vehicleModel = "Highlander";
 	private int vehicleYear = 2003;

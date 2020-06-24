@@ -4,9 +4,10 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class DisplayNameVerificationTest extends BaseClass {
+import basePage.BasePage;
+
+public class DisplayNameVerificationTest extends BasePage {
 
 	@BeforeClass
 	private void setup() {

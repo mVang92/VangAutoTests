@@ -6,9 +6,10 @@ import java.time.format.DateTimeFormatter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class AddServiceLogPositiveTest extends BaseClass {
+import basePage.BasePage;
+
+public class AddServiceLogPositiveTest extends BasePage {
 	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	LocalDate localDate = LocalDate.now();
 	String formattedDate = dateFormatter.format(localDate);

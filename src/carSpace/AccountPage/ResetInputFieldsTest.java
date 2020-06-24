@@ -5,9 +5,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import baseClass.BaseClass;
 
-public class ResetInputFieldsTest extends BaseClass {
+import basePage.BasePage;
+
+public class ResetInputFieldsTest extends BasePage {
 	private String picture = "https://oswallpapers.com/wp-content/uploads/2016/06/img19.jpg";
 
 	@DataProvider(name = "testData")

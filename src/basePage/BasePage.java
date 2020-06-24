@@ -1,6 +1,5 @@
-package baseClass;
+package basePage;
 
-import static org.testng.Assert.assertEquals;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BaseClass {
+public class BasePage {
 	WebDriver driver;
 	WebElement webElement;
 	JavascriptExecutor js;
@@ -330,9 +329,6 @@ public class BaseClass {
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
 		clickOnElement(addVehicleButton, id);
-		String expectedMessage = "Added a " + year + " " + make + " " + model + ".";
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -349,9 +345,6 @@ public class BaseClass {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
-		String expectedMessage = vehicleDeletedSuccessfullyMessage;
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -390,35 +383,6 @@ public class BaseClass {
 	}
 	
 	/**
-	 * Format the date by removing the leading 0 for months before October and days before the 10th day
-	 * 
-	 * @param date The date to format
-	 * @return     Return the new formated date
-	 */
-	public String formatDate(String date) {
-		String month = null;
-		String day = null;
-		String monthSubString = date.substring(0, 2);
-		String daySubString = date.substring(2, 4);
-		String yearSubString = date.substring(4);
-		int monthToInt = Integer.parseInt(monthSubString);
-		int dayToInt = Integer.parseInt(daySubString);
-		int yearToInt = Integer.parseInt(yearSubString);
-		if (monthToInt < 10) {
-			month = date.substring(1, 2);
-		} else {
-			month = monthSubString;
-		}
-		if (dayToInt < 10) {
-			day = date.substring(3, 4);
-		} else {
-			day = daySubString;
-		}
-		date = month + "/" + day + "/" + yearToInt;
-		return date;
-	}
-	
-	/**
 	 * Adds one service log to the vehicle without comments
 	 * 
 	 * @param date     The date of the service log
@@ -430,10 +394,6 @@ public class BaseClass {
 		fillInputField(serviceLogMileageInput, mileage, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
-		String formatedDate = formatDate(date);
-		String expectedMessage = addLogSuccessMessage(service, mileage, formatedDate);
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -451,10 +411,6 @@ public class BaseClass {
 		fillInputField(serviceLogServiceInput, service, id);
 		fillInputField(serviceLogCommentsInput, comments, id);
 		clickOnElement(addServiceLogButton, id);
-		String formatedDate = formatDate(date);
-		String expectedMessage = addLogSuccessMessage(service, mileage, formatedDate);
-		String toastNotificationMessage = getText(toastNotificationBody, xpath);
-		assertEquals(toastNotificationMessage, expectedMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
