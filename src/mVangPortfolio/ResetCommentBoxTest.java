@@ -13,19 +13,17 @@ public class ResetCommentBoxTest extends BasePage {
 	 */
 	@Test
 	private void resetCommentBoxTest() {
-		String commentToInput = "This is a test comment from VangAutoTests.";
 		setProperty();
 		maximizeWindow();
 		usePortfolioUrl();
 		clickOnElement(contactNavButton, xpath);
 		clickOnElement(portfolioResetButton, id);
-		fillInputField(portfolioCommentInput, commentToInput, id);
+		fillInputField(portfolioCommentInput, "This is a test comment from VangAutoTests.", id);
 		clickOnElement(portfolioResetButton, id);
-		String commentBoxValueAfterReset = getValue(portfolioCommentInput, id);
-		assertEquals(commentBoxValueAfterReset, "");
+		assertEquals(getValue(portfolioCommentInput, id), "");
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
