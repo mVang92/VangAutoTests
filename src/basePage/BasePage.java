@@ -38,7 +38,6 @@ public class BasePage {
 	public static String resetFieldsSuccessMessage = "Input fields reset.";
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
 	public static String addVehicleInvalidYearMessage = "Please enter a valid input for Year.";
-	public static String vehicleDeletedSuccessfullyMessage = "Vehicle deleted successfully.";
 	public static String addLogsMissingFieldsErrorMessage = "Please fill in the missing fields:";
 	public static String expectedDefaultBackgroundPictureModalTitle = "Reset your background picture to default?";
 	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
@@ -345,7 +344,6 @@ public class BasePage {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
 	/**
