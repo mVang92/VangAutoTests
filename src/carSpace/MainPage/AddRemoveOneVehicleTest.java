@@ -55,6 +55,8 @@ public class AddRemoveOneVehicleTest extends BasePage {
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertTrue(getText(deleteVehicleModalTitle, id).contains(vehicle));
 		clickOnElement(confirmDeleteVehicleButton, id);
+		assertEquals(getText(toastNotificationBody, xpath), vehicleDeletedSuccessfullyMessage);
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
