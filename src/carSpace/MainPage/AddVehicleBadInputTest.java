@@ -27,8 +27,7 @@ public class AddVehicleBadInputTest extends BasePage {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, addVehicleInputErrorMessage);
+		assertEquals(getText(addVehicleErrorModal, xpath), addVehicleInputErrorMessage);
 	}
 
 	/**
@@ -41,8 +40,7 @@ public class AddVehicleBadInputTest extends BasePage {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, addVehicleInvalidYearMessage);
+		assertEquals(getText(addVehicleErrorModal, xpath), addVehicleInvalidYearMessage);
 	}
 	
 	/**
@@ -55,8 +53,7 @@ public class AddVehicleBadInputTest extends BasePage {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, addVehicleInvalidYearMessage);
+		assertEquals(getText(addVehicleErrorModal, xpath), addVehicleInvalidYearMessage);
 	}
 	
 	/**
@@ -69,8 +66,7 @@ public class AddVehicleBadInputTest extends BasePage {
 		fillInputField(vehicleMakeInput, inputWithSpaces, id);
 		fillInputField(vehicleModelInput, inputWithSpaces, id);
 		clickOnElement(addVehicleButton, id);
-		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, addVehicleInputErrorMessage);
+		assertEquals(getText(addVehicleErrorModal, xpath), addVehicleInputErrorMessage);
 	}
 	
 	/**
@@ -84,8 +80,7 @@ public class AddVehicleBadInputTest extends BasePage {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String actualMessage = getText(addVehicleErrorModal, xpath);
-		assertEquals(actualMessage, addVehicleInvalidYearMessage);
+		assertEquals(getText(addVehicleErrorModal, xpath), addVehicleInvalidYearMessage);
 	}
 	
 	@AfterMethod
