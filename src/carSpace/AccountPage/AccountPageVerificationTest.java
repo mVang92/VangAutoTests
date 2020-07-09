@@ -36,9 +36,8 @@ public class AccountPageVerificationTest extends BasePage {
 		assertEquals(getText(toastNotificationBody, xpath), invalidPasswordErrorMessage);
 	}
 	
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
-
 }
