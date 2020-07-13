@@ -30,8 +30,7 @@ public class DisplayNameVerificationTest extends BasePage {
 		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
 		fillInputField(newDisplayNameInput, testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		String expectedTitle = "Use \"" + testUserDisplayName + "\" as your name?";
-		assertEquals(getText(modalTitle, xpath), expectedTitle);
+		assertEquals(getText(modalTitle, xpath), "Use \"" + testUserDisplayName + "\" as your name?");
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		assertEquals(getText(displayName, id), testUserDisplayName);

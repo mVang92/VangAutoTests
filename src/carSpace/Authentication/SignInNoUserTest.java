@@ -19,11 +19,10 @@ public class SignInNoUserTest extends BasePage {
 	 */
 	@Test
 	private void signInNoUserTest() {
-		String actualMessage = getText(toastNotificationBody, xpath);
-		assertEquals(actualMessage, noUserOnRecordSignInErrorMessage);
+		assertEquals(getText(toastNotificationBody, xpath), noUserOnRecordSignInErrorMessage);
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}

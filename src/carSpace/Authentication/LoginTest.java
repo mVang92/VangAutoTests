@@ -16,8 +16,7 @@ public class LoginTest extends BasePage {
 		doSignIn();
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		String actualUserEmail = getText(accountPageUserEmail, id);
-		assertEquals(actualUserEmail, email);
+		assertEquals(getText(accountPageUserEmail, id), email);
 		doSignOut();
 	}
 
