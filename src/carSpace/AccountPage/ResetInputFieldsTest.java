@@ -79,5 +79,4 @@ public class ResetInputFieldsTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-
 }
