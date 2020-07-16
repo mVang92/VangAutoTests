@@ -44,6 +44,7 @@ public class BasePage {
 	public static String expectedDefaultPictureModalTitle = "Reset your profile picture to default?";
 	public static String expectedDefaultNameModalTitle = "Reset your name to default?";
 	public static String expectedUpdateDisplayNameModalTitle = "Display name updated!";
+	public static String expectedUpdateProfilePictureSuccessModalTitle = "Profile picture updated!";
 	public static String expectedUpdateBackgroundPictureModalTitle = "Use this image as your background picture?";
 	public static String expectedUpdateProfilePictureModalTitle = "Use this image as your profile picture?";
 
@@ -100,6 +101,11 @@ public class BasePage {
 	public static String resetNewBackgroundPictureButton = "resetNewBackgroundPictureButton";
 	public static String resetNewProfilePictureButton = "resetNewProfilePictureButton";
 	public static String resetNewDisplayNameButton = "resetNewDisplayNameButton";
+	public static String profilePicture = "profilePicture";
+	public static String profilePicturePreview = "profilePicturePreview";
+	public static String confirmUpdatePictureButton = "confirmUpdatePictureButton";
+	public static String closeUpdateProfilePictureSuccessModalButton = "closeUpdateProfilePictureSuccessModalButton";
+	public static String mainPageProfilePicture = "mainPageProfilePicture";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -357,8 +363,7 @@ public class BasePage {
 	 * @return              Return the expected toast notification message
 	 */
 	public String addLogSuccessMessage(String service, int miles, String formattedDate) {
-		String expectedMessage = "Service Logged: " + service + " at " + miles + " miles on " + formattedDate + ".";
-		return expectedMessage;
+		return "Service Logged: " + service + " at " + miles + " miles on " + formattedDate + ".";
 	}
 	
 	/**
@@ -452,7 +457,8 @@ public class BasePage {
 	/**
 	 * Get the date relative to today
 	 * 
-	 * @return The requested date
+	 * @param  dayOffset The amount of days to offset the requested date from the current date
+	 * @return 			 The requested date
 	 */
 	public String getDate(int dayOffset) {
 		final Calendar cal = Calendar.getInstance();
@@ -461,5 +467,42 @@ public class BasePage {
 	    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String formattedDate = dateFormat.format(dateToFormat);
         return formattedDate.replace("/","");
+	}
+	
+	/**
+	 * Get the src attribute for the image
+	 * 
+	 * @param element The element to look for
+	 * @param locator The type of locator to look for
+	 * @return 		  The requested date
+	 */
+	public String getImageSrcAttribute(String element, String locator) {
+		WebElement image;
+		String src = "";
+		switch (locator) {
+			case "xpath":
+				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+				src = image.getAttribute("src");
+				break;
+			case "id":
+				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
+				src = image.getAttribute("src");
+		}
+		return src;
+	}
+	
+	/**
+	 * Change the user profile picture
+	 * 
+	 * @param url The image URL
+	 */
+	public void changeProfilePicture(String url) {
+		clickOnElement(applicationName, id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		fillInputField(newProfilePictureInput, url, id);
+		clickOnElement(submitNewProfilePictureButton, id);
+		clickOnElement(confirmUpdatePictureButton, id);
+		clickOnElement(closeUpdateProfilePictureSuccessModalButton, id);
 	}
 }
