@@ -10,7 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import resources.Themes;
 
 public class BasePage {
 	WebDriver driver;
@@ -106,6 +108,9 @@ public class BasePage {
 	public static String confirmUpdatePictureButton = "confirmUpdatePictureButton";
 	public static String closeUpdateProfilePictureSuccessModalButton = "closeUpdateProfilePictureSuccessModalButton";
 	public static String mainPageProfilePicture = "mainPageProfilePicture";
+	public static String themeSelectionDropdown = "themeSelectionDropdown";
+	public static String applyThemeButton = "applyThemeButton";
+	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -504,5 +509,15 @@ public class BasePage {
 		clickOnElement(submitNewProfilePictureButton, id);
 		clickOnElement(confirmUpdatePictureButton, id);
 		clickOnElement(closeUpdateProfilePictureSuccessModalButton, id);
+	}
+	
+	/**
+	 * Selects the theme from the theme selection dropdown menu
+	 * 
+	 * @param theme   The theme to select
+	 */
+	public void selectThemeFromDropdown(Themes theme) {
+		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(themeSelectionDropdown))));
+		dropdown.selectByValue(theme.toString());
 	}
 }
