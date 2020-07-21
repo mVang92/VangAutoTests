@@ -518,6 +518,6 @@ public class BasePage {
 	 */
 	public void selectThemeFromDropdown(Themes theme) {
 		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(themeSelectionDropdown))));
-		dropdown.selectByValue(String.valueOf(theme));
+		dropdown.selectByValue(theme.toString());
 	}
 }

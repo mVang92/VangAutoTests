@@ -8,7 +8,8 @@ import basePage.BasePage;
 import resources.Themes;
 
 public class ThemesTest extends BasePage {
-	private int themeDisplayCheckInterval = 0;
+	private int checkInterval = 0;
+	private final int MAX_CHECK_INTERVAL = 15;
 
 	@BeforeClass
 	private void setup() {
@@ -25,7 +26,7 @@ public class ThemesTest extends BasePage {
 		for (int counter = 0; counter < Themes.values().length; counter++) {
 			selectThemeFromDropdown(Themes.values()[counter]);
 			clickOnElement(applyThemeButton, id);
-			assertTrue(isCorrectThemeDisplayedToUser(counter));
+			checkIfCorrectThemeIsDisplayed(counter);
 		}
 	}
 	
@@ -35,24 +36,21 @@ public class ThemesTest extends BasePage {
 	}
 	
 	/**
-	 * 
+	 * Assert true if the theme text in the UI displays the expected theme.
+	 * If if does not, wait for the text to change and try again until the
 	 */
-	private Boolean isCorrectThemeDisplayedToUser(int counter) {
-		Boolean displayedTheme = false;
-		System.out.println(getText(accountPageCurrentTheme, id));
-		System.out.println(displayTheme(Themes.values()[counter]));
+	private void checkIfCorrectThemeIsDisplayed(int counter) {
 		if (getText(accountPageCurrentTheme, id).equals(displayTheme(Themes.values()[counter]))) {
-			displayedTheme = true;
+			assertTrue(true);
+			checkInterval = 0;
 		} else {
-			if (themeDisplayCheckInterval < 50) {
-				themeDisplayCheckInterval++;
-				System.out.println(themeDisplayCheckInterval);
-				isCorrectThemeDisplayedToUser(counter);
+			if (checkInterval < MAX_CHECK_INTERVAL) {
+				checkInterval++;
+				checkIfCorrectThemeIsDisplayed(counter);
 			} else {
-				displayedTheme = false;
+				assertTrue(false);
 			}
 		}
-		return displayedTheme;
 	}
 	
 	/**
@@ -88,5 +86,4 @@ public class ThemesTest extends BasePage {
 		}
 		return displayedTheme;
 	}
-	
 }
