@@ -463,7 +463,7 @@ public class BasePage {
 	 * Get the date relative to today
 	 * 
 	 * @param  dayOffset The amount of days to offset the requested date from the current date
-	 * @return 			 The requested date
+	 * @return           The requested date
 	 */
 	public String getDate(int dayOffset) {
 		final Calendar cal = Calendar.getInstance();
@@ -479,7 +479,7 @@ public class BasePage {
 	 * 
 	 * @param element The element to look for
 	 * @param locator The type of locator to look for
-	 * @return 		  The requested date
+	 * @return        The requested date
 	 */
 	public String getImageSrcAttribute(String element, String locator) {
 		WebElement image;
@@ -514,10 +514,43 @@ public class BasePage {
 	/**
 	 * Selects the theme from the theme selection dropdown menu
 	 * 
-	 * @param theme   The theme to select
+	 * @param theme The theme to select
 	 */
 	public void selectThemeFromDropdown(Themes theme) {
 		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(themeSelectionDropdown))));
 		dropdown.selectByValue(theme.toString());
+	}
+	
+	/**
+	 * Return the appropriate theme displayed to the user
+	 * 
+	 * @param theme The theme to check
+	 * @return      The appropriate theme to display to the user
+	 */
+	public String displayTheme(Themes theme) {
+		String displayedTheme = "";
+		switch(theme) {
+			case carSpace:
+				displayedTheme = "CarSpace";
+				break;
+			case light:
+				displayedTheme = "Light";
+				break;
+			case grey:
+				displayedTheme = "Grey";
+				break;
+			case dark:
+				displayedTheme = "Dark";
+				break;
+			case transparentLight:
+				displayedTheme = "Transparent Light";
+				break;
+			case transparentGrey:
+				displayedTheme = "Transparent Grey";
+				break;
+			case transparentDark:
+				displayedTheme = "Transparent Dark";
+		}
+		return displayedTheme;
 	}
 }

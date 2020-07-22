@@ -17,7 +17,7 @@ public class ThemesTest extends BasePage {
 	}
 	
 	/**
-	 * Verify the user can change their theme
+	 * Verify the user can change their theme and the Theme text displays the correct theme
 	 */
 	@Test
 	private void themesTest() {
@@ -37,7 +37,7 @@ public class ThemesTest extends BasePage {
 	
 	/**
 	 * Assert true if the theme text in the UI displays the expected theme.
-	 * If if does not, wait for the text to change and try again until the
+	 * If if does not, wait for the text to change and try again until the check interval reaches max check intervals.
 	 */
 	private void checkIfCorrectThemeIsDisplayed(int counter) {
 		if (getText(accountPageCurrentTheme, id).equals(displayTheme(Themes.values()[counter]))) {
@@ -51,39 +51,5 @@ public class ThemesTest extends BasePage {
 				assertTrue(false);
 			}
 		}
-	}
-	
-	/**
-	 * Return the appropriate theme displayed to the user
-	 * 
-	 * @param theme The theme to check
-	 * @return      The appropriate theme to display to the user
-	 */
-	private String displayTheme(Themes theme) {
-		String displayedTheme = "";
-		switch(theme) {
-			case carSpace:
-				displayedTheme = "CarSpace";
-				break;
-			case light:
-				displayedTheme = "Light";
-				break;
-			case grey:
-				displayedTheme = "Grey";
-				break;
-			case dark:
-				displayedTheme = "Dark";
-				break;
-			case transparentLight:
-				displayedTheme = "Transparent Light";
-				break;
-			case transparentGrey:
-				displayedTheme = "Transparent Grey";
-				break;
-			case transparentDark:
-				displayedTheme = "Transparent Dark";
-				break;
-		}
-		return displayedTheme;
 	}
 }
