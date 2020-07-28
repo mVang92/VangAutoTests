@@ -4,7 +4,6 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import basePage.BasePage;
 
 public class CloseAuthModalBugFixTest extends BasePage {
@@ -35,7 +34,7 @@ public class CloseAuthModalBugFixTest extends BasePage {
 		assertEquals(actualMessage, invalidEmailErrorMessage);
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
