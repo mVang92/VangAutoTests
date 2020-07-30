@@ -266,7 +266,7 @@ public class BasePage {
 	 * @param locator    The type of locator to look for
 	 */
 	public void fillInputField(String inputField, int inputValue, String locator) {
-		fillInputField(inputField,  String.valueOf(inputValue), locator);
+		fillInputField(inputField, String.valueOf(inputValue), locator);
 	}
 
 	/**
