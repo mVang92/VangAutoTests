@@ -252,6 +252,9 @@ public class BasePage {
 					js.executeScript("arguments[0].scrollIntoView();", webElement);
 					webElement.click();
 				}
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 	}
 	
@@ -263,8 +266,7 @@ public class BasePage {
 	 * @param locator    The type of locator to look for
 	 */
 	public void fillInputField(String inputField, int inputValue, String locator) {
-		String inputValueToString = String.valueOf(inputValue);
-		fillInputField(inputField, inputValueToString, locator);
+		fillInputField(inputField,  String.valueOf(inputValue), locator);
 	}
 
 	/**
@@ -283,6 +285,9 @@ public class BasePage {
 			case "id":
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(inputField)));
 				webElement.sendKeys(inputValue);
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 	}
 
@@ -303,6 +308,9 @@ public class BasePage {
 			case "id":
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				text = webElement.getText();
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return text;
 	}
@@ -324,6 +332,9 @@ public class BasePage {
 			case "id":
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				value = webElement.getAttribute("value");
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return value;
 	}
@@ -388,6 +399,9 @@ public class BasePage {
 			case "id":
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(button)));
 				enabled = webElement.isEnabled();
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return enabled;
 	}
@@ -439,6 +453,9 @@ public class BasePage {
 				break;
 			case "id":
 				isDisplayed = driver.findElements(By.id(element)).size() > 0;
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return isDisplayed;
 	}
@@ -492,6 +509,9 @@ public class BasePage {
 			case "id":
 				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				src = image.getAttribute("src");
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return src;
 	}
@@ -550,6 +570,9 @@ public class BasePage {
 				break;
 			case transparentDark:
 				displayedTheme = "Transparent Dark";
+				break;
+			default:
+				throw new IllegalStateException(theme + " is not a supported theme.");	
 		}
 		return displayedTheme;
 	}
