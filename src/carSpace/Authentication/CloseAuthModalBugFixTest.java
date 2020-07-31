@@ -23,15 +23,13 @@ public class CloseAuthModalBugFixTest extends BasePage {
 		clickOnElement(signUpNavButton, id);
 		fillInputField(emailTextInput, email, id);
 		clickOnElement(signUpButton, id);
-		String actualMessage = getText(toastNotificationBody, xpath);
-		assertEquals(actualMessage, invalidPasswordErrorMessage);
+		assertEquals(getText(toastNotificationBody, xpath), invalidPasswordErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
 		clickOnElement(closeSignUpModal, id);
 		clickOnElement(signInNavButton, id);
 		fillInputField(passwordTextInput, password, id);
 		clickOnElement(signInButton, id);
-		actualMessage = getText(toastNotificationBody, xpath);
-		assertEquals(actualMessage, invalidEmailErrorMessage);
+		assertEquals(getText(toastNotificationBody, xpath), invalidEmailErrorMessage);
 	}
 
 	@AfterClass
