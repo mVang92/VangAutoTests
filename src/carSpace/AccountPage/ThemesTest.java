@@ -9,7 +9,7 @@ import resources.Themes;
 
 public class ThemesTest extends BasePage {
 	private int checkInterval = 0;
-	private final int MAX_CHECK_INTERVAL = 15;
+	private final int MAX_CHECK_INTERVAL = 20;
 
 	@BeforeClass
 	private void setup() {
@@ -23,10 +23,10 @@ public class ThemesTest extends BasePage {
 	private void themesTest() {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		for (int counter = 0; counter < Themes.values().length; counter++) {
-			selectThemeFromDropdown(Themes.values()[counter]);
+		for (Themes theme : Themes.values()) {
+			selectThemeFromDropdown(theme);
 			clickOnElement(applyThemeButton, id);
-			checkIfCorrectThemeIsDisplayed(counter);
+			checkIfCorrectThemeIsDisplayed(theme);
 		}
 	}
 	
@@ -37,16 +37,16 @@ public class ThemesTest extends BasePage {
 	
 	/**
 	 * Assert true if the theme text in the UI displays the expected theme.
-	 * If if does not, wait for the text to change and try again until the check interval reaches max check intervals.
+	 * If it does not, wait for the text to change and try again until the check interval reaches max check intervals.
 	 */
-	private void checkIfCorrectThemeIsDisplayed(int counter) {
-		if (getText(accountPageCurrentTheme, id).equals(displayTheme(Themes.values()[counter]))) {
+	private void checkIfCorrectThemeIsDisplayed(Themes theme) {
+		if (getText(accountPageCurrentTheme, id).equals(displayTheme(theme))) {
 			assertTrue(true);
 			checkInterval = 0;
 		} else {
 			if (checkInterval < MAX_CHECK_INTERVAL) {
 				checkInterval++;
-				checkIfCorrectThemeIsDisplayed(counter);
+				checkIfCorrectThemeIsDisplayed(theme);
 			} else {
 				assertTrue(false);
 			}
