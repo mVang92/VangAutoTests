@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import resources.Themes;
+import resources.Locators;
 
 public class BasePage {
 	WebDriver driver;
@@ -24,8 +25,8 @@ public class BasePage {
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
 	public static String chromeDriverPath = "C:\\Selenium\\selenium\\chromedriver\\chromedriver.exe";
 
-	public static String id = "id";
-	public static String xpath = "xpath";
+	public static Locators id = Locators.ID;
+	public static Locators xpath = Locators.XPATH;
 
 	public static String email = "sally@thing.com";
 	public static String password = "123123";
@@ -229,9 +230,9 @@ public class BasePage {
 	 * @param element The element to target
 	 * @param locator The type of locator to look for
 	 */
-	public void clickOnElement(String element, String locator) {
+	public void clickOnElement(String element, Locators locator) {
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				try {
 					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
 					js.executeScript("arguments[0].scrollIntoView();", webElement);
@@ -242,7 +243,7 @@ public class BasePage {
 					webElement.click();
 				}
 				break;
-			case "id":
+			case ID:
 				try {
 					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
 					js.executeScript("arguments[0].scrollIntoView();", webElement);
@@ -265,7 +266,7 @@ public class BasePage {
 	 * @param inputValue Input value to fill the input field
 	 * @param locator    The type of locator to look for
 	 */
-	public void fillInputField(String inputField, int inputValue, String locator) {
+	public void fillInputField(String inputField, int inputValue, Locators locator) {
 		fillInputField(inputField, String.valueOf(inputValue), locator);
 	}
 
@@ -276,13 +277,13 @@ public class BasePage {
 	 * @param inputValue Input value to fill the input field
 	 * @param locator    The type of locator to look for
 	 */
-	public void fillInputField(String inputField, String inputValue, String locator) {
+	public void fillInputField(String inputField, String inputValue, Locators locator) {
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(inputField)));
 				webElement.sendKeys(inputValue);
 				break;
-			case "id":
+			case ID:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(inputField)));
 				webElement.sendKeys(inputValue);
 				break;
@@ -298,14 +299,14 @@ public class BasePage {
 	 * @param locator The type of locator to look for
 	 * @return        Return the text
 	 */
-	public String getText(String element, String locator) {
+	public String getText(String element, Locators locator) {
 		String text = null;
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
 				text = webElement.getText();
 				break;
-			case "id":
+			case ID:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				text = webElement.getText();
 				break;
@@ -322,14 +323,14 @@ public class BasePage {
 	 * @param locator The type of locator to look for
 	 * @return        Return the value
 	 */
-	public String getValue(String element, String locator) {
+	public String getValue(String element, Locators locator) {
 		String value = null;
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
 				value = webElement.getAttribute("value");
 				break;
-			case "id":
+			case ID:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				value = webElement.getAttribute("value");
 				break;
@@ -389,14 +390,14 @@ public class BasePage {
 	 * @param locator The type of locator to look for
 	 * @return        Return true/false if the button is enabled/disabled
 	 */
-	public Boolean isButtonEnabled(String button, String locator) {
+	public Boolean isButtonEnabled(String button, Locators locator) {
 		Boolean enabled = false;
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(button)));
 				enabled = webElement.isEnabled();
 				break;
-			case "id":
+			case ID:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(button)));
 				enabled = webElement.isEnabled();
 				break;
@@ -445,13 +446,13 @@ public class BasePage {
 	 * @param locator The type of locator to look for
 	 * @return        Return true/false depending if the element is present or not
 	 */
-	public Boolean isElementDisplayed(String element, String locator) {
+	public Boolean isElementDisplayed(String element, Locators locator) {
 		Boolean isDisplayed = false;
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				isDisplayed = driver.findElements(By.xpath(element)).size() > 0;
 				break;
-			case "id":
+			case ID:
 				isDisplayed = driver.findElements(By.id(element)).size() > 0;
 				break;
 			default:
@@ -498,15 +499,15 @@ public class BasePage {
 	 * @param locator The type of locator to look for
 	 * @return        The requested date
 	 */
-	public String getImageSrcAttribute(String element, String locator) {
+	public String getImageSrcAttribute(String element, Locators locator) {
 		WebElement image;
 		String src = "";
 		switch (locator) {
-			case "xpath":
+			case XPATH:
 				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
 				src = image.getAttribute("src");
 				break;
-			case "id":
+			case ID:
 				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
 				src = image.getAttribute("src");
 				break;
