@@ -55,9 +55,7 @@ public class AddServiceLogPositiveTest extends BasePage {
 			day = formattedDate.substring(4, 5);
 		}
 		date = month + "/" + day + "/" + yearToInt;
-		String expectedMessage = addLogSuccessMessage(service, miles, date);
-		String actualMessage = getText(toastNotificationBody, xpath);
-		assertEquals(actualMessage, expectedMessage);
+		assertEquals(getText(toastNotificationBody, xpath), addLogSuccessMessage(service, miles, date));
 	}
 	
 	@AfterClass
