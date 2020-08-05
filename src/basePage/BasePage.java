@@ -164,7 +164,9 @@ public class BasePage {
 	/**
 	 * Run Portfolio test
 	 */
-	public void usePortfolioUrl() {
+	public void doPortfolioTest() {
+		setProperty();
+		maximizeWindow();
 		driver.get(mVangPortfolioUrl);
 	}
 
