@@ -24,7 +24,7 @@ public class NavigationButtonTest extends BasePage {
 		clickOnElement(backToTopButton, id);
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
