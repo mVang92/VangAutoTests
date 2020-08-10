@@ -350,6 +350,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void addVehicle(int year, String make, String model) {
+		clickOnElement(applicationName, id);
 		fillInputField(vehicleYearInput, year, id);
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
