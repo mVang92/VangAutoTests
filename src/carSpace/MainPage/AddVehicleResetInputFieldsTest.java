@@ -29,7 +29,7 @@ public class AddVehicleResetInputFieldsTest extends BasePage {
 		assertEquals(getValue(vehicleModelInput, id), "");
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}

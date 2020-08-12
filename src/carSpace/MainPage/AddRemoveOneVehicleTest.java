@@ -5,15 +5,39 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import java.util.Random;
 import basePage.BasePage;
 
 public class AddRemoveOneVehicleTest extends BasePage {
+	Random randon = new Random(); 
 	private String vehicleMake = "Toyota";
-	private String vehicleModel = "Highlander";
-	private int vehicleYear = 2003;
 	private int actualVehicleCount;
 	private int vehicleCount;
+	private String vehicleModels [] = {
+			"Camry",
+			"Corolla",
+			"Hilux",
+			"Kluger",
+			"Matrix",
+			"Rav4",
+			"Tacoma",
+			"Tundra"
+	};
+	private int vehicleYears [] = {
+			2000,
+			2001,
+			2002,
+			2003,
+			2004,
+			2005,
+			2006,
+			2007,
+			2008,
+			2009,
+			2010
+	};
+	private int vehicleYear = vehicleYears[randon.nextInt(vehicleYears.length)];
+	private String vehicleModel = vehicleModels[randon.nextInt(vehicleModels.length)];
 
 	@BeforeClass
 	private void setup() {
