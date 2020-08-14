@@ -18,6 +18,7 @@ public class AddRemoveOneVehicleTest extends BasePage {
 			"Corolla",
 			"Hilux",
 			"Kluger",
+			"Land Cruiser",
 			"Matrix",
 			"Rav4",
 			"Tacoma",
@@ -87,7 +88,7 @@ public class AddRemoveOneVehicleTest extends BasePage {
 		assertEquals(actualVehicleCount, vehicleCount);
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
