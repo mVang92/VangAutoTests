@@ -112,6 +112,7 @@ public class BasePage {
 	public static String themeSelectionDropdown = "themeSelectionDropdown";
 	public static String applyThemeButton = "applyThemeButton";
 	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
+	public static String confirmSaveEditVehicleNameButton = "confirmSaveEditVehicleNameButton";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -283,10 +284,12 @@ public class BasePage {
 		switch (locator) {
 			case XPATH:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(inputField)));
+				webElement.clear();
 				webElement.sendKeys(inputValue);
 				break;
 			case ID:
 				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(inputField)));
+				webElement.clear();
 				webElement.sendKeys(inputValue);
 				break;
 			default:
