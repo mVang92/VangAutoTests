@@ -58,8 +58,7 @@ public class AddRemoveOneVehicleTest extends BasePage {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
-		String expectedMessage = "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".";
-		assertEquals(getText(toastNotificationBody, xpath), expectedMessage);
+		assertEquals(getText(toastNotificationBody, xpath), "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".");
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
