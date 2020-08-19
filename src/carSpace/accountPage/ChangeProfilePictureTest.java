@@ -1,4 +1,4 @@
-package carSpace.AccountPage;
+package carSpace.accountPage;
 
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;

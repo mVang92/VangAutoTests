@@ -1,4 +1,4 @@
-package carSpace.AccountPage;
+package carSpace.accountPage;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

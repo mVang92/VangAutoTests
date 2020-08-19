@@ -1,4 +1,4 @@
-package carSpace.MainPage;
+package carSpace.mainPage;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;

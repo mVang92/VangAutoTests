@@ -1,4 +1,4 @@
-package carSpace.MainPage;
+package carSpace.mainPage;
 
 import static org.testng.Assert.assertEquals;
 import java.util.Calendar;
