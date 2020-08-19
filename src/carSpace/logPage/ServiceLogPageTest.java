@@ -1,4 +1,4 @@
-package carSpace.LogPage;
+package carSpace.logPage;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertFalse;
