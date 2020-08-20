@@ -131,7 +131,6 @@ public class BasePage {
 	public static String forumFooterLink = "//a[contains(@href, '/forum')]";
 	public static String releaseNotesFooterLink = "//a[contains(@href, '/updates')]";
 	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
-	public static String forumPageHeader = "//h4[contains(text(), \"Forum\")]";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -598,8 +597,13 @@ public class BasePage {
 		return displayedTheme;
 	}
 	
+	/**
+	 * Get the current URL
+	 * 
+	 * @return The URL
+	 */
 	public String getCurrentUrl() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='Msgpanel']/div/div/img")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated((By.id("loadingAnimation"))));
 		return driver.getCurrentUrl();
 	}
 }
