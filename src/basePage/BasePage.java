@@ -113,6 +113,7 @@ public class BasePage {
 	public static String applyThemeButton = "applyThemeButton";
 	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
 	public static String confirmSaveEditVehicleNameButton = "confirmSaveEditVehicleNameButton";
+	public static String startNewThreadButton = "startNewThreadButton";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -127,6 +128,10 @@ public class BasePage {
 	public static String noButton = "//button[contains(text(),'No')]";
 	public static String editActionButton = "//button[@class='editActionButton']";
 	public static String topButton = "//button[@class='backToTopButton']";
+	public static String forumFooterLink = "//a[contains(@href, '/forum')]";
+	public static String releaseNotesFooterLink = "//a[contains(@href, '/updates')]";
+	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
+	public static String forumPageHeader = "//h4[contains(text(), \"Forum\")]";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -154,6 +159,15 @@ public class BasePage {
 		useCarSpaceUrl();
 		signIn();
 	}
+	
+	/**
+	 * Open CarSpace
+	 */
+	public void doCarSpaceTest() {
+		setProperty();
+		maximizeWindow();
+		useCarSpaceUrl();
+	}
 
 	/**
 	 * Close the browser window
@@ -163,7 +177,7 @@ public class BasePage {
 	}
 
 	/**
-	 * Run Portfolio test
+	 * Open Portfolio
 	 */
 	public void doPortfolioTest() {
 		setProperty();
@@ -582,5 +596,10 @@ public class BasePage {
 				throw new IllegalStateException(theme + " is not a supported theme.");	
 		}
 		return displayedTheme;
+	}
+	
+	public String getCurrentUrl() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='Msgpanel']/div/div/img")));
+		return driver.getCurrentUrl();
 	}
 }
