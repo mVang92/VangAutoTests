@@ -65,13 +65,15 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 		String model,
 		String input,
 		String inputField		
-	){
+	) {
 		selectVehicle(Integer.parseInt(year), make, model);
 		assertEquals(getText(vehicleNameHeader, id), year + " " + make + " " + model);
 		if (input != null) {
 			clickOnElement(editVehicleNameButton, id);
 			fillInputField(inputField, input, id);
 			clickOnElement(confirmSaveEditVehicleNameButton, id);
+			assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
+			clickOnElement(toastNotificationSuccessCloseButton, xpath);
 			clickOnElement(applicationName, id);
 		}
 	}

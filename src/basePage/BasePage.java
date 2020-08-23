@@ -50,6 +50,7 @@ public class BasePage {
 	public static String expectedUpdateProfilePictureSuccessModalTitle = "Profile picture updated!";
 	public static String expectedUpdateBackgroundPictureModalTitle = "Use this image as your background picture?";
 	public static String expectedUpdateProfilePictureModalTitle = "Use this image as your profile picture?";
+	public static String expectedEditVehicleInfoSuccessMessage = "Vehicle name updated successfully.";
 
 	public static String applicationName = "applicationName";
 	public static String signInNavButton = "signInNavButton";
