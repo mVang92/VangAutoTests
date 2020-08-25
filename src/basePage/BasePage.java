@@ -132,6 +132,7 @@ public class BasePage {
 	public static String forumFooterLink = "//a[contains(@href, '/forum')]";
 	public static String releaseNotesFooterLink = "//a[contains(@href, '/updates')]";
 	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
+	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -231,7 +232,7 @@ public class BasePage {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		driver = new ChromeDriver();
 		js = (JavascriptExecutor) driver;
-		wait = new WebDriverWait(driver, 35);
+		wait = new WebDriverWait(driver, 5);
 	}
 
 	/**
