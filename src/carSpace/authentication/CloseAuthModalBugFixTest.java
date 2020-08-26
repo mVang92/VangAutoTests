@@ -10,9 +10,7 @@ public class CloseAuthModalBugFixTest extends BasePage {
 
 	@BeforeClass
 	private void setup() {
-		setProperty();
-		maximizeWindow();
-		useCarSpaceUrl();
+		doCarSpaceTest();
 	}
 
 	/**
