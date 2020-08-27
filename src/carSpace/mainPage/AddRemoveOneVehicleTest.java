@@ -91,5 +91,4 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-	
 }

@@ -33,5 +33,4 @@ public class AddVehicleResetInputFieldsTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-	
 }

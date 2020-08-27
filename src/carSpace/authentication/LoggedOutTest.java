@@ -57,5 +57,4 @@ public class LoggedOutTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-
 }
