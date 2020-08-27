@@ -93,5 +93,4 @@ public class AddVehicleBadInputTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-	
 }

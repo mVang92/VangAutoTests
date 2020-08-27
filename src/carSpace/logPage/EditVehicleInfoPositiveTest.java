@@ -83,5 +83,4 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 		deleteVehicle(Integer.parseInt(newYear), newMake, newModel);
 		close();
 	}
-
 }
