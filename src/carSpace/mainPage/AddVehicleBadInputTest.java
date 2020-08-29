@@ -35,8 +35,7 @@ public class AddVehicleBadInputTest extends BasePage {
 	 */
 	@Test(priority = 1)
 	private void addVehicleNanYearInputTest() {
-		String nanVehicleYear = "nan";
-		fillInputField(vehicleYearInput, nanVehicleYear, id);
+		fillInputField(vehicleYearInput, "nan", id);
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
@@ -74,8 +73,7 @@ public class AddVehicleBadInputTest extends BasePage {
 	 */
 	@Test(priority = 4)
 	private void addVehicleThreeYearsInFutureTest() {
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		int futureYear = year + 3;
+		int futureYear = Calendar.getInstance().get(Calendar.YEAR) + 3;
 		fillInputField(vehicleYearInput, futureYear, id);
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
