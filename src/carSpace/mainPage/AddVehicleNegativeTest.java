@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import basePage.BasePage;
 
-public class AddVehicleBadInputTest extends BasePage {
+public class AddVehicleNegativeTest extends BasePage {
 	String vehicleMake = "Toyota";
 	String vehicleModel = "Highlander";
 	
