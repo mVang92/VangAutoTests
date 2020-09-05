@@ -39,6 +39,7 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	};
 	private int vehicleYear = vehicleYears[randon.nextInt(vehicleYears.length)];
 	private String vehicleModel = vehicleModels[randon.nextInt(vehicleModels.length)];
+	private String vehicle = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 
 	@BeforeClass
 	private void setup() {
@@ -60,6 +61,8 @@ public class AddRemoveOneVehicleTest extends BasePage {
 		clickOnElement(addVehicleButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".");
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
+		assertEquals(getText(vehicleNameHeader, id), vehicle);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
@@ -72,9 +75,7 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	 */
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() {
-		String vehicle = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
-		assertEquals(getText(vehicleNameHeader, id), vehicle);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertTrue(getText(deleteVehicleModalTitle, id).contains(vehicle));
