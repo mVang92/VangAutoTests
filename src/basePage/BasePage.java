@@ -53,11 +53,13 @@ public class BasePage {
 	public static String expectedUpdateBackgroundPictureModalTitle = "Use this image as your background picture?";
 	public static String expectedUpdateProfilePictureModalTitle = "Use this image as your profile picture?";
 	public static String expectedEditVehicleInfoSuccessMessage = "Vehicle name updated successfully.";
+	public static String addThreadMissingFieldsErrorMessage = "Title and description are required.";
 
 	public static String applicationName = "applicationName";
 	public static String signInNavButton = "signInNavButton";
 	public static String signUpNavButton = "signUpNavButton";
 	public static String accountNavButton = "accountNavButton";
+	public static String forumNavButton = "forumNavButton";
 	public static String menuDropdownButton = "menuDropdownButton";
 	public static String emailTextInput = "emailInput";
 	public static String passwordTextInput = "passwordInput";
@@ -117,6 +119,9 @@ public class BasePage {
 	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
 	public static String confirmSaveEditVehicleNameButton = "confirmSaveEditVehicleNameButton";
 	public static String startNewThreadButton = "startNewThreadButton";
+	public static String submitNewThreadButton = "submitNewThreadButton";
+	public static String newThreadTitleInput = "newThreadTitleInput";
+	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
