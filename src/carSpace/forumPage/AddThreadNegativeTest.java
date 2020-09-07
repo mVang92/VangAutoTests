@@ -39,5 +39,4 @@ public class AddThreadNegativeTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-
 }
