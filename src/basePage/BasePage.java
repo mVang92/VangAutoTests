@@ -111,6 +111,7 @@ public class BasePage {
 	public static String resetNewDisplayNameButton = "resetNewDisplayNameButton";
 	public static String profilePicture = "profilePicture";
 	public static String profilePicturePreview = "profilePicturePreview";
+	public static String backgroundPicturePreview = "backgroundPicture";
 	public static String confirmUpdatePictureButton = "confirmUpdatePictureButton";
 	public static String closeUpdateProfilePictureSuccessModalButton = "closeUpdateProfilePictureSuccessModalButton";
 	public static String mainPageProfilePicture = "mainPageProfilePicture";
@@ -123,6 +124,7 @@ public class BasePage {
 	public static String newThreadTitleInput = "newThreadTitleInput";
 	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
 	
+	public static String body = "//body";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
@@ -525,7 +527,7 @@ public class BasePage {
 	 * 
 	 * @param element The element to look for
 	 * @param locator The type of locator to look for
-	 * @return        The requested date
+	 * @return        The image src
 	 */
 	public String getImageSrcAttribute(String element, Locators locator) {
 		WebElement image;
@@ -558,6 +560,20 @@ public class BasePage {
 		clickOnElement(submitNewProfilePictureButton, id);
 		clickOnElement(confirmUpdatePictureButton, id);
 		clickOnElement(closeUpdateProfilePictureSuccessModalButton, id);
+	}
+	
+	/**
+	 * Change the user background picture
+	 * 
+	 * @param url The image URL
+	 */
+	public void changeBackgroundPicture(String url) {
+		clickOnElement(applicationName, id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		fillInputField(newBackgroundPictureInput, url, id);
+		clickOnElement(submitNewBackgroundPictureButton, id);
+		clickOnElement(confirmUpdatePictureButton, id);
 	}
 	
 	/**
@@ -614,5 +630,30 @@ public class BasePage {
 	public String getCurrentUrl() {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated((By.id("loadingAnimation"))));
 		return driver.getCurrentUrl();
+	}
+	
+	/**
+	 * Get the style attribute
+	 * 
+	 * @param element The element to look for
+	 * @param locator The type of locator to look for
+	 * @return        The style
+	 */
+	public String getStyleAttribute(String element, Locators locator) {
+		WebElement tag;
+		String style = "";
+		switch (locator) {
+			case XPATH:
+				tag = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+				style = tag.getAttribute("style");
+				break;
+			case ID:
+				tag = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
+				style = tag.getAttribute("style");
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
+		}
+		return style;
 	}
 }
