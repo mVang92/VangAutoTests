@@ -124,7 +124,6 @@ public class BasePage {
 	public static String newThreadTitleInput = "newThreadTitleInput";
 	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
 	
-	public static String body = "//body";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
@@ -630,30 +629,5 @@ public class BasePage {
 	public String getCurrentUrl() {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated((By.id("loadingAnimation"))));
 		return driver.getCurrentUrl();
-	}
-	
-	/**
-	 * Get the style attribute
-	 * 
-	 * @param element The element to look for
-	 * @param locator The type of locator to look for
-	 * @return        The style
-	 */
-	public String getStyleAttribute(String element, Locators locator) {
-		WebElement tag;
-		String style = "";
-		switch (locator) {
-			case XPATH:
-				tag = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-				style = tag.getAttribute("style");
-				break;
-			case ID:
-				tag = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
-				style = tag.getAttribute("style");
-				break;
-			default:
-				throw new IllegalStateException(locator + " is not supported.");
-		}
-		return style;
 	}
 }

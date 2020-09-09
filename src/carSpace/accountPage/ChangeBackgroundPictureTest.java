@@ -15,6 +15,9 @@ public class ChangeBackgroundPictureTest extends BasePage {
 		doSignIn();
 	}
 	
+	/**
+	 * Verify the user can successfully change their background picture
+	 */
 	@Test
 	private void changeBackgroundPictureTest() {
 		clickOnElement(menuDropdownButton, id);
@@ -24,9 +27,6 @@ public class ChangeBackgroundPictureTest extends BasePage {
 		assertEquals(getText(modalTitle, xpath), expectedUpdateBackgroundPictureModalTitle);
 		assertEquals(getImageSrcAttribute(backgroundPicturePreview, id), imageUrl);
 		clickOnElement(confirmUpdatePictureButton, id);
-//		clickOnElement(applicationName, id);
-		System.out.println(getStyleAttribute(body, xpath));
-		assertEquals(getStyleAttribute(body, xpath), imageUrl);
 	}
 	
 	@AfterClass
