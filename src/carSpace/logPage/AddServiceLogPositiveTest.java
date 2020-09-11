@@ -1,6 +1,8 @@
 package carSpace.logPage;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.testng.annotations.AfterClass;
@@ -56,6 +58,7 @@ public class AddServiceLogPositiveTest extends BasePage {
 		}
 		date = month + "/" + day + "/" + yearToInt;
 		assertEquals(getText(toastNotificationBody, xpath), addLogSuccessMessage(service, miles, date));
+		assertTrue(isElementDisplayed(serviceLog, xpath));
 	}
 	
 	@AfterClass
