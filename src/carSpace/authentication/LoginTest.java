@@ -9,10 +9,10 @@ import basePage.BasePage;
 public class LoginTest extends BasePage {
 
 	/**
-	 * Verify the sign-in and sign-out capabilities
+	 * Verify the user can sign-in and sign-out, and the email displays correctly
 	 */
 	@Test
-	private void signInTest() {
+	private void loginTest() {
 		doSignIn();
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
