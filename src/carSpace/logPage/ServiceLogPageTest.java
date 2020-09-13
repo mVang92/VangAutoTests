@@ -24,7 +24,7 @@ public class ServiceLogPageTest extends BasePage {
 	 * based on the number of service logs
 	 */
 	@Test
-	private void buttonsVerificationTest() {
+	private void serviceLogPageTest() {
 		int miles = 123456;
 		String service = "Transmission Fluid Change";
 		selectVehicle(year, make, model);

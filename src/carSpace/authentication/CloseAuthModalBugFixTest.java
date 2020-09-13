@@ -14,7 +14,7 @@ public class CloseAuthModalBugFixTest extends BasePage {
 	}
 
 	/**
-	 * Verify the email and password states reset after attempting to SignUp with bad credentials
+	 * Verify the email and password states reset after attempting to sign-up with bad credentials
 	 */
 	@Test
 	private void verifyReactStatesResetAfterClosingSignUpModal() {
