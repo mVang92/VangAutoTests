@@ -87,7 +87,7 @@ public class AddVehicleNegativeTest extends BasePage {
 		clickOnElement(resetVehicleInputFieldsButton, id);
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	private void teardown() {
 		close();
 	}
