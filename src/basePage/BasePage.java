@@ -123,6 +123,7 @@ public class BasePage {
 	public static String submitNewThreadButton = "submitNewThreadButton";
 	public static String newThreadTitleInput = "newThreadTitleInput";
 	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
+	public static String userRole = "userRole";
 	
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
