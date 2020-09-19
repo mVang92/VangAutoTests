@@ -66,7 +66,7 @@ public class AddServiceLogNegativeTest extends BasePage {
 		fillInputField(serviceLogMileageInput, invalidMileage, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
-		assertTrue(getText(addLogErrorModal, xpath).contains(invalidMileage + " is not a valid input for Mileage."));
+		assertTrue(getText(addLogErrorModal, xpath).contains(String.format(getProp("invalidMileageErrorMessage"), invalidMileage)));
 	}
 	
 	@AfterMethod

@@ -84,7 +84,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(getProp("addVehicleErrorModal"), xpath), addVehicleInvalidYearMessage);
 		clickOnElement(getProp("addVehicleErrorModalOkayButton"), xpath);
-		clickOnElement(cancelButton, xpath);
+		clickOnElement(getProp("cancelButton"), xpath);
 	}
 	
 	/**

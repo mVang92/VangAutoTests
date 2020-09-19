@@ -25,7 +25,7 @@ public class ChangeProfilePictureTest extends BasePage {
 		clickOnElement(accountNavButton, id);
 		fillInputField(getProp("newProfilePictureInput"), imageUrl, id);
 		clickOnElement(getProp("submitNewProfilePictureButton"), id);
-		assertEquals(getText(modalTitle, xpath), expectedUpdateProfilePictureModalTitle);
+		assertEquals(getText(getProp("modalTitle"), xpath), expectedUpdateProfilePictureModalTitle);
 		assertEquals(getImageSrcAttribute(getProp("profilePicturePreview"), id), imageUrl);
 		clickOnElement(getProp("confirmUpdatePictureButton"), id);
 		clickOnElement(getProp("closeUpdateProfilePictureSuccessModalButton"), id);

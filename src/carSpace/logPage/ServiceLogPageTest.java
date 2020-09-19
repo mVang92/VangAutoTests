@@ -32,6 +32,8 @@ public class ServiceLogPageTest extends BasePage {
 		String addLogSortLogsButton = getProp("addLogSortLogsButton");
 		String printPageButton = getProp("printPageButton");
 		String printPageViaDeleteButton = getProp("printPageViaDeleteButton");
+		String noButton = getProp("noButton");
+		String topButton = getProp("topButton");
 		selectVehicle(year, make, model);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertFalse(isButtonEnabled(printPageButton, id));

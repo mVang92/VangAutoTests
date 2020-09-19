@@ -58,7 +58,7 @@ public class AddServiceLogPositiveTest extends BasePage {
 		}
 		date = month + "/" + day + "/" + yearToInt;
 		assertEquals(getText(toastNotificationBody, xpath), addLogSuccessMessage(service, miles, date));
-		assertTrue(isElementDisplayed(serviceLog, xpath));
+		assertTrue(isElementDisplayed(getProp("serviceLog"), xpath));
 	}
 	
 	@AfterClass
