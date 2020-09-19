@@ -40,7 +40,7 @@ public class DisplayNameVerificationTest extends BasePage {
 		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
 		fillInputField(getProp("newDisplayNameInput"), testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		assertEquals(getText(modalTitle, xpath), String.format(expectedModalTitle, testUserDisplayName));
+		assertEquals(getText(getProp("modalTitle"), xpath), String.format(expectedModalTitle, testUserDisplayName));
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		assertEquals(getText(displayName, id), testUserDisplayName);

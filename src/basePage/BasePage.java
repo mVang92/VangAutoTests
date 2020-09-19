@@ -30,7 +30,7 @@ public class BasePage {
 
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
-	public static String chromeDriverPath = "C:\\Selenium\\selenium\\chromedriver\\chromedriver.exe";
+	public static String chromeDriverPath = "selenium/selenium/chromedriver/chromedriver.exe";
 	public static String propertiesFile;
 
 	public static Locators id = Locators.ID;
@@ -55,18 +55,6 @@ public class BasePage {
 	public static String expectedUpdateProfilePictureModalTitle = "Use this image as your profile picture?";
 	public static String expectedEditVehicleInfoSuccessMessage = "Vehicle name updated successfully.";
 	public static String addThreadMissingFieldsErrorMessage = "Title and description are required.";
-	
-	public static String modalTitle = "//*[@class='row modal-header']";
-	public static String backHomeBtn = "//*[@class='backHomeBtn']";
-	public static String cancelButton = "//button[contains(text(),'Cancel')]";
-	public static String noButton = "//button[contains(text(),'No')]";
-	public static String editActionButton = "//button[@class='editActionButton']";
-	public static String topButton = "//button[@class='backToTopButton']";
-	public static String forumFooterLink = "//a[contains(@href, '/forum')]";
-	public static String releaseNotesFooterLink = "//a[contains(@href, '/updates')]";
-	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
-	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
-	public static String serviceLog = "//div[@class='serviceLog']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -368,7 +356,7 @@ public class BasePage {
 	}
 	
 	/**
-	 * Check the toast notification when adding a service log
+	 * The expected text in the toast notification after successfully adding a service log
 	 * 
 	 * @param service       The type of service recorded
 	 * @param miles         The mileage to record
@@ -376,7 +364,7 @@ public class BasePage {
 	 * @return              Return the expected toast notification message
 	 */
 	public String addLogSuccessMessage(String service, int miles, String formattedDate) {
-		return "Service Logged: " + service + " at " + miles + " miles on " + formattedDate + ".";
+		return String.format(getProp("addLogSuccessMessage"), service, miles, formattedDate);
 	}
 	
 	/**
@@ -465,7 +453,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void selectVehicle(int year, String make, String model) {
-		WebElement vehicle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@title='" + year + " " + make + " " + model + "']")));
+		WebElement vehicle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(getProp("vehicle"), year, make, model))));
 		try {
 			vehicle.click();
 		} catch (Exception e) {

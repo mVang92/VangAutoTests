@@ -67,6 +67,7 @@ public class ResetInputFieldsTest extends BasePage {
 		String inputValue,
 		String closeModalButton
 	) {
+		String modalTitle = getProp("modalTitle");
 		assertEquals(getValue(inputField, id), "");
 		fillInputField(inputField, inputValue, id);
 		clickOnElement(submitButton, id);

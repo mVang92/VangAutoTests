@@ -26,7 +26,7 @@ public class ChangeBackgroundPictureTest extends BasePage {
 		clickOnElement(getProp("accountNavButton"), id);
 		fillInputField(getProp("newBackgroundPictureInput"), imageUrl, id);
 		clickOnElement(getProp("submitNewBackgroundPictureButton"), id);
-		assertEquals(getText(modalTitle, xpath), expectedUpdateBackgroundPictureModalTitle);
+		assertEquals(getText(getProp("modalTitle"), xpath), expectedUpdateBackgroundPictureModalTitle);
 		assertEquals(getImageSrcAttribute(getProp("backgroundPicturePreview"), id), imageUrl);
 		clickOnElement(getProp("confirmUpdatePictureButton"), id);
 	}

@@ -58,6 +58,7 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	 */
 	@Test(priority = 0)
 	private void addOneVehicleTest() {
+		String backHomeBtn = getProp("backHomeBtn");
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		vehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
