@@ -276,19 +276,19 @@ public class BasePage {
 	 */
 	public Properties readPropertiesFile(String fileName) throws IOException {
 		FileInputStream fileInputStream = null;
-	    Properties prop = null;
-	      try {
-	    	  fileInputStream = new FileInputStream(fileName);
-	         prop = new Properties();
-	         prop.load(fileInputStream);
-	      } catch(FileNotFoundException fnfe) {
-	         fnfe.printStackTrace();
-	      } catch(IOException ioe) {
-	         ioe.printStackTrace();
-	      } finally {
-	    	  fileInputStream.close();
-	      }
-	      return prop;
+		Properties prop = null;
+		try {
+			fileInputStream = new FileInputStream(fileName);
+			prop = new Properties();
+			prop.load(fileInputStream);
+		} catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch(IOException ioe) {
+			ioe.printStackTrace();
+		} finally {
+			fileInputStream.close();
+		}
+		return prop;
 	}
 
 	/**
