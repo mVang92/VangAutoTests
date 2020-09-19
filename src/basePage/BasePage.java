@@ -31,6 +31,7 @@ public class BasePage {
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
 	public static String chromeDriverPath = "C:\\Selenium\\selenium\\chromedriver\\chromedriver.exe";
+	public static String propertiesFile;
 
 	public static Locators id = Locators.ID;
 	public static Locators xpath = Locators.XPATH;
@@ -54,81 +55,7 @@ public class BasePage {
 	public static String expectedUpdateProfilePictureModalTitle = "Use this image as your profile picture?";
 	public static String expectedEditVehicleInfoSuccessMessage = "Vehicle name updated successfully.";
 	public static String addThreadMissingFieldsErrorMessage = "Title and description are required.";
-
-//	public static String accountNavButton = "accountNavButton";
-	public static String forumNavButton = "forumNavButton";
-	public static String menuDropdownButton = "menuDropdownButton";
-	public static String emailTextInput = "emailInput";
-	public static String passwordTextInput = "passwordInput";
-	public static String signInButton = "signInButton";
-	public static String signOutButton = "signOutNavButton";
-	public static String signUpButton = "signUpButton";
-	public static String confirmSignOut = "doSignOutButton";
-	public static String closeSignUpModal = "closeSignUpModal";
-	public static String vehicleNameHeader = "vehicleNameHeader";
-	public static String vehicleYearInput = "vehicleYearInput";
-	public static String vehicleMakeInput = "vehicleMakeInput";
-	public static String vehicleModelInput = "vehicleModelInput";
-	public static String addVehicleButton = "addVehicleButton";
-	public static String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
-	public static String accountPageUserEmail = "accountPageUserEmail";
-	public static String vehicleCountForUser = "vehicleCountForUser";
-	public static String accountPageVehicleCount = "accountPageVehicleCount";
-	public static String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
-	public static String backToTopButton = "topImg";
-	public static String portfolioCommentInput= "commentInput";
-	public static String portfolioResetButton = "resetButton";
-	public static String serviceLogDateInput = "serviceLogDateInput";
-	public static String serviceLogMileageInput = "serviceLogMileageInput";
-	public static String serviceLogServiceInput = "serviceLogServiceInput";
-	public static String serviceLogCommentsInput = "serviceLogCommentsInput";
-	public static String addLogResetInputFieldsButton = "addLogResetInputFieldsButton";
-	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
-	public static String addServiceLogButton = "addServiceLogButton";
-	public static String editVehicleNameButton = "editVehicleNameButton";
-	public static String submitNewBackgroundPictureButton = "submitNewBackgroundPictureButton";
-	public static String submitNewProfilePictureButton = "submitNewProfilePictureButton";
-	public static String submitNewDisplayNameButton = "submitNewDisplayNameButton";
-	public static String submitNewPasswordButton = "submitNewPasswordButton";
-	public static String closeUpdatePictureModalButton = "closeUpdatePictureModalButton";
-	public static String closeUpdateDisplayNameModalButton = "closeUpdateDisplayNameModalButton";
-	public static String confirmUpdateDisplayNameButton = "confirmUpdateDisplayNameButton";
-	public static String closeUpdateDisplayNameSuccessModalButton = "closeUpdateDisplayNameSuccessModalButton";
-	public static String newDisplayNameInput = "newDisplayNameInput";
-	public static String displayName = "displayName";
-	public static String deleteVehicleModalTitle = "deleteVehicleModalTitle";
-	public static String accountPageUserDisplayName = "accountPageUserDisplayName";
-	public static String addLogSortLogsButton = "addLogSortLogsButton";
-	public static String printPageButton = "printPageButton";
-	public static String printPageViaDeleteButton = "printPageViaDeleteButton";
-	public static String newBackgroundPictureInput = "newBackgroundPictureInput";
-	public static String newProfilePictureInput = "newProfilePictureInput";
-	public static String resetNewBackgroundPictureButton = "resetNewBackgroundPictureButton";
-	public static String resetNewProfilePictureButton = "resetNewProfilePictureButton";
-	public static String resetNewDisplayNameButton = "resetNewDisplayNameButton";
-	public static String profilePicture = "profilePicture";
-	public static String profilePicturePreview = "profilePicturePreview";
-	public static String backgroundPicturePreview = "backgroundPicture";
-	public static String confirmUpdatePictureButton = "confirmUpdatePictureButton";
-	public static String closeUpdateProfilePictureSuccessModalButton = "closeUpdateProfilePictureSuccessModalButton";
-	public static String mainPageProfilePicture = "mainPageProfilePicture";
-	public static String themeSelectionDropdown = "themeSelectionDropdown";
-	public static String applyThemeButton = "applyThemeButton";
-	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
-	public static String confirmSaveEditVehicleNameButton = "confirmSaveEditVehicleNameButton";
-	public static String startNewThreadButton = "startNewThreadButton";
-	public static String submitNewThreadButton = "submitNewThreadButton";
-	public static String newThreadTitleInput = "newThreadTitleInput";
-	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
-	public static String userRole = "userRole";
 	
-	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
-	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
-	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
-	public static String addLogErrorModalOkayButton = "//button[@title='Okay']";
-	public static String aboutMeNavButton = "//a[@href='#aboutMe']";
-	public static String myProjectsNavButton = "//a[@href='#portfolio']";
-	public static String contactNavButton = "//a[@href='#contact']";
 	public static String modalTitle = "//*[@class='row modal-header']";
 	public static String backHomeBtn = "//*[@class='backHomeBtn']";
 	public static String cancelButton = "//button[contains(text(),'Cancel')]";
@@ -154,7 +81,7 @@ public class BasePage {
 	public void doSignIn(String specificEmail, String specificPassword) {
 		setProperty();
 		maximizeWindow();
-		useCarSpaceUrl();
+		useCarSpace();
 		signIn(specificEmail, specificPassword);
 	}
 
@@ -164,7 +91,7 @@ public class BasePage {
 	public void doSignIn() {
 		setProperty();
 		maximizeWindow();
-		useCarSpaceUrl();
+		useCarSpace();
 		signIn();
 	}
 	
@@ -174,7 +101,7 @@ public class BasePage {
 	public void doCarSpaceTest() {
 		setProperty();
 		maximizeWindow();
-		useCarSpaceUrl();
+		useCarSpace();
 	}
 
 	/**
@@ -191,22 +118,24 @@ public class BasePage {
 		setProperty();
 		maximizeWindow();
 		driver.get(mVangPortfolioUrl);
+		propertiesFile = "src/resources/config/portfolio.properties";
 	}
 
 	/**
 	 * Run CarSpace test
 	 */
-	public void useCarSpaceUrl() {
+	public void useCarSpace() {
 		driver.get(carSpaceUrl);
+		propertiesFile = "src/resources/config/carSpace.properties";
 	}
 
 	/**
 	 * Sign the user out
 	 */
 	public void doSignOut() {
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(signOutButton, id);
-		clickOnElement(confirmSignOut, id);
+		clickOnElement(getProp("menuDropdownButton"), id);
+		clickOnElement(getProp("signOutNavButton"), id);
+		clickOnElement(getProp("doSignOutButton"), id);
 	}
 
 	/**
@@ -217,9 +146,9 @@ public class BasePage {
 	 */
 	public void signIn(String specificEmail, String specificPassword) {
 		clickOnElement(getProp("signInNavButton"), id);
-		fillInputField(emailTextInput, specificEmail, id);
-		fillInputField(passwordTextInput, specificPassword, id);
-		clickOnElement(signInButton, id);
+		fillInputField(getProp("emailInput"), specificEmail, id);
+		fillInputField(getProp("passwordInput"), specificPassword, id);
+		clickOnElement(getProp("signInButton"), id);
 	}
 
 	/**
@@ -227,9 +156,9 @@ public class BasePage {
 	 */
 	private void signIn() {
 		clickOnElement(getProp("signInNavButton"), id);
-		fillInputField(emailTextInput, getProp("testUser"), id);
-		fillInputField(passwordTextInput, getProp("testUserPassword"), id);
-		clickOnElement(signInButton, id);
+		fillInputField(getProp("emailInput"), getProp("testUser"), id);
+		fillInputField(getProp("passwordInput"), getProp("testUserPassword"), id);
+		clickOnElement(getProp("signInButton"), id);
 	}
 
 	/**
@@ -257,7 +186,7 @@ public class BasePage {
 	 */
 	public String getProp(String prop) {
 		try {
-			properties = readPropertiesFile("src/resources/config/config.properties");
+			properties = readPropertiesFile(propertiesFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -267,8 +196,8 @@ public class BasePage {
 	/**
 	 * Read the properties file
 	 * 
-	 * @param fileName The path to the targeted file
-	 * @return         The properties from the file
+	 * @param fileName     The path to the targeted file
+	 * @return             The properties from the file
 	 * @throws IOException
 	 */
 	public Properties readPropertiesFile(String fileName) throws IOException {
@@ -415,10 +344,10 @@ public class BasePage {
 	 */
 	public void addVehicle(int year, String make, String model) {
 		clickOnElement(getProp("applicationName"), id);
-		fillInputField(vehicleYearInput, year, id);
-		fillInputField(vehicleMakeInput, make, id);
-		fillInputField(vehicleModelInput, model, id);
-		clickOnElement(addVehicleButton, id);
+		fillInputField(getProp("vehicleYearInput"), year, id);
+		fillInputField(getProp("vehicleMakeInput"), make, id);
+		fillInputField(getProp("vehicleModelInput"), model, id);
+		clickOnElement(getProp("addVehicleButton"), id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -432,9 +361,9 @@ public class BasePage {
 	public void deleteVehicle(int year, String make, String model) {
 		clickOnElement(getProp("applicationName"), id);
 		selectVehicle(year, make, model);
-		clickOnElement(editVehicleNameButton, id);
-		clickOnElement(addLogDeleteVehicleButton, id);
-		clickOnElement(confirmDeleteVehicleButton, id);
+		clickOnElement(getProp("editVehicleNameButton"), id);
+		clickOnElement(getProp("addLogDeleteVehicleButton"), id);
+		clickOnElement(getProp("confirmDeleteVehicleButton"), id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -482,10 +411,10 @@ public class BasePage {
 	 * @param service  The type of service
 	 */
 	public void addServiceLog(String date, int mileage, String service) {
-		fillInputField(serviceLogDateInput, date, id);
-		fillInputField(serviceLogMileageInput, mileage, id);
-		fillInputField(serviceLogServiceInput, service, id);
-		clickOnElement(addServiceLogButton, id);
+		fillInputField(getProp("serviceLogDateInput"), date, id);
+		fillInputField(getProp("serviceLogMileageInput"), mileage, id);
+		fillInputField(getProp("serviceLogServiceInput"), service, id);
+		clickOnElement(getProp("addServiceLogButton"), id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -498,11 +427,11 @@ public class BasePage {
 	 * @param comments Comments to address during service
 	 */
 	public void addServiceLog(String date, int mileage, String service, String comments) {
-		fillInputField(serviceLogDateInput, date, id);
-		fillInputField(serviceLogMileageInput, mileage, id);
-		fillInputField(serviceLogServiceInput, service, id);
-		fillInputField(serviceLogCommentsInput, comments, id);
-		clickOnElement(addServiceLogButton, id);
+		fillInputField(getProp("serviceLogDateInput"), date, id);
+		fillInputField(getProp("serviceLogMileageInput"), mileage, id);
+		fillInputField(getProp("serviceLogServiceInput"), service, id);
+		fillInputField(getProp("serviceLogCommentsInput"), comments, id);
+		clickOnElement(getProp("addServiceLogButton"), id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -591,12 +520,12 @@ public class BasePage {
 	 */
 	public void changeProfilePicture(String url) {
 		clickOnElement(getProp("applicationName"), id);
-		clickOnElement(menuDropdownButton, id);
+		clickOnElement(getProp("menuDropdownButton"), id);
 		clickOnElement(getProp("accountNavButton"), id);
-		fillInputField(newProfilePictureInput, url, id);
-		clickOnElement(submitNewProfilePictureButton, id);
-		clickOnElement(confirmUpdatePictureButton, id);
-		clickOnElement(closeUpdateProfilePictureSuccessModalButton, id);
+		fillInputField(getProp("newProfilePictureInput"), url, id);
+		clickOnElement(getProp("submitNewProfilePictureButton"), id);
+		clickOnElement(getProp("confirmUpdatePictureButton"), id);
+		clickOnElement(getProp("closeUpdateProfilePictureSuccessModalButton"), id);
 	}
 	
 	/**
@@ -606,11 +535,11 @@ public class BasePage {
 	 */
 	public void changeBackgroundPicture(String url) {
 		clickOnElement(getProp("applicationName"), id);
-		clickOnElement(menuDropdownButton, id);
+		clickOnElement(getProp("menuDropdownButton"), id);
 		clickOnElement(getProp("accountNavButton"), id);
-		fillInputField(newBackgroundPictureInput, url, id);
-		clickOnElement(submitNewBackgroundPictureButton, id);
-		clickOnElement(confirmUpdatePictureButton, id);
+		fillInputField(getProp("newBackgroundPictureInput"), url, id);
+		clickOnElement(getProp("submitNewBackgroundPictureButton"), id);
+		clickOnElement(getProp("confirmUpdatePictureButton"), id);
 	}
 	
 	/**
@@ -619,7 +548,7 @@ public class BasePage {
 	 * @param theme The theme to select
 	 */
 	public void selectThemeFromDropdown(Themes theme) {
-		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(themeSelectionDropdown))));
+		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(getProp("themeSelectionDropdown")))));
 		dropdown.selectByValue(theme.toString());
 	}
 	

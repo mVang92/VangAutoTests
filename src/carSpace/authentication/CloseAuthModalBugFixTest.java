@@ -19,14 +19,14 @@ public class CloseAuthModalBugFixTest extends BasePage {
 	@Test
 	private void verifyReactStatesResetAfterClosingSignUpModal() {
 		clickOnElement(getProp("signUpNavButton"), id);
-		fillInputField(emailTextInput, getProp("testUser"), id);
-		clickOnElement(signUpButton, id);
+		fillInputField(getProp("emailInput"), getProp("testUser"), id);
+		clickOnElement(getProp("signUpButton"), id);
 		assertEquals(getText(toastNotificationBody, xpath), invalidPasswordErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
-		clickOnElement(closeSignUpModal, id);
+		clickOnElement(getProp("closeSignUpModal"), id);
 		clickOnElement(getProp("signInNavButton"), id);
-		fillInputField(passwordTextInput, getProp("testUserPassword"), id);
-		clickOnElement(signInButton, id);
+		fillInputField(getProp("passwordInput"), getProp("testUserPassword"), id);
+		clickOnElement(getProp("signInButton"), id);
 		assertEquals(getText(toastNotificationBody, xpath), invalidEmailErrorMessage);
 	}
 

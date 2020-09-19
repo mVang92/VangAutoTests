@@ -10,12 +10,23 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class AddVehicleNegativeTest extends BasePage {
-	String vehicleMake = "Toyota";
-	String vehicleModel = "Highlander";
+	
+	private String vehicleYearInput;
+	private String vehicleMakeInput;
+	private String vehicleModelInput;
+	private String addVehicleButton;
+	private String addVehicleErrorModal;
+	private String vehicleMake = "Toyota";
+	private String vehicleModel = "Highlander";
 	
 	@BeforeClass
 	private void setup() {
 		doSignIn();
+		vehicleYearInput = getProp("vehicleYearInput");
+		vehicleMakeInput = getProp("vehicleMakeInput");
+		vehicleModelInput = getProp("vehicleModelInput");
+		addVehicleButton = getProp("addVehicleButton");
+		addVehicleErrorModal = getProp("addVehicleErrorModal");
 	}
 
 	/**
@@ -83,8 +94,8 @@ public class AddVehicleNegativeTest extends BasePage {
 	
 	@AfterMethod
 	private void resetVehicleInputFields() {
-		clickOnElement(addVehicleErrorModalOkayButton, xpath);
-		clickOnElement(resetVehicleInputFieldsButton, id);
+		clickOnElement(getProp("addVehicleErrorModalOkayButton"), xpath);
+		clickOnElement(getProp("resetVehicleInputFieldsButton"), id);
 	}
 
 	@AfterClass

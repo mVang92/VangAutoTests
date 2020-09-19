@@ -9,7 +9,7 @@ import resources.Themes;
 
 public class ThemesTest extends BasePage {
 	private int checkInterval = 0;
-	private final int MAX_CHECK_INTERVAL = 20;
+	private final int MAX_CHECK_INTERVAL = 30;
 
 	@BeforeClass
 	private void setup() {
@@ -21,11 +21,11 @@ public class ThemesTest extends BasePage {
 	 */
 	@Test
 	private void themesTest() {
-		clickOnElement(menuDropdownButton, id);
+		clickOnElement(getProp("menuDropdownButton"), id);
 		clickOnElement(getProp("accountNavButton"), id);
 		for (Themes theme : Themes.values()) {
 			selectThemeFromDropdown(theme);
-			clickOnElement(applyThemeButton, id);
+			clickOnElement(getProp("applyThemeButton"), id);
 			checkIfCorrectThemeIsDisplayed(theme);
 		}
 	}
@@ -40,7 +40,7 @@ public class ThemesTest extends BasePage {
 	 * If it does not, wait for the text to change and try again until the check interval reaches max check intervals.
 	 */
 	private void checkIfCorrectThemeIsDisplayed(Themes theme) {
-		if (getText(accountPageCurrentTheme, id).equals(displayTheme(theme))) {
+		if (getText(getProp("accountPageCurrentTheme"), id).equals(displayTheme(theme))) {
 			assertTrue(true);
 			checkInterval = 0;
 		} else {

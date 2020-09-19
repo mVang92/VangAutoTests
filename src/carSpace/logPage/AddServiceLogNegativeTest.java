@@ -14,10 +14,20 @@ public class AddServiceLogNegativeTest extends BasePage {
 	private String model = "Accord";
 	private String date = "01012020";
 	private String service = "Transmission Fluid Change";
+	private String serviceLogDateInput;
+	private String serviceLogMileageInput;
+	private String serviceLogServiceInput;
+	private String addServiceLogButton;
+	private String addLogErrorModal;
 	
 	@BeforeClass
 	private void setup() {
 		doSignIn();
+		serviceLogDateInput = getProp("serviceLogDateInput");
+		serviceLogMileageInput = getProp("serviceLogMileageInput");
+		serviceLogServiceInput= getProp("serviceLogServiceInput");
+		addServiceLogButton = getProp("addServiceLogButton");
+		addLogErrorModal = getProp("addLogErrorModal");
 		addVehicle(year, make, model);
 		selectVehicle(year, make, model);
 	}
@@ -61,8 +71,8 @@ public class AddServiceLogNegativeTest extends BasePage {
 	
 	@AfterMethod
 	private void resetVehicleInputFields() {
-		clickOnElement(addLogErrorModalOkayButton, xpath);
-		clickOnElement(addLogResetInputFieldsButton, id);
+		clickOnElement(getProp("addLogErrorModalOkayButton"), xpath);
+		clickOnElement(getProp("addLogResetInputFieldsButton"), id);
 	}
 	
 	@AfterClass

@@ -8,10 +8,6 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class DisplayNameVerificationTest extends BasePage {
-	
-	private String accountNavButton = getProp("accountNavButton");
-	private String defaultDisplayName = getProp("defaultDisplayName");
-	private String testUserDisplayName = getProp("testUserDisplayName");
 
 	@BeforeClass
 	private void setup() {
@@ -23,6 +19,16 @@ public class DisplayNameVerificationTest extends BasePage {
 	 */
 	@Test
 	public void displayNameVerificationTest() {
+		String accountNavButton = getProp("accountNavButton");
+		String defaultDisplayName = getProp("defaultDisplayName");
+		String testUserDisplayName = getProp("testUserDisplayName");
+		String menuDropdownButton = getProp("menuDropdownButton");
+		String expectedModalTitle = getProp("updateDisplayNameModalBodyText");
+		String submitNewDisplayNameButton = getProp("submitNewDisplayNameButton");
+		String confirmUpdateDisplayNameButton = getProp("confirmUpdateDisplayNameButton");
+		String closeUpdateDisplayNameSuccessModalButton = getProp("closeUpdateDisplayNameSuccessModalButton");
+		String accountPageUserDisplayName = getProp("accountPageUserDisplayName");
+		String displayName = getProp("displayName");
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		clickOnElement(submitNewDisplayNameButton, id);
@@ -32,9 +38,9 @@ public class DisplayNameVerificationTest extends BasePage {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
-		fillInputField(newDisplayNameInput, testUserDisplayName, id);
+		fillInputField(getProp("newDisplayNameInput"), testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		assertEquals(getText(modalTitle, xpath), "Use \"" + testUserDisplayName + "\" as your name?");
+		assertEquals(getText(modalTitle, xpath), String.format(expectedModalTitle, testUserDisplayName));
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		assertEquals(getText(displayName, id), testUserDisplayName);

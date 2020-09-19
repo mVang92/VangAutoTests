@@ -51,7 +51,7 @@ public class LoggedOutTest extends BasePage {
 			assertEquals(getText(forumLoggedOutText, xpath), expectedForumLoggedOutText);
 		}
 		assertTrue(getCurrentUrl().contains(directory));
-		assertFalse(isElementDisplayed(startNewThreadButton, id));
+		assertFalse(isElementDisplayed(getProp("startNewThreadButton"), id));
 		clickOnElement(applicationName, id);
 	}
 	

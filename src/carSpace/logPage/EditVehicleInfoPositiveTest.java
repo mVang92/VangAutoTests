@@ -23,21 +23,21 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 				make,
 				model,
 				newYear,
-				vehicleYearInput				
+				getProp("vehicleYearInput")				
 			},
 			{
 				newYear,
 				make,
 				model,
 				newMake,
-				vehicleMakeInput
+				getProp("vehicleMakeInput")	
 			},
 			{
 				newYear,
 				newMake,
 				model,
 				newModel,
-				vehicleModelInput				
+				getProp("vehicleModelInput")				
 			},
 			{
 				newYear,
@@ -67,11 +67,11 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 		String inputField		
 	) {
 		selectVehicle(Integer.parseInt(year), make, model);
-		assertEquals(getText(vehicleNameHeader, id), year + " " + make + " " + model);
+		assertEquals(getText(getProp("vehicleNameHeader"), id), year + " " + make + " " + model);
 		if (input != null) {
-			clickOnElement(editVehicleNameButton, id);
+			clickOnElement(getProp("editVehicleNameButton"), id);
 			fillInputField(inputField, input, id);
-			clickOnElement(confirmSaveEditVehicleNameButton, id);
+			clickOnElement(getProp("confirmSaveEditVehicleNameButton"), id);
 			assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
 			clickOnElement(toastNotificationSuccessCloseButton, xpath);
 			clickOnElement(getProp("applicationName"), id);
