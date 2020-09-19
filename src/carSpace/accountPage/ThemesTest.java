@@ -22,7 +22,7 @@ public class ThemesTest extends BasePage {
 	@Test
 	private void themesTest() {
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		clickOnElement(getProp("accountNavButton"), id);
 		for (Themes theme : Themes.values()) {
 			selectThemeFromDropdown(theme);
 			clickOnElement(applyThemeButton, id);

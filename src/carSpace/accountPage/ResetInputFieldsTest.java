@@ -48,7 +48,7 @@ public class ResetInputFieldsTest extends BasePage {
 	public void setup() {
 		doSignIn();
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		clickOnElement(getProp("accountNavButton"), id);
 	}
 
 	/**

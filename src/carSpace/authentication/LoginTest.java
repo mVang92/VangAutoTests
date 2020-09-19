@@ -15,8 +15,8 @@ public class LoginTest extends BasePage {
 	private void loginTest() {
 		doSignIn();
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
-		assertEquals(getText(accountPageUserEmail, id), email);
+		clickOnElement(getProp("accountNavButton"), id);
+		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
 		doSignOut();
 	}
 

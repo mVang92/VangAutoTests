@@ -9,9 +9,11 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class EditVehicleInfoNegativeTest extends BasePage {
+	
 	private int year = 2014;
 	private String make = "Honda";
 	private String model = "Pilot";
+	private String applicationName = getProp("applicationName");
 	
 	@BeforeClass
 	public void setup() {

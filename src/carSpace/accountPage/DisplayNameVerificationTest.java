@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class DisplayNameVerificationTest extends BasePage {
+	
+	private String accountNavButton = getProp("accountNavButton");
 
 	@BeforeClass
 	private void setup() {

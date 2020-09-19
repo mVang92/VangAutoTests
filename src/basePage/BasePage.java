@@ -1,9 +1,13 @@
 package basePage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,6 +26,7 @@ public class BasePage {
 	WebElement webElement;
 	JavascriptExecutor js;
 	WebDriverWait wait;
+	Properties properties;
 
 	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
@@ -30,8 +35,6 @@ public class BasePage {
 	public static Locators id = Locators.ID;
 	public static Locators xpath = Locators.XPATH;
 
-	public static String email = "sally@thing.com";
-	public static String password = "123123";
 	public static String testUserDisplayName = "Sally Thing";
 	public static String defaultDisplayName = "CarSpace User";
 
@@ -55,10 +58,7 @@ public class BasePage {
 	public static String expectedEditVehicleInfoSuccessMessage = "Vehicle name updated successfully.";
 	public static String addThreadMissingFieldsErrorMessage = "Title and description are required.";
 
-	public static String applicationName = "applicationName";
-	public static String signInNavButton = "signInNavButton";
-	public static String signUpNavButton = "signUpNavButton";
-	public static String accountNavButton = "accountNavButton";
+//	public static String accountNavButton = "accountNavButton";
 	public static String forumNavButton = "forumNavButton";
 	public static String menuDropdownButton = "menuDropdownButton";
 	public static String emailTextInput = "emailInput";
@@ -219,7 +219,7 @@ public class BasePage {
 	 * @param specificPassword The specific user password to use
 	 */
 	public void signIn(String specificEmail, String specificPassword) {
-		clickOnElement(signInNavButton, id);
+		clickOnElement(getProp("signInNavButton"), id);
 		fillInputField(emailTextInput, specificEmail, id);
 		fillInputField(passwordTextInput, specificPassword, id);
 		clickOnElement(signInButton, id);
@@ -229,9 +229,9 @@ public class BasePage {
 	 * Sign the user in
 	 */
 	private void signIn() {
-		clickOnElement(signInNavButton, id);
-		fillInputField(emailTextInput, email, id);
-		fillInputField(passwordTextInput, password, id);
+		clickOnElement(getProp("signInNavButton"), id);
+		fillInputField(emailTextInput, getProp("testUser"), id);
+		fillInputField(passwordTextInput, getProp("testUserPassword"), id);
 		clickOnElement(signInButton, id);
 	}
 
@@ -250,6 +250,45 @@ public class BasePage {
 	 */
 	public void maximizeWindow() {
 		driver.manage().window().maximize();
+	}
+	
+	/**
+	 * Get the prop from the config file and return it
+	 * 
+	 * @param prop The property to load
+	 * @return     The property value
+	 */
+	public String getProp(String prop) {
+		try {
+			properties = readPropertiesFile("src/resources/config/config.properties");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return properties.getProperty(prop);
+	}
+	
+	/**
+	 * Read the properties file
+	 * 
+	 * @param fileName The path to the targeted file
+	 * @return         The properties from the file
+	 * @throws IOException
+	 */
+	public Properties readPropertiesFile(String fileName) throws IOException {
+		FileInputStream fileInputStream = null;
+	    Properties prop = null;
+	      try {
+	    	  fileInputStream = new FileInputStream(fileName);
+	         prop = new Properties();
+	         prop.load(fileInputStream);
+	      } catch(FileNotFoundException fnfe) {
+	         fnfe.printStackTrace();
+	      } catch(IOException ioe) {
+	         ioe.printStackTrace();
+	      } finally {
+	    	  fileInputStream.close();
+	      }
+	      return prop;
 	}
 
 	/**
@@ -378,7 +417,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void addVehicle(int year, String make, String model) {
-		clickOnElement(applicationName, id);
+		clickOnElement(getProp("applicationName"), id);
 		fillInputField(vehicleYearInput, year, id);
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
@@ -394,7 +433,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void deleteVehicle(int year, String make, String model) {
-		clickOnElement(applicationName, id);
+		clickOnElement(getProp("applicationName"), id);
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
@@ -554,9 +593,9 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeProfilePicture(String url) {
-		clickOnElement(applicationName, id);
+		clickOnElement(getProp("applicationName"), id);
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		clickOnElement(getProp("accountNavButton"), id);
 		fillInputField(newProfilePictureInput, url, id);
 		clickOnElement(submitNewProfilePictureButton, id);
 		clickOnElement(confirmUpdatePictureButton, id);
@@ -569,9 +608,9 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeBackgroundPicture(String url) {
-		clickOnElement(applicationName, id);
+		clickOnElement(getProp("applicationName"), id);
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		clickOnElement(getProp("accountNavButton"), id);
 		fillInputField(newBackgroundPictureInput, url, id);
 		clickOnElement(submitNewBackgroundPictureButton, id);
 		clickOnElement(confirmUpdatePictureButton, id);

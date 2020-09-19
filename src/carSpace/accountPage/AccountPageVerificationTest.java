@@ -10,6 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class AccountPageVerificationTest extends BasePage {
 	
 	private String mainPageDisplayName;
+	private String applicationName = getProp("applicationName");
 	
 	@BeforeClass
 	private void setup() {
@@ -20,7 +21,7 @@ public class AccountPageVerificationTest extends BasePage {
 	private void navigateToAccountPage() {
 		mainPageDisplayName = getText(displayName, id);
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		clickOnElement(getProp("accountNavButton"), id);
 	}
 	
 	/**
@@ -29,7 +30,7 @@ public class AccountPageVerificationTest extends BasePage {
 	@Test(priority = 0)
 	public void userDataVerificationTest() {
 		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
-		assertEquals(getText(accountPageUserEmail, id), email);
+		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
 		assertEquals(getText(userRole, id), "User");
 		clickOnElement(applicationName, id);
 	}

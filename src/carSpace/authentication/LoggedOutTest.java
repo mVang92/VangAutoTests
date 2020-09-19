@@ -11,10 +11,12 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class LoggedOutTest extends BasePage {
-	String expectedForumLoggedOutText = "Please sign in or create an account to start a thread.";
-	String forumDirectory = "/forum";
-	String updatesDirectory = "/updates";
-	String aboutDirectory = "/about";
+	
+	private String expectedForumLoggedOutText = "Please sign in or create an account to start a thread.";
+	private String forumDirectory = "/forum";
+	private String updatesDirectory = "/updates";
+	private String aboutDirectory = "/about";
+	private String applicationName = getProp("applicationName");
 	
 	@DataProvider(name = "data")
 	public Object[][] dataProviderMethod() {
