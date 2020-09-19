@@ -10,6 +10,8 @@ import basePage.BasePage;
 public class DisplayNameVerificationTest extends BasePage {
 	
 	private String accountNavButton = getProp("accountNavButton");
+	private String defaultDisplayName = getProp("defaultDisplayName");
+	private String testUserDisplayName = getProp("testUserDisplayName");
 
 	@BeforeClass
 	private void setup() {

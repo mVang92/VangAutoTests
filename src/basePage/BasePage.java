@@ -35,9 +35,6 @@ public class BasePage {
 	public static Locators id = Locators.ID;
 	public static Locators xpath = Locators.XPATH;
 
-	public static String testUserDisplayName = "Sally Thing";
-	public static String defaultDisplayName = "CarSpace User";
-
 	public static String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
 	public static String invalidPasswordOrNoPasswordErrorMessage = "Error: The password is invalid or the user does not have a password.";
 	public static String invalidEmailErrorMessage = "Error: The email address is badly formatted.";

@@ -9,7 +9,9 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class ResetInputFieldsTest extends BasePage {
-	private String picture = "https://oswallpapers.com/wp-content/uploads/2016/06/img19.jpg";
+	
+	private String testUserDisplayName = getProp("testUserDisplayName");
+	private String picture = getProp("resetInputFieldsTestImage");
 
 	@DataProvider(name = "testData")
 	public Object[][] dataProviderMethod() {
