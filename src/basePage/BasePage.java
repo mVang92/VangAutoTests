@@ -96,7 +96,7 @@ public class BasePage {
 	 * Close the browser window
 	 */
 	public void close() {
-		driver.close();
+		driver.quit();
 	}
 
 	/**
