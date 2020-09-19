@@ -11,7 +11,9 @@ import basePage.BasePage;
 public class AddRemoveOneVehicleTest extends BasePage {
 	
 	Random randon = new Random(); 
-	private String accountNavButton = getProp("accountNavButton");
+	private String accountNavButton;
+	private String menuDropdownButton;
+	private String accountPageVehicleCount;
 	private String vehicleMake = "Toyota";
 	private int actualVehicleCount;
 	private int vehicleCount;
@@ -46,6 +48,9 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	@BeforeClass
 	private void setup() {
 		doSignIn();
+		accountNavButton = getProp("accountNavButton");
+		menuDropdownButton = getProp("menuDropdownButton");
+		accountPageVehicleCount = getProp("accountPageVehicleCount");
 	}
 
 	/**
@@ -57,14 +62,14 @@ public class AddRemoveOneVehicleTest extends BasePage {
 		clickOnElement(accountNavButton, id);
 		vehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
 		clickOnElement(backHomeBtn, xpath);
-		fillInputField(vehicleYearInput, vehicleYear, id);
-		fillInputField(vehicleMakeInput, vehicleMake, id);
-		fillInputField(vehicleModelInput, vehicleModel, id);
-		clickOnElement(addVehicleButton, id);
-		assertEquals(getText(toastNotificationBody, xpath), "Added a " + vehicleYear + " " + vehicleMake + " " + vehicleModel + ".");
+		fillInputField(getProp("vehicleYearInput"), vehicleYear, id);
+		fillInputField(getProp("vehicleMakeInput"), vehicleMake, id);
+		fillInputField(getProp("vehicleModelInput"), vehicleModel, id);
+		clickOnElement(getProp("addVehicleButton"), id);
+		assertEquals(getText(toastNotificationBody, xpath), String.format(getProp("addVehicleSuccessNotification"), vehicleYear, vehicleMake, vehicleModel));
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
-		assertEquals(getText(vehicleNameHeader, id), vehicle);
+		assertEquals(getText(getProp("vehicleNameHeader"), id), vehicle);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
@@ -78,10 +83,10 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
 	private void deleteOneVehicleTest() {
 		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
-		clickOnElement(editVehicleNameButton, id);
-		clickOnElement(addLogDeleteVehicleButton, id);
-		assertTrue(getText(deleteVehicleModalTitle, id).contains(vehicle));
-		clickOnElement(confirmDeleteVehicleButton, id);
+		clickOnElement(getProp("editVehicleNameButton"), id);
+		clickOnElement(getProp("addLogDeleteVehicleButton"), id);
+		assertTrue(getText(getProp("deleteVehicleModalTitle"), id).contains(vehicle));
+		clickOnElement(getProp("confirmDeleteVehicleButton"), id);
 		assertEquals(getText(toastNotificationBody, xpath), vehicleDeletedSuccessfullyMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(menuDropdownButton, id);

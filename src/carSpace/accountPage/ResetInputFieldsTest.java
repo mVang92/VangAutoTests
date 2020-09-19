@@ -9,37 +9,40 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class ResetInputFieldsTest extends BasePage {
-	private String picture = "https://oswallpapers.com/wp-content/uploads/2016/06/img19.jpg";
 
 	@DataProvider(name = "testData")
 	public Object[][] dataProviderMethod() {
+		String testUserDisplayName = getProp("testUserDisplayName");
+		String picture = getProp("resetInputFieldsTestImage");
+		String expectedModalTitle = getProp("updateDisplayNameModalBodyText");
+		String closeUpdatePictureModalButton = getProp("closeUpdatePictureModalButton");
 		return new Object[][] {
 			{
-				newBackgroundPictureInput,
-				submitNewBackgroundPictureButton,
+				getProp("newBackgroundPictureInput"),
+				getProp("submitNewBackgroundPictureButton"),
 				expectedUpdateBackgroundPictureModalTitle,
-				resetNewBackgroundPictureButton,
+				getProp("resetNewBackgroundPictureButton"),
 				expectedDefaultBackgroundPictureModalTitle,
 				picture,
 				closeUpdatePictureModalButton
 			},
 			{
-				newProfilePictureInput,
-				submitNewProfilePictureButton,
+				getProp("newProfilePictureInput"),
+				getProp("submitNewProfilePictureButton"),
 				expectedUpdateProfilePictureModalTitle,
-				resetNewProfilePictureButton,
+				getProp("resetNewProfilePictureButton"),
 				expectedDefaultPictureModalTitle,
 				picture,
 				closeUpdatePictureModalButton
 			},
 			{
-				newDisplayNameInput,
-				submitNewDisplayNameButton,
-				"Use \"" + testUserDisplayName + "\" as your name?",
-				resetNewDisplayNameButton,
+				getProp("newDisplayNameInput"),
+				getProp("submitNewDisplayNameButton"),
+				String.format(expectedModalTitle, testUserDisplayName),
+				getProp("resetNewDisplayNameButton"),
 				expectedDefaultNameModalTitle,
 				testUserDisplayName,
-				closeUpdateDisplayNameModalButton
+				getProp("closeUpdateDisplayNameModalButton")
 			}
 		};
 	}
@@ -47,7 +50,7 @@ public class ResetInputFieldsTest extends BasePage {
 	@BeforeClass
 	public void setup() {
 		doSignIn();
-		clickOnElement(menuDropdownButton, id);
+		clickOnElement(getProp("menuDropdownButton"), id);
 		clickOnElement(getProp("accountNavButton"), id);
 	}
 

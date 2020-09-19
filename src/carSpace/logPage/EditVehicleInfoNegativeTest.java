@@ -13,11 +13,20 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	private int year = 2014;
 	private String make = "Honda";
 	private String model = "Pilot";
-	private String applicationName = getProp("applicationName");
+	private String applicationName;
+	private String vehicleYearInput;
+	private String vehicleMakeInput;
+	private String editVehicleNameButton;
+	private String confirmSaveEditVehicleNameButton;
 	
 	@BeforeClass
 	public void setup() {
 		doSignIn();
+		applicationName = getProp("applicationName");
+		vehicleYearInput = getProp("vehicleYearInput");
+		vehicleMakeInput = getProp("vehicleMakeInput");
+		editVehicleNameButton = getProp("editVehicleNameButton");
+		confirmSaveEditVehicleNameButton = getProp("confirmSaveEditVehicleNameButton");
 		addVehicle(year, make, model);
 	}
 	
@@ -30,7 +39,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
 		fillInputField(vehicleMakeInput, missingInput, id);
-		fillInputField(vehicleModelInput, missingInput, id);
+		fillInputField(getProp("vehicleModelInput"), missingInput, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
@@ -73,8 +82,8 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		clickOnElement(editVehicleNameButton, id);
 		fillInputField(vehicleYearInput, "nan", id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
-		assertEquals(getText(addVehicleErrorModal, xpath), addVehicleInvalidYearMessage);
-		clickOnElement(addVehicleErrorModalOkayButton, xpath);
+		assertEquals(getText(getProp("addVehicleErrorModal"), xpath), addVehicleInvalidYearMessage);
+		clickOnElement(getProp("addVehicleErrorModalOkayButton"), xpath);
 		clickOnElement(cancelButton, xpath);
 	}
 	
@@ -96,7 +105,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	public void saveAndCheckVehicleInfo() {
 		clickOnElement(applicationName, id);
 		selectVehicle(year, make, model);
-		assertEquals(getText(vehicleNameHeader, id), year + " " + make + " " + model);
+		assertEquals(getText(getProp("vehicleNameHeader"), id), year + " " + make + " " + model);
 		clickOnElement(applicationName, id);
 	}
 

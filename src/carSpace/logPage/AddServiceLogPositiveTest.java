@@ -45,11 +45,11 @@ public class AddServiceLogPositiveTest extends BasePage {
 		int yearToInt = Integer.parseInt(yearSubString);
 		checkMonthAndDayEqualToOne(monthSubString, daySubString, monthToInt, dayToInt);
 		String date = month + "/" + day + "/" + yearToInt;
-		fillInputField(serviceLogDateInput, date, id);
-		fillInputField(serviceLogMileageInput, miles, id);
-		fillInputField(serviceLogServiceInput, service, id);
-		fillInputField(serviceLogCommentsInput, comment, id);
-		clickOnElement(addServiceLogButton, id);
+		fillInputField(getProp("serviceLogDateInput"), date, id);
+		fillInputField(getProp("serviceLogMileageInput"), miles, id);
+		fillInputField(getProp("serviceLogServiceInput"), service, id);
+		fillInputField(getProp("serviceLogCommentsInput"), comment, id);
+		clickOnElement(getProp("addServiceLogButton"), id);
 		if (monthToInt < 10) {
 			month = formattedDate.substring(1, 2);
 		}
