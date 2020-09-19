@@ -7,7 +7,8 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class ChangeProfilePictureTest extends BasePage {
-	private String imageUrl = "https://i.kym-cdn.com/photos/images/facebook/001/624/750/d90.jpg";
+	private String imageUrl = getProp("sillyLookingKrabs");
+	private String accountNavButton = getProp("accountNavButton");
 	
 	@BeforeClass
 	private void setup() {

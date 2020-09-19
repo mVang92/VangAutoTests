@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class ChangeBackgroundPictureTest extends BasePage {
-	private String imageUrl = "https://i.kym-cdn.com/photos/images/facebook/001/624/750/d90.jpg";
-	private String defaultImageUrl = "https://pandaleesillie.files.wordpress.com/2014/08/black-3d-cones-abstract-graphic-background.jpg";
+	private String imageUrl = getProp("sillyLookingKrabs");
+	private String defaultImageUrl = getProp("defaultImage");
 	
 	@BeforeClass
 	private void setup() {
@@ -21,7 +21,7 @@ public class ChangeBackgroundPictureTest extends BasePage {
 	@Test
 	private void changeBackgroundPictureTest() {
 		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		clickOnElement(getProp("accountNavButton"), id);
 		fillInputField(newBackgroundPictureInput, imageUrl, id);
 		clickOnElement(submitNewBackgroundPictureButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedUpdateBackgroundPictureModalTitle);

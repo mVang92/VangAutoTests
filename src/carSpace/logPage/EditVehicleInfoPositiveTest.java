@@ -74,7 +74,7 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 			clickOnElement(confirmSaveEditVehicleNameButton, id);
 			assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
 			clickOnElement(toastNotificationSuccessCloseButton, xpath);
-			clickOnElement(applicationName, id);
+			clickOnElement(getProp("applicationName"), id);
 		}
 	}
 

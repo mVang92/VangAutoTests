@@ -9,7 +9,9 @@ import java.util.Random;
 import basePage.BasePage;
 
 public class AddRemoveOneVehicleTest extends BasePage {
+	
 	Random randon = new Random(); 
+	private String accountNavButton = getProp("accountNavButton");
 	private String vehicleMake = "Toyota";
 	private int actualVehicleCount;
 	private int vehicleCount;
