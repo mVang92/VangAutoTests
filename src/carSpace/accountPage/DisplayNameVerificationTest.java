@@ -21,7 +21,6 @@ public class DisplayNameVerificationTest extends BasePage {
 	public void displayNameVerificationTest() {
 		String testUserDisplayName = getProp("testUserDisplayName");
 		String defaultDisplayName = getProp("defaultDisplayName");
-		String displayName = getProp("displayName");
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		clickOnElement(submitNewDisplayNameButton, id);
@@ -33,7 +32,7 @@ public class DisplayNameVerificationTest extends BasePage {
 		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
 		fillInputField(newDisplayNameInput, testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		assertEquals(getText(getProp("modalTitle"), xpath), String.format(getProp("updateDisplayNameModalBodyText"), testUserDisplayName));
+		assertEquals(getText(modalTitle, xpath), String.format(getProp("updateDisplayNameModalBodyText"), testUserDisplayName));
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		assertEquals(getText(displayName, id), testUserDisplayName);

@@ -288,9 +288,9 @@ public class BasePage {
 			fileInputStream = new FileInputStream(fileName);
 			prop = new Properties();
 			prop.load(fileInputStream);
-		} catch(FileNotFoundException fnfe) {
+		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
-		} catch(IOException ioe) {
+		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		} finally {
 			fileInputStream.close();
@@ -307,26 +307,12 @@ public class BasePage {
 	public void clickOnElement(String element, Locators locator) {
 		switch (locator) {
 			case XPATH:
-				try {
 					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
-					js.executeScript("arguments[0].scrollIntoView();", webElement);
-					webElement.click();
-				} catch (Exception e) {
-					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
-					js.executeScript("arguments[0].scrollIntoView();", webElement);
-					webElement.click();
-				}
+					js.executeScript("arguments[0].click();", webElement);
 				break;
 			case ID:
-				try {
 					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
-					js.executeScript("arguments[0].scrollIntoView();", webElement);
-					webElement.click();
-				} catch (Exception e) {
-					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
-					js.executeScript("arguments[0].scrollIntoView();", webElement);
-					webElement.click();
-				}
+					js.executeScript("arguments[0].click();", webElement);
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
@@ -424,7 +410,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void addVehicle(int year, String make, String model) {
-		clickOnElement(applicationName, id);
+		shouldClickApplicationName();
 		fillInputField(vehicleYearInput, year, id);
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
@@ -440,7 +426,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void deleteVehicle(int year, String make, String model) {
-		clickOnElement(applicationName, id);
+		shouldClickApplicationName();
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
@@ -546,11 +532,12 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void selectVehicle(int year, String make, String model) {
-		WebElement vehicle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(vehicleToSelect, year, make, model))));
+		shouldClickApplicationName();
+		webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(vehicleToSelect, year, make, model))));
 		try {
-			vehicle.click();
+			webElement.click();
 		} catch (Exception e) {
-			vehicle.click();
+			webElement.click();
 		}
 	}
 	
@@ -600,7 +587,6 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeProfilePicture(String url) {
-		clickOnElement(applicationName, id);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		fillInputField(newProfilePictureInput, url, id);
@@ -615,7 +601,6 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeBackgroundPicture(String url) {
-		clickOnElement(applicationName, id);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		fillInputField(newBackgroundPictureInput, url, id);
@@ -675,7 +660,15 @@ public class BasePage {
 	 * @return The URL
 	 */
 	public String getCurrentUrl() {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated((By.id("loadingAnimation"))));
 		return driver.getCurrentUrl();
+	}
+	
+	/**
+	 * Click on the application name only if the current URL is not the home page
+	 */
+	public void shouldClickApplicationName() {
+		if (!getCurrentUrl().equals(getProp("carSpaceUrl"))) {
+			clickOnElement(applicationName, id);
+		}
 	}
 }

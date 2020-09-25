@@ -40,7 +40,6 @@ public class AccountPageVerificationTest extends BasePage {
 	 */
 	@Test(priority = 1)
 	public void inputFieldsVerificationTest() {
-		String closeUpdatePictureModalButton = getProp("closeUpdatePictureModalButton");
 		clickOnElement(submitNewBackgroundPictureButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedDefaultBackgroundPictureModalTitle);
 		clickOnElement(closeUpdatePictureModalButton, id);

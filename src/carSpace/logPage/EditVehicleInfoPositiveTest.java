@@ -67,6 +67,8 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 		String input,
 		String inputField		
 	) {
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
 		selectVehicle(Integer.parseInt(year), make, model);
 		assertEquals(getText(vehicleNameHeader, id), year + " " + make + " " + model);
 		if (input != null) {
