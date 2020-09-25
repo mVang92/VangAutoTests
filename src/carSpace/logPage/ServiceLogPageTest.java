@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class ServiceLogPageTest extends BasePage {
+	
 	private int year = 1997;
 	private String make = "Lexus";
 	private String model = "ES300";
@@ -27,13 +28,6 @@ public class ServiceLogPageTest extends BasePage {
 	private void serviceLogPageTest() {
 		int miles = 123456;
 		String service = "Transmission Fluid Change";
-		String addLogDeleteVehicleButton = getProp("addLogDeleteVehicleButton");
-		String editVehicleNameButton = getProp("editVehicleNameButton");
-		String addLogSortLogsButton = getProp("addLogSortLogsButton");
-		String printPageButton = getProp("printPageButton");
-		String printPageViaDeleteButton = getProp("printPageViaDeleteButton");
-		String noButton = getProp("noButton");
-		String topButton = getProp("topButton");
 		selectVehicle(year, make, model);
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertFalse(isButtonEnabled(printPageButton, id));

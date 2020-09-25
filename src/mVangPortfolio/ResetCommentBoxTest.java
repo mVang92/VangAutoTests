@@ -19,12 +19,10 @@ public class ResetCommentBoxTest extends BasePage {
 	 */
 	@Test
 	private void resetCommentBoxTest() {
-		String portfolioCommentInput = getProp("portfolioCommentInput");
-		String resetButton = getProp("resetButton");
-		clickOnElement(getProp("contactNavButton"), xpath);
-		clickOnElement(resetButton, id);
-		fillInputField(portfolioCommentInput, "This is a test comment from VangAutoTests.", id);
-		clickOnElement(resetButton, id);
+		clickOnElement(contactNavButton, xpath);
+		clickOnElement(portfolioResetButton, id);
+		fillInputField(portfolioCommentInput, getProp("testComment"), id);
+		clickOnElement(portfolioResetButton, id);
 		assertEquals(getValue(portfolioCommentInput, id), "");
 	}
 

@@ -55,6 +55,99 @@ public class BasePage {
 	public static String expectedUpdateProfilePictureModalTitle = "Use this image as your profile picture?";
 	public static String expectedEditVehicleInfoSuccessMessage = "Vehicle name updated successfully.";
 	public static String addThreadMissingFieldsErrorMessage = "Title and description are required.";
+	public static String noAuthorizationErrorMessage = "You are not authorized to perform this action.";
+	
+	public static String applicationName = "applicationName";
+	public static String signInNavButton = "signInNavButton";
+	public static String signUpNavButton = "signUpNavButton";
+	public static String accountNavButton = "accountNavButton";
+	public static String forumNavButton = "forumNavButton";
+	public static String menuDropdownButton = "menuDropdownButton";
+	public static String emailInput = "emailInput";
+	public static String passwordInput = "passwordInput";
+	public static String signInButton = "signInButton";
+	public static String signOutNavButton = "signOutNavButton";
+	public static String signUpButton = "signUpButton";
+	public static String doSignOutButton = "doSignOutButton";
+	public static String closeSignUpModal = "closeSignUpModal";
+	public static String vehicleNameHeader = "vehicleNameHeader";
+	public static String vehicleYearInput = "vehicleYearInput";
+	public static String vehicleMakeInput = "vehicleMakeInput";
+	public static String vehicleModelInput = "vehicleModelInput";
+	public static String addVehicleButton = "addVehicleButton";
+	public static String confirmDeleteVehicleButton = "confirmDeleteVehicleButton";
+	public static String accountPageUserEmail = "accountPageUserEmail";
+	public static String vehicleCountForUser = "vehicleCountForUser";
+	public static String accountPageVehicleCount = "accountPageVehicleCount";
+	public static String resetVehicleInputFieldsButton = "resetVehicleInputFieldsButton";
+	public static String backToTopButton = "topImg";
+	public static String portfolioCommentInput= "commentInput";
+	public static String portfolioResetButton = "resetButton";
+	public static String serviceLogDateInput = "serviceLogDateInput";
+	public static String serviceLogMileageInput = "serviceLogMileageInput";
+	public static String serviceLogServiceInput = "serviceLogServiceInput";
+	public static String serviceLogCommentsInput = "serviceLogCommentsInput";
+	public static String addLogResetInputFieldsButton = "addLogResetInputFieldsButton";
+	public static String addLogDeleteVehicleButton = "addLogDeleteVehicleButton";
+	public static String addServiceLogButton = "addServiceLogButton";
+	public static String editVehicleNameButton = "editVehicleNameButton";
+	public static String submitNewBackgroundPictureButton = "submitNewBackgroundPictureButton";
+	public static String submitNewProfilePictureButton = "submitNewProfilePictureButton";
+	public static String submitNewDisplayNameButton = "submitNewDisplayNameButton";
+	public static String submitNewEmailButton = "submitNewEmailButton";
+	public static String submitNewPasswordButton = "submitNewPasswordButton";
+	public static String closeUpdatePictureModalButton = "closeUpdatePictureModalButton";
+	public static String closeUpdateDisplayNameModalButton = "closeUpdateDisplayNameModalButton";
+	public static String confirmUpdateDisplayNameButton = "confirmUpdateDisplayNameButton";
+	public static String closeUpdateDisplayNameSuccessModalButton = "closeUpdateDisplayNameSuccessModalButton";
+	public static String newDisplayNameInput = "newDisplayNameInput";
+	public static String displayName = "displayName";
+	public static String deleteVehicleModalTitle = "deleteVehicleModalTitle";
+	public static String accountPageUserDisplayName = "accountPageUserDisplayName";
+	public static String addLogSortLogsButton = "addLogSortLogsButton";
+	public static String printPageButton = "printPageButton";
+	public static String printPageViaDeleteButton = "printPageViaDeleteButton";
+	public static String newBackgroundPictureInput = "newBackgroundPictureInput";
+	public static String newProfilePictureInput = "newProfilePictureInput";
+	public static String resetNewBackgroundPictureButton = "resetNewBackgroundPictureButton";
+	public static String resetNewProfilePictureButton = "resetNewProfilePictureButton";
+	public static String resetNewDisplayNameButton = "resetNewDisplayNameButton";
+	public static String profilePicture = "profilePicture";
+	public static String profilePicturePreview = "profilePicturePreview";
+	public static String backgroundPicturePreview = "backgroundPicture";
+	public static String confirmUpdatePictureButton = "confirmUpdatePictureButton";
+	public static String closeUpdateProfilePictureSuccessModalButton = "closeUpdateProfilePictureSuccessModalButton";
+	public static String mainPageProfilePicture = "mainPageProfilePicture";
+	public static String themeSelectionDropdown = "themeSelectionDropdown";
+	public static String applyThemeButton = "applyThemeButton";
+	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
+	public static String confirmSaveEditVehicleNameButton = "confirmSaveEditVehicleNameButton";
+	public static String startNewThreadButton = "startNewThreadButton";
+	public static String submitNewThreadButton = "submitNewThreadButton";
+	public static String newThreadTitleInput = "newThreadTitleInput";
+	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
+	public static String userRole = "userRole";
+	public static String advancedSettingsToggle = "advancedSettingsToggle";
+
+	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
+	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
+	public static String addVehicleErrorModalOkayButton = "//button[@title='Okay']";
+	public static String addLogErrorModalOkayButton = "//button[@title='Okay']";
+	public static String aboutMeNavButton = "//a[@href='#aboutMe']";
+	public static String myProjectsNavButton = "//a[@href='#portfolio']";
+	public static String contactNavButton = "//a[@href='#contact']";
+	public static String modalTitle = "//*[@class='row modal-header']";
+	public static String backHomeBtn = "//*[@class='backHomeBtn']";
+	public static String cancelButton = "//button[contains(text(),'Cancel')]";
+	public static String noButton = "//button[contains(text(),'No')]";
+	public static String editActionButton = "//button[@class='editActionButton']";
+	public static String topButton = "//button[@class='backToTopButton']";
+	public static String forumFooterLink = "//a[contains(@href, '/forum')]";
+	public static String releaseNotesFooterLink = "//a[contains(@href, '/updates')]";
+	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
+	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
+	public static String serviceLog = "//div[@class='serviceLog']";
+	public static String vehicleToSelect = "//*[@title='%s %s %s']";	
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -121,9 +214,9 @@ public class BasePage {
 	 * Sign the user out
 	 */
 	public void doSignOut() {
-		clickOnElement(getProp("menuDropdownButton"), id);
-		clickOnElement(getProp("signOutNavButton"), id);
-		clickOnElement(getProp("doSignOutButton"), id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(signOutNavButton, id);
+		clickOnElement(doSignOutButton, id);
 	}
 
 	/**
@@ -133,20 +226,20 @@ public class BasePage {
 	 * @param specificPassword The specific user password to use
 	 */
 	public void signIn(String specificEmail, String specificPassword) {
-		clickOnElement(getProp("signInNavButton"), id);
-		fillInputField(getProp("emailInput"), specificEmail, id);
-		fillInputField(getProp("passwordInput"), specificPassword, id);
-		clickOnElement(getProp("signInButton"), id);
+		clickOnElement(signInNavButton, id);
+		fillInputField(emailInput, specificEmail, id);
+		fillInputField(passwordInput, specificPassword, id);
+		clickOnElement(signInButton, id);
 	}
 
 	/**
 	 * Sign the user in
 	 */
 	private void signIn() {
-		clickOnElement(getProp("signInNavButton"), id);
-		fillInputField(getProp("emailInput"), getProp("testUser"), id);
-		fillInputField(getProp("passwordInput"), getProp("testUserPassword"), id);
-		clickOnElement(getProp("signInButton"), id);
+		clickOnElement(signInNavButton, id);
+		fillInputField(emailInput, getProp("testUser"), id);
+		fillInputField(passwordInput, getProp("testUserPassword"), id);
+		clickOnElement(signInButton, id);
 	}
 
 	/**
@@ -331,11 +424,11 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void addVehicle(int year, String make, String model) {
-		clickOnElement(getProp("applicationName"), id);
-		fillInputField(getProp("vehicleYearInput"), year, id);
-		fillInputField(getProp("vehicleMakeInput"), make, id);
-		fillInputField(getProp("vehicleModelInput"), model, id);
-		clickOnElement(getProp("addVehicleButton"), id);
+		clickOnElement(applicationName, id);
+		fillInputField(vehicleYearInput, year, id);
+		fillInputField(vehicleMakeInput, make, id);
+		fillInputField(vehicleModelInput, model, id);
+		clickOnElement(addVehicleButton, id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -347,11 +440,11 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void deleteVehicle(int year, String make, String model) {
-		clickOnElement(getProp("applicationName"), id);
+		clickOnElement(applicationName, id);
 		selectVehicle(year, make, model);
-		clickOnElement(getProp("editVehicleNameButton"), id);
-		clickOnElement(getProp("addLogDeleteVehicleButton"), id);
-		clickOnElement(getProp("confirmDeleteVehicleButton"), id);
+		clickOnElement(editVehicleNameButton, id);
+		clickOnElement(addLogDeleteVehicleButton, id);
+		clickOnElement(confirmDeleteVehicleButton, id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -399,10 +492,10 @@ public class BasePage {
 	 * @param service  The type of service
 	 */
 	public void addServiceLog(String date, int mileage, String service) {
-		fillInputField(getProp("serviceLogDateInput"), date, id);
-		fillInputField(getProp("serviceLogMileageInput"), mileage, id);
-		fillInputField(getProp("serviceLogServiceInput"), service, id);
-		clickOnElement(getProp("addServiceLogButton"), id);
+		fillInputField(serviceLogDateInput, date, id);
+		fillInputField(serviceLogMileageInput, mileage, id);
+		fillInputField(serviceLogServiceInput, service, id);
+		clickOnElement(addServiceLogButton, id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -415,11 +508,11 @@ public class BasePage {
 	 * @param comments Comments to address during service
 	 */
 	public void addServiceLog(String date, int mileage, String service, String comments) {
-		fillInputField(getProp("serviceLogDateInput"), date, id);
-		fillInputField(getProp("serviceLogMileageInput"), mileage, id);
-		fillInputField(getProp("serviceLogServiceInput"), service, id);
-		fillInputField(getProp("serviceLogCommentsInput"), comments, id);
-		clickOnElement(getProp("addServiceLogButton"), id);
+		fillInputField(serviceLogDateInput, date, id);
+		fillInputField(serviceLogMileageInput, mileage, id);
+		fillInputField(serviceLogServiceInput, service, id);
+		fillInputField(serviceLogCommentsInput, comments, id);
+		clickOnElement(addServiceLogButton, id);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 	}
 	
@@ -453,7 +546,7 @@ public class BasePage {
 	 * @param model The vehicle model
 	 */
 	public void selectVehicle(int year, String make, String model) {
-		WebElement vehicle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(getProp("vehicle"), year, make, model))));
+		WebElement vehicle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(vehicleToSelect, year, make, model))));
 		try {
 			vehicle.click();
 		} catch (Exception e) {
@@ -507,13 +600,13 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeProfilePicture(String url) {
-		clickOnElement(getProp("applicationName"), id);
-		clickOnElement(getProp("menuDropdownButton"), id);
-		clickOnElement(getProp("accountNavButton"), id);
-		fillInputField(getProp("newProfilePictureInput"), url, id);
-		clickOnElement(getProp("submitNewProfilePictureButton"), id);
-		clickOnElement(getProp("confirmUpdatePictureButton"), id);
-		clickOnElement(getProp("closeUpdateProfilePictureSuccessModalButton"), id);
+		clickOnElement(applicationName, id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		fillInputField(newProfilePictureInput, url, id);
+		clickOnElement(submitNewProfilePictureButton, id);
+		clickOnElement(confirmUpdatePictureButton, id);
+		clickOnElement(closeUpdateProfilePictureSuccessModalButton, id);
 	}
 	
 	/**
@@ -522,12 +615,12 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeBackgroundPicture(String url) {
-		clickOnElement(getProp("applicationName"), id);
-		clickOnElement(getProp("menuDropdownButton"), id);
-		clickOnElement(getProp("accountNavButton"), id);
-		fillInputField(getProp("newBackgroundPictureInput"), url, id);
-		clickOnElement(getProp("submitNewBackgroundPictureButton"), id);
-		clickOnElement(getProp("confirmUpdatePictureButton"), id);
+		clickOnElement(applicationName, id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		fillInputField(newBackgroundPictureInput, url, id);
+		clickOnElement(submitNewBackgroundPictureButton, id);
+		clickOnElement(confirmUpdatePictureButton, id);
 	}
 	
 	/**
@@ -536,7 +629,7 @@ public class BasePage {
 	 * @param theme The theme to select
 	 */
 	public void selectThemeFromDropdown(Themes theme) {
-		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(getProp("themeSelectionDropdown")))));
+		Select dropdown = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(themeSelectionDropdown))));
 		dropdown.selectByValue(theme.toString());
 	}
 	

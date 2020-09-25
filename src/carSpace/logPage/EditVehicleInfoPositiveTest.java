@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class EditVehicleInfoPositiveTest extends BasePage {
+	
 	private String year = "2014";
 	private String make = "Honda";
 	private String model = "Pilot";
@@ -23,21 +24,21 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 				make,
 				model,
 				newYear,
-				getProp("vehicleYearInput")				
+				vehicleYearInput				
 			},
 			{
 				newYear,
 				make,
 				model,
 				newMake,
-				getProp("vehicleMakeInput")	
+				vehicleMakeInput
 			},
 			{
 				newYear,
 				newMake,
 				model,
 				newModel,
-				getProp("vehicleModelInput")				
+				vehicleModelInput				
 			},
 			{
 				newYear,
@@ -67,14 +68,14 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 		String inputField		
 	) {
 		selectVehicle(Integer.parseInt(year), make, model);
-		assertEquals(getText(getProp("vehicleNameHeader"), id), year + " " + make + " " + model);
+		assertEquals(getText(vehicleNameHeader, id), year + " " + make + " " + model);
 		if (input != null) {
-			clickOnElement(getProp("editVehicleNameButton"), id);
+			clickOnElement(editVehicleNameButton, id);
 			fillInputField(inputField, input, id);
-			clickOnElement(getProp("confirmSaveEditVehicleNameButton"), id);
+			clickOnElement(confirmSaveEditVehicleNameButton, id);
 			assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
 			clickOnElement(toastNotificationSuccessCloseButton, xpath);
-			clickOnElement(getProp("applicationName"), id);
+			clickOnElement(applicationName, id);
 		}
 	}
 
