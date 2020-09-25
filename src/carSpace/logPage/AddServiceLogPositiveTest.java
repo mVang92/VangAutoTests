@@ -2,7 +2,6 @@ package carSpace.logPage;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.testng.annotations.AfterClass;
@@ -12,6 +11,7 @@ import org.testng.annotations.Test;
 import basePage.BasePage;
 
 public class AddServiceLogPositiveTest extends BasePage {
+	
 	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	LocalDate localDate = LocalDate.now();
 	String formattedDate = dateFormatter.format(localDate);
@@ -45,11 +45,11 @@ public class AddServiceLogPositiveTest extends BasePage {
 		int yearToInt = Integer.parseInt(yearSubString);
 		checkMonthAndDayEqualToOne(monthSubString, daySubString, monthToInt, dayToInt);
 		String date = month + "/" + day + "/" + yearToInt;
-		fillInputField(getProp("serviceLogDateInput"), date, id);
-		fillInputField(getProp("serviceLogMileageInput"), miles, id);
-		fillInputField(getProp("serviceLogServiceInput"), service, id);
-		fillInputField(getProp("serviceLogCommentsInput"), comment, id);
-		clickOnElement(getProp("addServiceLogButton"), id);
+		fillInputField(serviceLogDateInput, date, id);
+		fillInputField(serviceLogMileageInput, miles, id);
+		fillInputField(serviceLogServiceInput, service, id);
+		fillInputField(serviceLogCommentsInput, comment, id);
+		clickOnElement(addServiceLogButton, id);
 		if (monthToInt < 10) {
 			month = formattedDate.substring(1, 2);
 		}
@@ -58,7 +58,7 @@ public class AddServiceLogPositiveTest extends BasePage {
 		}
 		date = month + "/" + day + "/" + yearToInt;
 		assertEquals(getText(toastNotificationBody, xpath), addLogSuccessMessage(service, miles, date));
-		assertTrue(isElementDisplayed(getProp("serviceLog"), xpath));
+		assertTrue(isElementDisplayed(serviceLog, xpath));
 	}
 	
 	@AfterClass

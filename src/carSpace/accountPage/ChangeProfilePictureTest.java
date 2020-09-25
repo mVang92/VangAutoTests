@@ -19,20 +19,18 @@ public class ChangeProfilePictureTest extends BasePage {
 	@Test
 	public void changeProfilePictureTest() {
 		String imageUrl = getProp("sillyLookingKrabs");
-		String accountNavButton = getProp("accountNavButton");
-		String menuDropdownButton = getProp("menuDropdownButton");
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		fillInputField(getProp("newProfilePictureInput"), imageUrl, id);
-		clickOnElement(getProp("submitNewProfilePictureButton"), id);
-		assertEquals(getText(getProp("modalTitle"), xpath), expectedUpdateProfilePictureModalTitle);
-		assertEquals(getImageSrcAttribute(getProp("profilePicturePreview"), id), imageUrl);
-		clickOnElement(getProp("confirmUpdatePictureButton"), id);
-		clickOnElement(getProp("closeUpdateProfilePictureSuccessModalButton"), id);
-		assertEquals(getImageSrcAttribute(getProp("mainPageProfilePicture"), id), imageUrl);
+		fillInputField(newProfilePictureInput, imageUrl, id);
+		clickOnElement(submitNewProfilePictureButton, id);
+		assertEquals(getText(modalTitle, xpath), expectedUpdateProfilePictureModalTitle);
+		assertEquals(getImageSrcAttribute(profilePicturePreview, id), imageUrl);
+		clickOnElement(confirmUpdatePictureButton, id);
+		clickOnElement(closeUpdateProfilePictureSuccessModalButton, id);
+		assertEquals(getImageSrcAttribute(mainPageProfilePicture, id), imageUrl);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		assertEquals(getImageSrcAttribute(getProp("profilePicture"), id), imageUrl);
+		assertEquals(getImageSrcAttribute(profilePicture, id), imageUrl);
 	}
 	
 	@AfterClass

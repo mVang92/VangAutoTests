@@ -14,35 +14,34 @@ public class ResetInputFieldsTest extends BasePage {
 	public Object[][] dataProviderMethod() {
 		String testUserDisplayName = getProp("testUserDisplayName");
 		String picture = getProp("resetInputFieldsTestImage");
-		String expectedModalTitle = getProp("updateDisplayNameModalBodyText");
 		String closeUpdatePictureModalButton = getProp("closeUpdatePictureModalButton");
 		return new Object[][] {
 			{
-				getProp("newBackgroundPictureInput"),
-				getProp("submitNewBackgroundPictureButton"),
+				newBackgroundPictureInput,
+				submitNewBackgroundPictureButton,
 				expectedUpdateBackgroundPictureModalTitle,
-				getProp("resetNewBackgroundPictureButton"),
+				resetNewBackgroundPictureButton,
 				expectedDefaultBackgroundPictureModalTitle,
 				picture,
 				closeUpdatePictureModalButton
 			},
 			{
-				getProp("newProfilePictureInput"),
-				getProp("submitNewProfilePictureButton"),
+				newProfilePictureInput,
+				submitNewProfilePictureButton,
 				expectedUpdateProfilePictureModalTitle,
-				getProp("resetNewProfilePictureButton"),
+				resetNewProfilePictureButton,
 				expectedDefaultPictureModalTitle,
 				picture,
 				closeUpdatePictureModalButton
 			},
 			{
-				getProp("newDisplayNameInput"),
-				getProp("submitNewDisplayNameButton"),
-				String.format(expectedModalTitle, testUserDisplayName),
-				getProp("resetNewDisplayNameButton"),
+				newDisplayNameInput,
+				submitNewDisplayNameButton,
+				String.format(getProp("updateDisplayNameModalBodyText"), testUserDisplayName),
+				resetNewDisplayNameButton,
 				expectedDefaultNameModalTitle,
 				testUserDisplayName,
-				getProp("closeUpdateDisplayNameModalButton")
+				closeUpdateDisplayNameModalButton
 			}
 		};
 	}
@@ -50,8 +49,8 @@ public class ResetInputFieldsTest extends BasePage {
 	@BeforeClass
 	public void setup() {
 		doSignIn();
-		clickOnElement(getProp("menuDropdownButton"), id);
-		clickOnElement(getProp("accountNavButton"), id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
 	}
 
 	/**
@@ -67,7 +66,6 @@ public class ResetInputFieldsTest extends BasePage {
 		String inputValue,
 		String closeModalButton
 	) {
-		String modalTitle = getProp("modalTitle");
 		assertEquals(getValue(inputField, id), "");
 		fillInputField(inputField, inputValue, id);
 		clickOnElement(submitButton, id);

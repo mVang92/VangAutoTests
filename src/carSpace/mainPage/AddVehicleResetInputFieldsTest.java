@@ -19,13 +19,10 @@ public class AddVehicleResetInputFieldsTest extends BasePage {
 	 */
 	@Test
 	private void addVehicleResetInputFieldsTest() {
-		String vehicleYearInput = getProp("vehicleYearInput");
-		String vehicleMakeInput = getProp("vehicleMakeInput");
-		String vehicleModelInput = getProp("vehicleModelInput");
 		fillInputField(vehicleYearInput, 2003, id);
 		fillInputField(vehicleMakeInput, "Toyota", id);
 		fillInputField(vehicleModelInput, "Highlander", id);
-		clickOnElement(getProp("resetVehicleInputFieldsButton"), id);
+		clickOnElement(resetVehicleInputFieldsButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), resetFieldsSuccessMessage);
 		assertEquals(getValue(vehicleYearInput, id), "");
 		assertEquals(getValue(vehicleMakeInput, id), "");

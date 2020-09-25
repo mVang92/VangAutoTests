@@ -18,10 +18,10 @@ public class NavigationButtonTest extends BasePage {
 	 */
 	@Test
 	private void navigationButtonTest() {
-		clickOnElement(getProp("aboutMeNavButton"), xpath);
-		clickOnElement(getProp("myProjectsNavButton"), xpath);
-		clickOnElement(getProp("contactNavButton"), xpath);
-		clickOnElement(getProp("backToTopButton"), id);
+		clickOnElement(aboutMeNavButton, xpath);
+		clickOnElement(myProjectsNavButton, xpath);
+		clickOnElement(contactNavButton, xpath);
+		clickOnElement(backToTopButton, id);
 	}
 
 	@AfterClass

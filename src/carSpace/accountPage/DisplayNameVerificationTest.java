@@ -19,15 +19,8 @@ public class DisplayNameVerificationTest extends BasePage {
 	 */
 	@Test
 	public void displayNameVerificationTest() {
-		String accountNavButton = getProp("accountNavButton");
-		String defaultDisplayName = getProp("defaultDisplayName");
 		String testUserDisplayName = getProp("testUserDisplayName");
-		String menuDropdownButton = getProp("menuDropdownButton");
-		String expectedModalTitle = getProp("updateDisplayNameModalBodyText");
-		String submitNewDisplayNameButton = getProp("submitNewDisplayNameButton");
-		String confirmUpdateDisplayNameButton = getProp("confirmUpdateDisplayNameButton");
-		String closeUpdateDisplayNameSuccessModalButton = getProp("closeUpdateDisplayNameSuccessModalButton");
-		String accountPageUserDisplayName = getProp("accountPageUserDisplayName");
+		String defaultDisplayName = getProp("defaultDisplayName");
 		String displayName = getProp("displayName");
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
@@ -38,9 +31,9 @@ public class DisplayNameVerificationTest extends BasePage {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
-		fillInputField(getProp("newDisplayNameInput"), testUserDisplayName, id);
+		fillInputField(newDisplayNameInput, testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
-		assertEquals(getText(getProp("modalTitle"), xpath), String.format(expectedModalTitle, testUserDisplayName));
+		assertEquals(getText(getProp("modalTitle"), xpath), String.format(getProp("updateDisplayNameModalBodyText"), testUserDisplayName));
 		clickOnElement(confirmUpdateDisplayNameButton, id);
 		clickOnElement(closeUpdateDisplayNameSuccessModalButton, id);
 		assertEquals(getText(displayName, id), testUserDisplayName);

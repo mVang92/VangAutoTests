@@ -1,5 +1,6 @@
 package carSpace.accountPage;
 
+import resources.Roles;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -9,20 +10,18 @@ import static org.testng.Assert.assertEquals;
 
 public class AccountPageVerificationTest extends BasePage {
 	
-	private String applicationName;
 	private String mainPageDisplayName;
 	
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		applicationName = getProp("applicationName");
 	}
 	
 	@BeforeMethod
 	private void navigateToAccountPage() {
-		mainPageDisplayName = getText(getProp("displayName"), id);
-		clickOnElement(getProp("menuDropdownButton"), id);
-		clickOnElement(getProp("accountNavButton"), id);
+		mainPageDisplayName = getText(displayName, id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
 	}
 	
 	/**
@@ -30,9 +29,9 @@ public class AccountPageVerificationTest extends BasePage {
 	 */
 	@Test(priority = 0)
 	public void userDataVerificationTest() {
-		assertEquals(getText(getProp("accountPageUserDisplayName"), id), mainPageDisplayName);
-		assertEquals(getText(getProp("accountPageUserEmail"), id), getProp("testUser"));
-		assertEquals(getText(getProp("userRole"), id), "User");
+		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
+		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
+		assertEquals(getText(userRole, id), Roles.TEST_USER.toString());
 		clickOnElement(applicationName, id);
 	}
 	
@@ -42,18 +41,21 @@ public class AccountPageVerificationTest extends BasePage {
 	@Test(priority = 1)
 	public void inputFieldsVerificationTest() {
 		String closeUpdatePictureModalButton = getProp("closeUpdatePictureModalButton");
-		String modalTitle = getProp("modalTitle");
-		clickOnElement(getProp("submitNewBackgroundPictureButton"), id);
+		clickOnElement(submitNewBackgroundPictureButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedDefaultBackgroundPictureModalTitle);
 		clickOnElement(closeUpdatePictureModalButton, id);
-		clickOnElement(getProp("submitNewProfilePictureButton"), id);
+		clickOnElement(submitNewProfilePictureButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedDefaultPictureModalTitle);
 		clickOnElement(closeUpdatePictureModalButton, id);
-		clickOnElement(getProp("submitNewDisplayNameButton"), id);
+		clickOnElement(submitNewDisplayNameButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedDefaultNameModalTitle);
-		clickOnElement(getProp("closeUpdateDisplayNameModalButton"), id);
-		clickOnElement(getProp("submitNewPasswordButton"), id);
-		assertEquals(getText(toastNotificationBody, xpath), invalidPasswordErrorMessage);
+		clickOnElement(closeUpdateDisplayNameModalButton, id);
+		clickOnElement(advancedSettingsToggle, id);
+		clickOnElement(submitNewEmailButton, id);
+		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
+		clickOnElement(toastNotificationErrorCloseButton, xpath);
+		clickOnElement(submitNewPasswordButton, id);
+		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
 		clickOnElement(applicationName, id);
 	}
 	

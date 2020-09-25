@@ -21,15 +21,15 @@ public class LoggedOutTest extends BasePage {
 	public Object[][] dataProviderMethod() {
 		return new Object[][] {
 			{
-				getProp("aboutFooterLink"),
+				aboutFooterLink,
 				aboutDirectory			
 			},
 			{
-				getProp("releaseNotesFooterLink"),
+				releaseNotesFooterLink,
 				updatesDirectory
 			},
 			{
-				getProp("forumFooterLink"),
+				forumFooterLink,
 				forumDirectory
 			}
 		};
@@ -45,13 +45,12 @@ public class LoggedOutTest extends BasePage {
 	 */
 	@Test(dataProvider = "data")
 	private void loggedOutTest(String footerLink, String directory) {
-		String applicationName = getProp("applicationName");
 		clickOnElement(footerLink, xpath);
 		if (directory == forumDirectory) {
-			assertEquals(getText(getProp("forumLoggedOutText"), xpath), expectedForumLoggedOutText);
+			assertEquals(getText(forumLoggedOutText, xpath), expectedForumLoggedOutText);
 		}
 		assertTrue(getCurrentUrl().contains(directory));
-		assertFalse(isElementDisplayed(getProp("startNewThreadButton"), id));
+		assertFalse(isElementDisplayed(startNewThreadButton, id));
 		clickOnElement(applicationName, id);
 	}
 	

@@ -11,9 +11,9 @@ public class AddThreadNegativeTest extends BasePage {
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		clickOnElement(getProp("menuDropdownButton"), id);
-		clickOnElement(getProp("forumNavButton"), id);
-		clickOnElement(getProp("startNewThreadButton"), id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(forumNavButton, id);
+		clickOnElement(startNewThreadButton, id);
 	}
 	
 	/**
@@ -21,8 +21,6 @@ public class AddThreadNegativeTest extends BasePage {
 	 */
 	@Test
 	private void missingInputFieldsTest() {
-		String submitNewThreadButton = getProp("submitNewThreadButton");
-		String newThreadTitleInput = getProp("newThreadTitleInput");
 		clickOnElement(submitNewThreadButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
@@ -31,7 +29,7 @@ public class AddThreadNegativeTest extends BasePage {
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
 		fillInputField(newThreadTitleInput, " ", id);
-		fillInputField(getProp("newThreadDescriptionInput"), "Description", id);
+		fillInputField(newThreadDescriptionInput, "Description", id);
 		clickOnElement(submitNewThreadButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
