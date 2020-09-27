@@ -2,4 +2,5 @@
 .classpath
 test-output
 bin
-/target/
+updateBranches.command
+target
