@@ -14,7 +14,6 @@ public class ResetInputFieldsTest extends BasePage {
 	public Object[][] dataProviderMethod() {
 		String testUserDisplayName = getProp("testUserDisplayName");
 		String picture = getProp("resetInputFieldsTestImage");
-		String closeUpdatePictureModalButton = getProp("closeUpdatePictureModalButton");
 		return new Object[][] {
 			{
 				newBackgroundPictureInput,
