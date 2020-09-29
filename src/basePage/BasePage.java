@@ -128,6 +128,7 @@ public class BasePage {
 	public static String newThreadDescriptionInput = "newThreadDescriptionInput";
 	public static String userRole = "userRole";
 	public static String advancedSettingsToggle = "advancedSettingsToggle";
+	public static String newEmailInput = "newEmailInput";
 
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -579,6 +580,31 @@ public class BasePage {
 				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return src;
+	}
+	
+	/**
+	 * Get the placeholder attribute from the input field
+	 * 
+	 * @param element The element to look for
+	 * @param locator The type of locator to look for
+	 * @return        The image placeholder
+	 */
+	public String getPlaceholderText(String element, Locators locator) {
+		WebElement input;
+		String placeholder = "";
+		switch (locator) {
+			case XPATH:
+				input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+				placeholder = input.getAttribute("placeholder");
+				break;
+			case ID:
+				input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
+				placeholder = input.getAttribute("placeholder");
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
+		}
+		return placeholder;
 	}
 	
 	/**
