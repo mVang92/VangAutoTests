@@ -27,7 +27,7 @@ public class AccountPageVerificationTest extends BasePage {
 	/**
 	 * Verify the user data appears correctly in the Account Details section
 	 */
-	@Test(priority = 0)
+	@Test
 	public void userDataVerificationTest() {
 		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
 		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
@@ -50,6 +50,7 @@ public class AccountPageVerificationTest extends BasePage {
 		assertEquals(getText(modalTitle, xpath), expectedDefaultNameModalTitle);
 		clickOnElement(closeUpdateDisplayNameModalButton, id);
 		clickOnElement(advancedSettingsToggle, id);
+		assertEquals(getPlaceholderText(newEmailInput, id), getProp("testUser"));
 		clickOnElement(submitNewEmailButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
