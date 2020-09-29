@@ -11,10 +11,12 @@ import static org.testng.Assert.assertEquals;
 public class AccountPageVerificationTest extends BasePage {
 	
 	private String mainPageDisplayName;
+	private String testUser;
 	
 	@BeforeClass
 	private void setup() {
 		doSignIn();
+		testUser = getProp("testUser");
 	}
 	
 	@BeforeMethod
@@ -30,7 +32,7 @@ public class AccountPageVerificationTest extends BasePage {
 	@Test
 	public void userDataVerificationTest() {
 		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
-		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
+		assertEquals(getText(accountPageUserEmail, id), testUser);
 		assertEquals(getText(userRole, id), Roles.TEST_USER.toString());
 		clickOnElement(applicationName, id);
 	}
@@ -50,7 +52,7 @@ public class AccountPageVerificationTest extends BasePage {
 		assertEquals(getText(modalTitle, xpath), expectedDefaultNameModalTitle);
 		clickOnElement(closeUpdateDisplayNameModalButton, id);
 		clickOnElement(advancedSettingsToggle, id);
-		assertEquals(getPlaceholderText(newEmailInput, id), getProp("testUser"));
+		assertEquals(getPlaceholderText(newEmailInput, id), testUser);
 		clickOnElement(submitNewEmailButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
