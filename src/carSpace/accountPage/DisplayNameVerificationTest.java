@@ -29,6 +29,7 @@ public class DisplayNameVerificationTest extends BasePage {
 		assertEquals(getText(displayName, id), defaultDisplayName);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
+		assertEquals(getTitle(profilePicture, id), getText(accountPageUserDisplayName, id));
 		assertEquals(getText(accountPageUserDisplayName, id), defaultDisplayName);
 		fillInputField(newDisplayNameInput, testUserDisplayName, id);
 		clickOnElement(submitNewDisplayNameButton, id);
@@ -38,6 +39,7 @@ public class DisplayNameVerificationTest extends BasePage {
 		assertEquals(getText(displayName, id), testUserDisplayName);
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
+		assertEquals(getTitle(profilePicture, id), getText(accountPageUserDisplayName, id));
 		assertEquals(getText(accountPageUserDisplayName, id), testUserDisplayName);
 	}
 	
