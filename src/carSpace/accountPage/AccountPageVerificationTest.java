@@ -31,6 +31,7 @@ public class AccountPageVerificationTest extends BasePage {
 	 */
 	@Test
 	public void userDataVerificationTest() {
+		assertEquals(getTitle(profilePicture, id), getText(accountPageUserDisplayName, id));
 		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
 		assertEquals(getText(accountPageUserEmail, id), testUser);
 		assertEquals(getText(userRole, id), Roles.TEST_USER.toString());

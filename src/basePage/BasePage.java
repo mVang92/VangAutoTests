@@ -308,12 +308,10 @@ public class BasePage {
 	public void clickOnElement(String element, Locators locator) {
 		switch (locator) {
 			case XPATH:
-					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
-					js.executeScript("arguments[0].click();", webElement);
+					js.executeScript("arguments[0].click();", wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element))));
 				break;
 			case ID:
-					webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(element)));
-					js.executeScript("arguments[0].click();", webElement);
+					js.executeScript("arguments[0].click();", wait.until(ExpectedConditions.elementToBeClickable(By.id(element))));
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
@@ -366,12 +364,10 @@ public class BasePage {
 		String text = null;
 		switch (locator) {
 			case XPATH:
-				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-				text = webElement.getText();
+				text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element))).getText();
 				break;
 			case ID:
-				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
-				text = webElement.getText();
+				text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element))).getText();
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
@@ -390,12 +386,10 @@ public class BasePage {
 		String value = null;
 		switch (locator) {
 			case XPATH:
-				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-				value = webElement.getAttribute("value");
+				value = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element))).getAttribute("value");
 				break;
 			case ID:
-				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
-				value = webElement.getAttribute("value");
+				value = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element))).getAttribute("value");
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
@@ -458,12 +452,10 @@ public class BasePage {
 		Boolean enabled = false;
 		switch (locator) {
 			case XPATH:
-				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(button)));
-				enabled = webElement.isEnabled();
+				enabled = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(button))).isEnabled();
 				break;
 			case ID:
-				webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(button)));
-				enabled = webElement.isEnabled();
+				enabled = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(button))).isEnabled();
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
@@ -565,16 +557,13 @@ public class BasePage {
 	 * @return        The image src
 	 */
 	public String getImageSrcAttribute(String element, Locators locator) {
-		WebElement image;
 		String src = "";
 		switch (locator) {
 			case XPATH:
-				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-				src = image.getAttribute("src");
+				src = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element))).getAttribute("src");
 				break;
 			case ID:
-				image = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
-				src = image.getAttribute("src");
+				src = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element))).getAttribute("src");
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
@@ -587,24 +576,43 @@ public class BasePage {
 	 * 
 	 * @param element The element to look for
 	 * @param locator The type of locator to look for
-	 * @return        The image placeholder
+	 * @return        The placeholder
 	 */
 	public String getPlaceholderText(String element, Locators locator) {
-		WebElement input;
 		String placeholder = "";
 		switch (locator) {
 			case XPATH:
-				input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-				placeholder = input.getAttribute("placeholder");
+				placeholder = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element))).getAttribute("placeholder");
 				break;
 			case ID:
-				input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
-				placeholder = input.getAttribute("placeholder");
+				placeholder = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element))).getAttribute("placeholder");
 				break;
 			default:
 				throw new IllegalStateException(locator + " is not supported.");
 		}
 		return placeholder;
+	}
+	
+	/**
+	 * Get the title attribute from the element
+	 * 
+	 * @param element The element to look for
+	 * @param locator The type of locator to look for
+	 * @return        The title
+	 */
+	public String getTitle(String element, Locators locator) {
+		String title = "";
+		switch (locator) {
+			case XPATH:
+				title = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element))).getAttribute("title");;
+				break;
+			case ID:
+				title = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element))).getAttribute("title");
+				break;
+			default:
+				throw new IllegalStateException(locator + " is not supported.");
+		}
+		return title;
 	}
 	
 	/**
