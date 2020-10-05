@@ -15,7 +15,7 @@ public class AddVehicleResetInputFieldsTest extends BasePage {
 	}
 
 	/**
-	 * Verifies the functionality of the reset button while adding a vehicle
+	 * Verify the functionality of the reset button while adding a vehicle
 	 */
 	@Test
 	private void addVehicleResetInputFieldsTest() {
