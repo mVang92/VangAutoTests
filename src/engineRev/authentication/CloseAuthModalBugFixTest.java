@@ -1,4 +1,4 @@
-package carSpace.authentication;
+package engineRev.authentication;
 
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
@@ -10,7 +10,7 @@ public class CloseAuthModalBugFixTest extends BasePage {
 
 	@BeforeClass
 	private void setup() {
-		doCarSpaceTest();
+		doEngineRevTest();
 	}
 
 	/**

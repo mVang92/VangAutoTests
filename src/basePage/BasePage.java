@@ -28,7 +28,7 @@ public class BasePage {
 	WebDriverWait wait;
 	Properties properties;
 
-	public static String carSpaceUrl = "https://car-space.herokuapp.com/";
+	public static String engineRevUrl = "https://enginerev.herokuapp.com/";
 	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
 	public static String chromeDriverPath = "selenium/selenium/chromedriver/chromedriver.exe";
 	public static String propertiesFile;
@@ -163,7 +163,7 @@ public class BasePage {
 	public void doSignIn(String specificEmail, String specificPassword) {
 		setProperty();
 		maximizeWindow();
-		useCarSpace();
+		useEngineRev();
 		signIn(specificEmail, specificPassword);
 	}
 
@@ -173,17 +173,17 @@ public class BasePage {
 	public void doSignIn() {
 		setProperty();
 		maximizeWindow();
-		useCarSpace();
+		useEngineRev();
 		signIn();
 	}
 	
 	/**
-	 * Open CarSpace
+	 * Open EngineRev
 	 */
-	public void doCarSpaceTest() {
+	public void doEngineRevTest() {
 		setProperty();
 		maximizeWindow();
-		useCarSpace();
+		useEngineRev();
 	}
 
 	/**
@@ -204,11 +204,11 @@ public class BasePage {
 	}
 
 	/**
-	 * Run CarSpace test
+	 * Run EngineRev test
 	 */
-	public void useCarSpace() {
-		driver.get(carSpaceUrl);
-		propertiesFile = "src/resources/config/carSpace.properties";
+	public void useEngineRev() {
+		driver.get(engineRevUrl);
+		propertiesFile = "src/resources/config/engineRev.properties";
 	}
 
 	/**
@@ -661,8 +661,8 @@ public class BasePage {
 	public String displayTheme(Themes theme) {
 		String displayedTheme = "";
 		switch(theme) {
-			case carSpace:
-				displayedTheme = "CarSpace";
+			case engineRev:
+				displayedTheme = "EngineRev";
 				break;
 			case light:
 				displayedTheme = "Light";
@@ -701,7 +701,7 @@ public class BasePage {
 	 * Click on the application name only if the current URL is not the home page
 	 */
 	public void shouldClickApplicationName() {
-		if (!getCurrentUrl().equals(getProp("carSpaceUrl"))) {
+		if (!getCurrentUrl().equals(getProp("engineRevUrl"))) {
 			clickOnElement(applicationName, id);
 		}
 	}

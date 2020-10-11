@@ -1,4 +1,4 @@
-package carSpace.authentication;
+package engineRev.authentication;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -37,7 +37,7 @@ public class LoggedOutTest extends BasePage {
 	
 	@BeforeClass
 	private void setup() {
-		doCarSpaceTest();
+		doEngineRevTest();
 	}
 	
 	/**
