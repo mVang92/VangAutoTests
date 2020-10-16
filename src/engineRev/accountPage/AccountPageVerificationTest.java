@@ -20,10 +20,9 @@ public class AccountPageVerificationTest extends BasePage {
 	}
 	
 	@BeforeMethod
-	private void navigateToAccountPage() {
+	private void getDisplayNameThenNavigateToAccountPage() {
 		mainPageDisplayName = getText(displayName, id);
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		navigateToAccountPage();
 	}
 	
 	/**
