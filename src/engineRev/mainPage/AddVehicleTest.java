@@ -1,14 +1,13 @@
 package engineRev.mainPage;
 
-import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
+import java.util.Random;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import java.util.Random;
 import basePage.BasePage;
 
-public class AddRemoveOneVehicleTest extends BasePage {
+public class AddVehicleTest extends BasePage {
 	
 	Random randon = new Random();
 	private String vehicleMake = "Toyota";
@@ -46,14 +45,13 @@ public class AddRemoveOneVehicleTest extends BasePage {
 	private void setup() {
 		doSignIn();
 	}
-
+	
 	/**
-	 * Verify the user can add a vehicle, and the vehicle count reflects the addition
+	 * Verify the user can add a vehicle, and the vehicle count reflects the addition in the Account page
 	 */
-	@Test(priority = 0)
-	private void addOneVehicleTest() {
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+	@Test
+	private void addVehicleTest() {
+		navigateToAccountPage();
 		vehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
 		clickOnElement(backHomeBtn, xpath);
 		fillInputField(vehicleYearInput, vehicleYear, id);
@@ -64,33 +62,18 @@ public class AddRemoveOneVehicleTest extends BasePage {
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
 		assertEquals(getText(vehicleNameHeader, id), vehicle);
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		navigateToAccountPage();
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
 		assertEquals(actualVehicleCount, (vehicleCount + 1));
-		clickOnElement(backHomeBtn, xpath);
-	}
-
-	/**
-	 * Verify the user can delete a vehicle, and the vehicle count reflects the deletion
-	 */
-	@Test(priority = 1, dependsOnMethods = "addOneVehicleTest")
-	private void deleteOneVehicleTest() {
-		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
-		clickOnElement(editVehicleNameButton, id);
-		clickOnElement(addLogDeleteVehicleButton, id);
-		assertTrue(getText(deleteVehicleModalTitle, id).contains(vehicle));
-		clickOnElement(confirmDeleteVehicleButton, id);
-		assertEquals(getText(toastNotificationBody, xpath), vehicleDeletedSuccessfullyMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		deleteVehicle(vehicleYear, vehicleMake, vehicleModel);
+		navigateToAccountPage();
 		actualVehicleCount = Integer.parseInt(getText(accountPageVehicleCount, id));
 		assertEquals(actualVehicleCount, vehicleCount);
 	}
-
+	
 	@AfterClass
 	private void teardown() {
 		close();
 	}
+
 }

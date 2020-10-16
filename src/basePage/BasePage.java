@@ -705,4 +705,12 @@ public class BasePage {
 			clickOnElement(applicationName, id);
 		}
 	}
+	
+	/**
+	 * Use the navigation bar to navigate to the Account page
+	 */
+	public void navigateToAccountPage() {
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+	}
 }
