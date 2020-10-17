@@ -75,5 +75,4 @@ public class AddVehicleTest extends BasePage {
 	private void teardown() {
 		close();
 	}
-
 }
