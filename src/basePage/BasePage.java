@@ -71,6 +71,7 @@ public class BasePage {
 	public static String doSignOutButton = "doSignOutButton";
 	public static String closeSignUpModal = "closeSignUpModal";
 	public static String vehicleNameHeader = "vehicleNameHeader";
+	public static String vehicleNameInput = "vehicleNameInput";
 	public static String vehicleYearInput = "vehicleYearInput";
 	public static String vehicleMakeInput = "vehicleMakeInput";
 	public static String vehicleModelInput = "vehicleModelInput";
