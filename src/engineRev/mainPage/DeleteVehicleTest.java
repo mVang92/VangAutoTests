@@ -10,7 +10,7 @@ import basePage.BasePage;
 
 public class DeleteVehicleTest extends BasePage {
 	
-	Random randon = new Random();
+	Random random = new Random();
 	private String vehicleMake = "Toyota";
 	private int actualVehicleCount;
 	private int vehicleCount;
@@ -25,21 +25,8 @@ public class DeleteVehicleTest extends BasePage {
 			"Tacoma",
 			"Tundra"
 	};
-	private int vehicleYears [] = {
-			2000,
-			2001,
-			2002,
-			2003,
-			2004,
-			2005,
-			2006,
-			2007,
-			2008,
-			2009,
-			2010
-	};
-	private int vehicleYear = vehicleYears[randon.nextInt(vehicleYears.length)];
-	private String vehicleModel = vehicleModels[randon.nextInt(vehicleModels.length)];
+	private int vehicleYear = random.nextInt(2010 - 2000 + 1) + 2000;
+	private String vehicleModel = vehicleModels[random.nextInt(vehicleModels.length)];
 	private String vehicle = vehicleYear + " " + vehicleMake + " " + vehicleModel;
 
 	@BeforeClass
