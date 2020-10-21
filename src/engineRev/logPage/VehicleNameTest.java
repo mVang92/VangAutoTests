@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import basePage.BasePage;
 
-public class AddVehicleNameTest extends BasePage {
+public class VehicleNameTest extends BasePage {
 	
 	private int year = 2003;
 	private String make = "Honda";
@@ -37,6 +37,15 @@ public class AddVehicleNameTest extends BasePage {
 		assertEquals(getText(vehicleNameHeader, id), vehicleName);
 		clickOnElement(editVehicleNameButton, id);
 		assertEquals(getValue(vehicleNameInput, id), vehicleName);
+	}
+	
+	/**
+	 * Verify the vehicle name changes when the user adds the vehicle name
+	 */
+	@Test
+	public void deleteVehicleNameTest() {
+		selectVehicle(year, make, model);
+		
 	}
 	
 	@AfterClass
