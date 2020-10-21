@@ -1,6 +1,7 @@
 package engineRev.logPage;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -13,7 +14,7 @@ public class VehicleNameTest extends BasePage {
 	private int year = 2003;
 	private String make = "Honda";
 	private String model = "Pilot";
-	private String vehicleName = "Sigourney Weaver";
+	private String customVehicleName = "Sigourney Weaver";
 
 	@BeforeClass
 	public void setup() {
@@ -28,24 +29,31 @@ public class VehicleNameTest extends BasePage {
 	public void addVehicleNameTest() {
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
-		fillInputField(vehicleNameInput, vehicleName, id);
+		fillInputField(vehicleNameInput, customVehicleName, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(applicationName, id);
 		selectVehicle(year, make, model);
-		assertEquals(getText(vehicleNameHeader, id), vehicleName);
+		assertEquals(getText(vehicleNameHeader, id), customVehicleName);
 		clickOnElement(editVehicleNameButton, id);
-		assertEquals(getValue(vehicleNameInput, id), vehicleName);
+		assertEquals(getValue(vehicleNameInput, id), customVehicleName);
 	}
 	
 	/**
-	 * Verify the vehicle name changes when the user adds the vehicle name
+	 * Verify the vehicle name header shows the year, make, and model when the user deletes the custom vehicle name
 	 */
-	@Test
+	@Test(dependsOnMethods = "addVehicleNameTest")
 	public void deleteVehicleNameTest() {
+		String defaultVehicleNameString = year + " " + make + " " + model;
 		selectVehicle(year, make, model);
-		
+		assertEquals(getText(vehicleNameHeader, id), customVehicleName);
+		assertNotEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
+		clickOnElement(editVehicleNameButton, id);
+		clickOnElement(removeVehicleNameButton, id);
+		clickOnElement(applicationName, id);
+		selectVehicle(year, make, model);
+		assertEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
 	}
 	
 	@AfterClass
