@@ -130,6 +130,7 @@ public class BasePage {
 	public static String userRole = "userRole";
 	public static String advancedSettingsToggle = "advancedSettingsToggle";
 	public static String newEmailInput = "newEmailInput";
+	public static String removeVehicleNameButton = "removeVehicleNameButton";
 
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
 	public static String addLogErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
