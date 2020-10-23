@@ -51,9 +51,13 @@ public class VehicleNameTest extends BasePage {
 		assertNotEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(removeVehicleNameButton, id);
+		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
+		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(applicationName, id);
 		selectVehicle(year, make, model);
 		assertEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
+		clickOnElement(editVehicleNameButton, id);
+		assertEquals(getText(vehicleNameInput, id), "");
 	}
 	
 	@AfterClass
