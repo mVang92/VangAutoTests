@@ -4,14 +4,14 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import basePage.BasePage;
 
 public class SignInNoUserTest extends BasePage {
 
 	@BeforeClass
 	private void setup() {
-		doSignIn("noRecordUser@gmail.com", "123456");
+		doEngineRevTest();
+		signIn(getProp("unregisteredTestUser"), "123456");
 	}
 
 	/**
