@@ -29,7 +29,6 @@ public class ForgotPasswordTest extends BasePage{
 		clickOnElement(forgotPasswordSubmitButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), passwordResetConfirmationSuccessMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
-		clickOnElement(closeForgotPasswordModal, id);
 	}
 	
 	/**
@@ -51,7 +50,7 @@ public class ForgotPasswordTest extends BasePage{
 	private void forgotPasswordNoRegisteredEmailTest() {
 		fillInputField(emailInputForPasswordReset, getProp("unregisteredTestUser"), id);
 		clickOnElement(forgotPasswordSubmitButton, id);
-		assertEquals(getText(toastNotificationBody, xpath), invalidEmailErrorMessage);
+		assertEquals(getText(toastNotificationBody, xpath), noUserOnRecordSignInErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
 		clickOnElement(closeForgotPasswordModal, id);
 	}
