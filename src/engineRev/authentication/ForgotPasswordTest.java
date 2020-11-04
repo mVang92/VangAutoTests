@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import basePage.BasePage;
 
-public class ForgotPasswordTest extends BasePage{
+public class ForgotPasswordTest extends BasePage {
 	
 	@BeforeClass
 	private void setup() {

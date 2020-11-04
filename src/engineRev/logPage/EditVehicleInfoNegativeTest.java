@@ -23,7 +23,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	/**
 	 * Verify the vehicle information does not change when the user submits missing input values
 	 */
-	@Test(priority = 0)
+	@Test
 	public void editVehicleMissingInputTest() {
 		String missingInput = "";
 		selectVehicle(year, make, model);

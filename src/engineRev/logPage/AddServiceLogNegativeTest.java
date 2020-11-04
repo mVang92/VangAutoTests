@@ -26,7 +26,7 @@ public class AddServiceLogNegativeTest extends BasePage {
 	/**
 	 * Verify the error message when trying to submit an empty input field
 	 */
-	@Test(priority = 0)
+	@Test
 	private void missingInputFieldsTest() {
 		fillInputField(serviceLogDateInput, date, id);
 		fillInputField(serviceLogServiceInput, service, id);
