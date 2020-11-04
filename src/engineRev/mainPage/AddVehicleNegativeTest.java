@@ -23,7 +23,7 @@ public class AddVehicleNegativeTest extends BasePage {
 	 * Verify the functionality of the error message while trying to submit empty
 	 * input fields when adding a vehicle
 	 */
-	@Test(priority = 0)
+	@Test
 	private void addVehicleMissingInputTest() {
 		fillInputField(vehicleMakeInput, vehicleMake, id);
 		fillInputField(vehicleModelInput, vehicleModel, id);
