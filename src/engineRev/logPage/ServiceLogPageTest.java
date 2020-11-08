@@ -32,7 +32,7 @@ public class ServiceLogPageTest extends BasePage {
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertFalse(isButtonEnabled(printPageButton, id));
 		assertFalse(isElementDisplayed(topButton, xpath));
-		addServiceLog(getDate(-3), miles, service, "First Log");
+		addServiceLog(getDate(-3), miles, service, generateCustomText(15));
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		assertFalse(isElementDisplayed(printPageViaDeleteButton, id));
@@ -40,7 +40,7 @@ public class ServiceLogPageTest extends BasePage {
 		assertFalse(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));
 		assertFalse(isElementDisplayed(topButton, xpath));
-		addServiceLog(getDate(-2), miles, service, "Second Log");
+		addServiceLog(getDate(-2), miles, service, generateCustomText(15));
 		clickOnElement(addLogSortLogsButton, id);
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
@@ -48,7 +48,7 @@ public class ServiceLogPageTest extends BasePage {
 		assertFalse(isElementDisplayed(topButton, xpath));
 		clickOnElement(noButton, xpath);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
-		addServiceLog(getDate(-1), miles, service, "Third Log");
+		addServiceLog(getDate(-1), miles, service, generateCustomText(15));
 		clickOnElement(addLogSortLogsButton, id);
 		assertTrue(isButtonEnabled(addLogSortLogsButton, id));
 		assertTrue(isButtonEnabled(printPageButton, id));

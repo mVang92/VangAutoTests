@@ -11,7 +11,7 @@ import basePage.BasePage;
 public class ResetInputFieldsTest extends BasePage {
 
 	@DataProvider(name = "testData")
-	public Object[][] dataProviderMethod() {
+	private Object[][] dataProviderMethod() {
 		String testUserDisplayName = getProp("testUserDisplayName");
 		String picture = getProp("resetInputFieldsTestImage");
 		return new Object[][] {
@@ -46,7 +46,7 @@ public class ResetInputFieldsTest extends BasePage {
 	}
 
 	@BeforeClass
-	public void setup() {
+	private void setup() {
 		doSignIn();
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
@@ -56,7 +56,7 @@ public class ResetInputFieldsTest extends BasePage {
 	 * Verify the Reset function works for the update input fields and the react states reset with each field
 	 */
 	@Test(dataProvider = "testData")
-	public void resetInputFieldsTest(
+	private void resetInputFieldsTest(
 		String inputField,
 		String submitButton,
 		String expectedModalTitle,
@@ -77,7 +77,7 @@ public class ResetInputFieldsTest extends BasePage {
 	}
 
 	@AfterClass
-	public void teardown() {
+	private void teardown() {
 		close();
 	}
 }

@@ -15,7 +15,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	private String model = "Pilot";
 	
 	@BeforeClass
-	public void setup() {
+	private void setup() {
 		doSignIn();
 		addVehicle(year, make, model);
 	}
@@ -24,7 +24,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	 * Verify the vehicle information does not change when the user submits missing input values
 	 */
 	@Test
-	public void editVehicleMissingInputTest() {
+	private void editVehicleMissingInputTest() {
 		String missingInput = "";
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
@@ -39,7 +39,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	 * Verify the vehicle information does not change when the user enters empty input values
 	 */
 	@Test(priority = 1)
-	public void editVehicleEmptyInputTest() {
+	private void editVehicleEmptyInputTest() {
 		String emptyInput = "   ";
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
@@ -54,7 +54,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	 * Verify the vehicle year does not change when the user enters a year before 1885
 	 */
 	@Test(priority = 2)
-	public void editVehicleBadYearInputTest() {
+	private void editVehicleBadYearInputTest() {
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
 		fillInputField(vehicleYearInput, 1884, id);
@@ -67,7 +67,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	 * Verify the error modal appears when entering a non-numerical value in the year input
 	 */
 	@Test(priority = 3)
-	public void editVehicleNanYearInputTest() {
+	private void editVehicleNanYearInputTest() {
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
 		fillInputField(vehicleYearInput, "nan", id);
@@ -81,7 +81,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	 * Verify the vehicle year does not change when the user enters a value that is three years into the future
 	 */
 	@Test(priority = 4)
-	public void editVehicleThreeYearsInFutureTest() {
+	private void editVehicleThreeYearsInFutureTest() {
 		int futureYear = Calendar.getInstance().get(Calendar.YEAR) + 3;
 		selectVehicle(year, make, model);
 		clickOnElement(editVehicleNameButton, id);
@@ -92,7 +92,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	}
 	
 	@AfterMethod
-	public void saveAndCheckVehicleInfo() {
+	private void saveAndCheckVehicleInfo() {
 		clickOnElement(applicationName, id);
 		selectVehicle(year, make, model);
 		assertEquals(getText(vehicleNameHeader, id), year + " " + make + " " + model);
@@ -100,7 +100,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 	}
 
 	@AfterClass
-	public void teardown() {
+	private void teardown() {
 		deleteVehicle(year, make, model);
 		close();
 	}

@@ -18,7 +18,7 @@ public class DisplayNameVerificationTest extends BasePage {
 	 * Verify the functionality of the update display name feature
 	 */
 	@Test
-	public void displayNameVerificationTest() {
+	private void displayNameVerificationTest() {
 		String testUserDisplayName = getProp("testUserDisplayName");
 		String defaultDisplayName = getProp("defaultDisplayName");
 		clickOnElement(menuDropdownButton, id);

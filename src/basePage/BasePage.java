@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -156,7 +157,7 @@ public class BasePage {
 	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
 	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
 	public static String serviceLog = "//div[@class='serviceLog']";
-	public static String vehicleToSelect = "//*[@title='%s %s %s']";	
+	public static String vehicleToSelect = "//div[@title='%s %s %s']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -720,5 +721,20 @@ public class BasePage {
 	public void navigateToAccountPage() {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
+	}
+	
+	/**
+	 * Gernate a custom text
+	 * 
+	 * @return The custom text
+	 */
+	public String generateCustomText(int stringLength) {
+		String characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	    Random random = new Random();
+	    StringBuilder builder = new StringBuilder(stringLength);
+	    for (int i = 0; i < stringLength; i++) {
+	        builder.append(characterSet.charAt(random.nextInt(characterSet.length())));
+	    }
+	    return builder.toString();
 	}
 }

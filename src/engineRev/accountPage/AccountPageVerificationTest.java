@@ -29,7 +29,7 @@ public class AccountPageVerificationTest extends BasePage {
 	 * Verify the user data appears correctly in the Account Details section
 	 */
 	@Test
-	public void userDataVerificationTest() {
+	private void userDataVerificationTest() {
 		assertEquals(getTitle(profilePicture, id), getText(accountPageUserDisplayName, id));
 		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
 		assertEquals(getText(accountPageUserEmail, id), testUser);
@@ -41,7 +41,7 @@ public class AccountPageVerificationTest extends BasePage {
 	 * Verify the functionality to update user data displays the proper modal when submitting blank values
 	 */
 	@Test(priority = 1)
-	public void inputFieldsVerificationTest() {
+	private void inputFieldsVerificationTest() {
 		clickOnElement(submitNewBackgroundPictureButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedDefaultBackgroundPictureModalTitle);
 		clickOnElement(closeUpdatePictureModalButton, id);
