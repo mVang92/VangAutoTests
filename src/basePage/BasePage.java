@@ -724,17 +724,18 @@ public class BasePage {
 	}
 	
 	/**
-	 * Gernate a custom text
+	 * Generate a custom text
 	 * 
-	 * @return The custom text
+	 * @param stringLength The number of characters for the custom text
+	 * @return			   The custom text
 	 */
 	public String generateCustomText(int stringLength) {
 		String characterSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	    Random random = new Random();
-	    StringBuilder builder = new StringBuilder(stringLength);
-	    for (int i = 0; i < stringLength; i++) {
-	        builder.append(characterSet.charAt(random.nextInt(characterSet.length())));
-	    }
-	    return builder.toString();
+		Random random = new Random();
+		StringBuilder builder = new StringBuilder(stringLength);
+		for (int i = 0; i < stringLength; i++) {
+		    builder.append(characterSet.charAt(random.nextInt(characterSet.length())));
+		}
+		return builder.toString();
 	}
 }

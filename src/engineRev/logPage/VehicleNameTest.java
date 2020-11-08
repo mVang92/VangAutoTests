@@ -57,7 +57,7 @@ public class VehicleNameTest extends BasePage {
 		selectVehicle(year, make, model);
 		assertEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
 		clickOnElement(editVehicleNameButton, id);
-		assertEquals(getText(vehicleNameInput, id), "");
+		assertEquals(getValue(vehicleNameInput, id), "");
 	}
 	
 	@AfterClass
