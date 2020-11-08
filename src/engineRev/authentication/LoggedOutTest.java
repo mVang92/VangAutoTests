@@ -18,7 +18,7 @@ public class LoggedOutTest extends BasePage {
 	private String aboutDirectory = "/about";
 	
 	@DataProvider(name = "data")
-	public Object[][] dataProviderMethod() {
+	private Object[][] dataProviderMethod() {
 		return new Object[][] {
 			{
 				aboutFooterLink,

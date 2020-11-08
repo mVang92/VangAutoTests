@@ -17,7 +17,7 @@ public class ChangeProfilePictureTest extends BasePage {
 	 * Verify the user can successfully change their profile picture
 	 */
 	@Test
-	public void changeProfilePictureTest() {
+	private void changeProfilePictureTest() {
 		String imageUrl = getProp("sillyLookingKrabs");
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);

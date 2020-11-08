@@ -17,7 +17,7 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 	private String newModel = "ES 300";
 	
 	@DataProvider(name = "data")
-	public Object[][] dataProviderMethod() {
+	private Object[][] dataProviderMethod() {
 		return new Object[][] {
 			{
 				year,
@@ -51,7 +51,7 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 	}
 	
 	@BeforeClass
-	public void setup() {
+	private void setup() {
 		doSignIn();
 		addVehicle(Integer.parseInt(year), make, model);
 	}
@@ -60,7 +60,7 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 	 * Verify the vehicle name, make, and model are editable and the user is able to save them
 	 */
 	@Test(dataProvider = "data")
-	public void changeVehicleNameTest(
+	private void changeVehicleNameTest(
 		String year,
 		String make,
 		String model,
@@ -80,7 +80,7 @@ public class EditVehicleInfoPositiveTest extends BasePage {
 	}
 
 	@AfterClass
-	public void teardown() {
+	private void teardown() {
 		deleteVehicle(Integer.parseInt(newYear), newMake, newModel);
 		close();
 	}
