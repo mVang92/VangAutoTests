@@ -17,6 +17,7 @@ public class LoginTest extends BasePage {
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
 		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
+		assertEquals(getPlaceholderText(newDisplayNameInput, id), getText(accountPageUserDisplayName, id));
 		doSignOut();
 	}
 
