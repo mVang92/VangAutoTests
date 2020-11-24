@@ -3,7 +3,7 @@ package resources;
 public enum Roles {
 	USER("User"),
 	TEST_USER("Test User"),
-	ADMINIATRATOR("Administrator");
+	ADMINISTRATOR("Administrator");
 
 	private String role;
 
