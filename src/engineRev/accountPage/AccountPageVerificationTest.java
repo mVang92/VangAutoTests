@@ -4,7 +4,6 @@ import resources.Roles;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import basePage.BasePage;
 import static org.testng.Assert.assertEquals;
@@ -23,7 +22,7 @@ public class AccountPageVerificationTest extends BasePage {
 	/**
 	 * Verify the user data appears correctly in the Account Details section
 	 */
-//	@Test
+	@Test
 	private void userDataVerificationTest() {
 		String mainPageDisplayName = getText(displayName, id);
 		navigateToAccountPage();
@@ -36,7 +35,7 @@ public class AccountPageVerificationTest extends BasePage {
 	/**
 	 * Verify the functionality to update user data displays the proper modal when submitting blank values
 	 */
-//	@Test(priority = 1)
+	@Test(priority = 1)
 	private void inputFieldsVerificationTest() {
 		navigateToAccountPage();
 		clickOnElement(submitNewBackgroundPictureButton, id);
