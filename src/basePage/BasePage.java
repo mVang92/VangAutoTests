@@ -719,8 +719,7 @@ public class BasePage {
 	 * Use the navigation bar to navigate to the Account page
 	 */
 	public void navigateToAccountPage() {
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		driver.get(getProp("accountPageUrl"));
 	}
 	
 	/**

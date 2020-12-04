@@ -13,24 +13,24 @@ import basePage.BasePage;
 public class LoggedOutTest extends BasePage {
 	
 	private String expectedForumLoggedOutText = "Please sign in or create an account to start a thread.";
-	private String forumDirectory = "/forum";
-	private String updatesDirectory = "/updates";
-	private String aboutDirectory = "/about";
+	private String forumPath = "/forum";
+	private String updatesPath = "/updates";
+	private String aboutPath = "/about";
 	
 	@DataProvider(name = "data")
 	private Object[][] dataProviderMethod() {
 		return new Object[][] {
 			{
 				aboutFooterLink,
-				aboutDirectory			
+				aboutPath			
 			},
 			{
 				releaseNotesFooterLink,
-				updatesDirectory
+				updatesPath
 			},
 			{
 				forumFooterLink,
-				forumDirectory
+				forumPath
 			}
 		};
 	}
@@ -44,12 +44,12 @@ public class LoggedOutTest extends BasePage {
 	 * Verify certain elements around the app are not present when a user is not logged in
 	 */
 	@Test(dataProvider = "data")
-	private void loggedOutTest(String footerLink, String directory) {
+	private void loggedOutTest(String footerLink, String path) {
 		clickOnElement(footerLink, xpath);
-		if (directory == forumDirectory) {
+		if (path == forumPath) {
 			assertEquals(getText(forumLoggedOutText, xpath), expectedForumLoggedOutText);
 		}
-		assertTrue(getCurrentUrl().contains(directory));
+		assertTrue(getCurrentUrl().contains(path));
 		assertFalse(isElementDisplayed(startNewThreadButton, id));
 		clickOnElement(applicationName, id);
 	}
