@@ -2,15 +2,15 @@ package engineRev.accountPage;
 
 import resources.Roles;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import basePage.BasePage;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class AccountPageVerificationTest extends BasePage {
-	
-	private String mainPageDisplayName;
+
 	private String testUser;
 	
 	@BeforeClass
@@ -19,22 +19,17 @@ public class AccountPageVerificationTest extends BasePage {
 		testUser = getProp("testUser");
 	}
 	
-	@BeforeMethod
-	private void getDisplayNameThenNavigateToAccountPage() {
-		mainPageDisplayName = getText(displayName, id);
-		navigateToAccountPage();
-	}
-	
 	/**
 	 * Verify the user data appears correctly in the Account Details section
 	 */
 	@Test
 	private void userDataVerificationTest() {
+		String mainPageDisplayName = getText(displayName, id);
+		navigateToAccountPage();
 		assertEquals(getTitle(profilePicture, id), getText(accountPageUserDisplayName, id));
 		assertEquals(getText(accountPageUserDisplayName, id), mainPageDisplayName);
 		assertEquals(getText(accountPageUserEmail, id), testUser);
 		assertEquals(getText(userRole, id), Roles.TEST_USER.toString());
-		clickOnElement(applicationName, id);
 	}
 	
 	/**
@@ -42,6 +37,7 @@ public class AccountPageVerificationTest extends BasePage {
 	 */
 	@Test(priority = 1)
 	private void inputFieldsVerificationTest() {
+		navigateToAccountPage();
 		clickOnElement(submitNewBackgroundPictureButton, id);
 		assertEquals(getText(modalTitle, xpath), expectedDefaultBackgroundPictureModalTitle);
 		clickOnElement(closeUpdatePictureModalButton, id);
@@ -58,6 +54,25 @@ public class AccountPageVerificationTest extends BasePage {
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
 		clickOnElement(submitNewPasswordButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
+	}
+	
+	/**
+	 * Verify the user can navigate to the Account page by clicking their display picture from the home page,
+	 * or via the menu drop down
+	 */
+	@Test(priority = 2)
+	private void navigationToAccountPageTest() {
+		String path = "/account";
+		clickOnElement(mainPageProfilePicture, id);
+		assertTrue(getCurrentUrl().contains(path));
+		clickOnElement(applicationName, id);
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(accountNavButton, id);
+		assertTrue(getCurrentUrl().contains(path));
+	}
+	
+	@AfterMethod
+	private void goToHomePage() {
 		clickOnElement(applicationName, id);
 	}
 	
