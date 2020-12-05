@@ -158,6 +158,7 @@ public class BasePage {
 	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
 	public static String serviceLog = "//div[@class='serviceLog']";
 	public static String vehicleToSelect = "//div[@title='%s %s %s']";
+	public static String container = "//div[@class='container']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
@@ -719,7 +720,11 @@ public class BasePage {
 	 * Use the navigation bar to navigate to the Account page
 	 */
 	public void navigateToAccountPage() {
-		driver.get(getProp("accountPageUrl"));
+		if (isElementDisplayed(container, xpath)) {
+			driver.get(getProp("accountPageUrl"));
+		} else {
+			navigateToAccountPage();
+		}
 	}
 	
 	/**
