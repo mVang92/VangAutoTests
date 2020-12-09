@@ -48,6 +48,7 @@ public class LoggedOutTest extends BasePage {
 		clickOnElement(footerLink, xpath);
 		if (path == forumPath) {
 			assertEquals(getText(forumLoggedOutText, xpath), expectedForumLoggedOutText);
+			assertTrue(isElementDisplayed(sortThreadsDropdown, id));
 		}
 		assertTrue(getCurrentUrl().contains(path));
 		assertFalse(isElementDisplayed(startNewThreadButton, id));
