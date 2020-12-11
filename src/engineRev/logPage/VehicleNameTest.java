@@ -34,7 +34,7 @@ public class VehicleNameTest extends BasePage {
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
 		clickOnElement(toastNotificationSuccessCloseButton, xpath);
 		clickOnElement(applicationName, id);
-		selectVehicle(year, make, model);
+		selectVehicle(customVehicleName);
 		assertEquals(getText(vehicleNameHeader, id), customVehicleName);
 		clickOnElement(editVehicleNameButton, id);
 		assertEquals(getValue(vehicleNameInput, id), customVehicleName);
@@ -46,7 +46,7 @@ public class VehicleNameTest extends BasePage {
 	@Test(dependsOnMethods = "addVehicleNameTest")
 	public void deleteVehicleNameTest() {
 		String defaultVehicleNameString = year + " " + make + " " + model;
-		selectVehicle(year, make, model);
+		selectVehicle(customVehicleName);
 		assertEquals(getText(vehicleNameHeader, id), customVehicleName);
 		assertNotEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
 		clickOnElement(editVehicleNameButton, id);
