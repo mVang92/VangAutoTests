@@ -158,7 +158,8 @@ public class BasePage {
 	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
 	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
 	public static String serviceLog = "//div[@class='serviceLog']";
-	public static String vehicleToSelect = "//div[@title='%s %s %s']";
+	public static String selectVehicleByYearMakeModel = "//div[@title='%s %s %s']";
+	public static String selectVehicleByCustomName = "//div[@title='%s']";
 	public static String container = "//div[@class='container']";
 
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
@@ -529,7 +530,7 @@ public class BasePage {
 	}
 	
 	/**
-	 * Click on the selected vehicle
+	 * Click on the selected vehicle using year, make, and model
 	 * 
 	 * @param year  The vehicle year
 	 * @param make  The vehicle make
@@ -537,7 +538,22 @@ public class BasePage {
 	 */
 	public void selectVehicle(int year, String make, String model) {
 		shouldClickApplicationName();
-		webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(vehicleToSelect, year, make, model))));
+		webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(selectVehicleByYearMakeModel, year, make, model))));
+		try {
+			webElement.click();
+		} catch (Exception e) {
+			webElement.click();
+		}
+	}
+	
+	/**
+	 * Click on the selected vehicle using custom name
+	 * 
+	 * @param customVehicleName The vehicle custom name
+	 */
+	public void selectVehicle(String customVehicleName) {
+		shouldClickApplicationName();
+		webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(selectVehicleByCustomName, customVehicleName))));
 		try {
 			webElement.click();
 		} catch (Exception e) {
