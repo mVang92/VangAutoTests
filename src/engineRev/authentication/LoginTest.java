@@ -18,11 +18,12 @@ public class LoginTest extends BasePage {
 	 */
 	@Test
 	private void loginTest() {
-		signIn(getProp("testUser"), getProp("testUserPassword"));
+		String testUser = getProp("testUser");
+		signIn(testUser, getProp("testUserPassword"));
 		assertEquals(getText(displayName, id), getProp("testUserDisplayName"));
 		clickOnElement(menuDropdownButton, id);
 		clickOnElement(accountNavButton, id);
-		assertEquals(getText(accountPageUserEmail, id), getProp("testUser"));
+		assertEquals(getText(accountPageUserEmail, id), testUser);
 		assertEquals(getPlaceholderText(newDisplayNameInput, id), getText(accountPageUserDisplayName, id));
 		doSignOut();
 	}
