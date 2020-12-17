@@ -648,8 +648,7 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeProfilePicture(String url) {
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		navigateToAccountPage();
 		fillInputField(newProfilePictureInput, url, id);
 		clickOnElement(submitNewProfilePictureButton, id);
 		clickOnElement(confirmUpdatePictureButton, id);
@@ -662,8 +661,7 @@ public class BasePage {
 	 * @param url The image URL
 	 */
 	public void changeBackgroundPicture(String url) {
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(accountNavButton, id);
+		navigateToAccountPage();
 		fillInputField(newBackgroundPictureInput, url, id);
 		clickOnElement(submitNewBackgroundPictureButton, id);
 		clickOnElement(confirmUpdatePictureButton, id);
