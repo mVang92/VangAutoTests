@@ -58,6 +58,7 @@ public class BasePage {
 	public static String addThreadMissingFieldsErrorMessage = "Title and description are required.";
 	public static String noAuthorizationErrorMessage = "You are not authorized to perform this action.";
 	public static String passwordResetConfirmationSuccessMessage = "Password confirmation sent. Please check your email.";
+	public static String expectedFutureServiceLogModalTitle = "You are about to submit a future service log.";
 	
 	public static String applicationName = "applicationName";
 	public static String signInNavButton = "signInNavButton";
@@ -138,6 +139,7 @@ public class BasePage {
 	public static String forgotPasswordSubmitButton = "forgotPasswordSubmitButton";
 	public static String closeForgotPasswordModal = "closeForgotPasswordModal";
 	public static String sortThreadsDropdown = "sortThreadsDropdown";
+	public static String cancelSubmitFutureDateButton ="cancelSubmitFutureDateButton";
 
 	public static String modal = "//*[@class='ReactModal__Content ReactModal__Content--after-open Modal__Bootstrap modal-dialog']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
@@ -148,6 +150,7 @@ public class BasePage {
 	public static String myProjectsNavButton = "//a[@href='#portfolio']";
 	public static String contactNavButton = "//a[@href='#contact']";
 	public static String modalTitle = "//*[@class='row modal-header']";
+	public static String modalHeader = "//*[@class='modal-header']";
 	public static String backHomeBtn = "//*[@class='backHomeBtn']";
 	public static String cancelButton = "//button[contains(text(),'Cancel')]";
 	public static String noButton = "//button[contains(text(),'No')]";
