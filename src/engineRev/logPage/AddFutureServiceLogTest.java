@@ -22,14 +22,14 @@ public class AddFutureServiceLogTest extends BasePage {
 	}
 	
 	@Test
-	private void addFutureServiceLogTest() {
+	private void addFutureServiceLogCancelTest() {
 		selectVehicle(year, make, model);
 		fillInputField(serviceLogDateInput, getDate(1), id);
 		fillInputField(serviceLogMileageInput, mileage, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
 		assertEquals(getText(modalHeader, xpath), expectedFutureServiceLogModalTitle);
-		clickOnElement(addServiceLogButton, id);
+		clickOnElement(cancelSubmitFutureDateButton, id);
 	}
 	
 	@AfterClass

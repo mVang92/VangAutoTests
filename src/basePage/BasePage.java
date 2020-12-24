@@ -139,6 +139,7 @@ public class BasePage {
 	public static String forgotPasswordSubmitButton = "forgotPasswordSubmitButton";
 	public static String closeForgotPasswordModal = "closeForgotPasswordModal";
 	public static String sortThreadsDropdown = "sortThreadsDropdown";
+	public static String cancelSubmitFutureDateButton ="cancelSubmitFutureDateButton";
 
 	public static String modal = "//*[@class='ReactModal__Content ReactModal__Content--after-open Modal__Bootstrap modal-dialog']";
 	public static String addVehicleErrorModal = "//*[@class='col-md-10 userInputErrorMessage']";
