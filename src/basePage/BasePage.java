@@ -126,7 +126,7 @@ public class BasePage {
 	public static String applyThemeButton = "applyThemeButton";
 	public static String accountPageCurrentTheme = "accountPageCurrentTheme";
 	public static String confirmSaveEditVehicleNameButton = "confirmSaveEditVehicleNameButton";
-	public static String startNewThreadButton = "startNewThreadButton";
+	public static String composeThreadButton = "composeThreadButton";
 	public static String submitNewThreadButton = "submitNewThreadButton";
 	public static String newThreadTitleInput = "newThreadTitleInput";
 	public static String newThreadDescriptionInput = "newThreadDescriptionInput";

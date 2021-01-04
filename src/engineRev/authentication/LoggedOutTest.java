@@ -51,7 +51,7 @@ public class LoggedOutTest extends BasePage {
 			assertTrue(isElementDisplayed(sortThreadsDropdown, id));
 		}
 		assertTrue(getCurrentUrl().contains(path));
-		assertFalse(isElementDisplayed(startNewThreadButton, id));
+		assertFalse(isElementDisplayed(composeThreadButton, id));
 		clickOnElement(applicationName, id);
 	}
 	
