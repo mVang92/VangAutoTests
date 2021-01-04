@@ -11,9 +11,6 @@ public class AddThreadNegativeTest extends BasePage {
 	@BeforeClass
 	private void setup() {
 		doSignIn();
-		clickOnElement(menuDropdownButton, id);
-		clickOnElement(forumNavButton, id);
-		clickOnElement(startNewThreadButton, id);
 	}
 	
 	/**
@@ -21,6 +18,9 @@ public class AddThreadNegativeTest extends BasePage {
 	 */
 	@Test
 	private void missingInputFieldsTest() {
+		clickOnElement(menuDropdownButton, id);
+		clickOnElement(forumNavButton, id);
+		clickOnElement(composeThreadButton, id);
 		clickOnElement(submitNewThreadButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
 		clickOnElement(toastNotificationErrorCloseButton, xpath);
