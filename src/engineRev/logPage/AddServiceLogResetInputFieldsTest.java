@@ -22,7 +22,7 @@ public class AddServiceLogResetInputFieldsTest extends BasePage {
 	}
 
 	/**
-	 * Verify the functionality of the reset button while adding a vehicle
+	 * Verify the functionality of the reset button while adding a service log
 	 */
 	@Test
 	private void addServiceLogResetInputFieldsTest() {
