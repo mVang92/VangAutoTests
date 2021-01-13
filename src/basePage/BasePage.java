@@ -161,7 +161,7 @@ public class BasePage {
 	public static String releaseNotesFooterLink = "//a[contains(@href, '/updates')]";
 	public static String aboutFooterLink = "//a[contains(@href, '/about')]";
 	public static String forumLoggedOutText = "//*[contains(text(), 'Please sign in or create an account to start a thread.')]";
-	public static String serviceLog = "//div[@class='serviceLog']";
+	public static String noServiceLogsOnRecord = "//strong[contains(text(), 'No Service Logs on Record')]";
 	public static String selectVehicleByYearMakeModel = "//div[@title='%s %s %s']";
 	public static String selectVehicleByCustomName = "//div[@title='%s']";
 	public static String container = "//div[@class='container']";
