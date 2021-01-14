@@ -1,6 +1,7 @@
 package engineRev.logPage;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -58,7 +59,7 @@ public class AddServiceLogPositiveTest extends BasePage {
 		}
 		date = month + "/" + day + "/" + yearToInt;
 		assertEquals(getText(toastNotificationBody, xpath), addLogSuccessMessage(service, miles, date));
-		assertTrue(isElementDisplayed(serviceLog, xpath));
+		assertFalse(isElementDisplayed(noServiceLogsOnRecord, xpath));
 	}
 	
 	@AfterClass
