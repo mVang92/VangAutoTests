@@ -576,8 +576,7 @@ public class BasePage {
 	    cal.add(Calendar.DATE, dayOffset);
 	    Date dateToFormat = cal.getTime();
 	    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        String formattedDate = dateFormat.format(dateToFormat);
-        return formattedDate.replace("/","");
+        return dateFormat.format(dateToFormat);
 	}
 	
 	/**
