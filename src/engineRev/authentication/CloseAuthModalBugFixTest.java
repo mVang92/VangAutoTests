@@ -22,7 +22,7 @@ public class CloseAuthModalBugFixTest extends BasePage {
 		fillInputField(emailInput, getProp("testUser"), id);
 		clickOnElement(signUpButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), invalidPasswordErrorMessage);
-		clickOnElement(toastNotificationErrorCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		clickOnElement(closeSignUpModal, id);
 		clickOnElement(signInNavButton, id);
 		fillInputField(passwordInput, getProp("testUserPassword"), id);

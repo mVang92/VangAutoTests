@@ -32,7 +32,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		fillInputField(vehicleModelInput, missingInput, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		fillInputField(vehicleMakeInput, emptyInput, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		fillInputField(vehicleYearInput, 1884, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public class EditVehicleInfoNegativeTest extends BasePage {
 		fillInputField(vehicleYearInput, futureYear, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	@AfterMethod

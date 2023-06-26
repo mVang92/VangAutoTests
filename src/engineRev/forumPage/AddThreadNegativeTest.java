@@ -23,16 +23,16 @@ public class AddThreadNegativeTest extends BasePage {
 		clickOnElement(composeThreadButton, id);
 		clickOnElement(submitNewThreadButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
-		clickOnElement(toastNotificationErrorCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		fillInputField(newThreadTitleInput, generateCustomText(15), id);
 		clickOnElement(submitNewThreadButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
-		clickOnElement(toastNotificationErrorCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		fillInputField(newThreadTitleInput, " ", id);
 		fillInputField(newThreadDescriptionInput, generateCustomText(15), id);
 		clickOnElement(submitNewThreadButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), addThreadMissingFieldsErrorMessage);
-		clickOnElement(toastNotificationErrorCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	@AfterClass

@@ -29,18 +29,18 @@ public class BasePage {
 	WebDriverWait wait;
 	Properties properties;
 
-	public static String engineRevUrl = "https://enginerev.herokuapp.com/";
-	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio/";
+	public static String engineRevUrl = "http://www.enginerev.com";
+	public static String mVangPortfolioUrl = "https://mvang92.github.io/Portfolio";
 	public static String chromeDriverPath = "selenium/selenium/chromedriver/chromedriver.exe";
 	public static String propertiesFile;
 
 	public static Locators id = Locators.ID;
 	public static Locators xpath = Locators.XPATH;
 
-	public static String noUserOnRecordSignInErrorMessage = "Error: There is no user record corresponding to this identifier. The user may have been deleted.";
+	public static String noUserOnRecordSignInErrorMessage = "FirebaseError: Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).";
 	public static String invalidPasswordOrNoPasswordErrorMessage = "Error: The password is invalid or the user does not have a password.";
-	public static String invalidEmailErrorMessage = "Error: The email address is badly formatted.";
-	public static String invalidPasswordErrorMessage = "Error: The password must be 6 characters long or more.";
+	public static String invalidEmailErrorMessage = "FirebaseError: Firebase: An internal AuthError has occurred. (auth/internal-error).";
+	public static String invalidPasswordErrorMessage = "FirebaseError: Firebase: An internal AuthError has occurred. (auth/internal-error).";
 	public static String passwordsDoNotMatchErrorMessage = "Error: Passwords do not match.";
 	public static String resetFieldsSuccessMessage = "Input fields reset.";
 	public static String addVehicleInputErrorMessage = "Please fill in all of the required input fields.";
@@ -59,6 +59,8 @@ public class BasePage {
 	public static String noAuthorizationErrorMessage = "You are not authorized to perform this action.";
 	public static String passwordResetConfirmationSuccessMessage = "Password confirmation sent. Please check your email.";
 	public static String expectedFutureServiceLogModalTitle = "You are about to submit a future service log.";
+	public static String emailCannotBeBlankErrorMessage = "Email cannot be blank.";
+	public static String passwordCannotBeBlankErrorMessage = "Password cannot be blank.";
 	
 	public static String applicationName = "applicationName";
 	public static String signInNavButton = "signInNavButton";
@@ -169,9 +171,7 @@ public class BasePage {
 	public static String toastNotificationError = "//*[@class='Toastify__toast Toastify__toast--error']";
 	public static String toastNotificationSuccess = "//*[@class='Toastify__toast Toastify__toast--success']";
 	public static String toastNotificationBody = "//*[@class='Toastify__toast-body']";
-	public static String toastNotificationInfoCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--info']";
-	public static String toastNotificationSuccessCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--success']";
-	public static String toastNotificationErrorCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--error']";
+	public static String toastNotificationCloseButton = "//*[@class='Toastify__close-button Toastify__close-button--light']";
 
 	/**
 	 * Setup system property, maximize window, select test URL, and sign-in using a specific user
@@ -426,7 +426,7 @@ public class BasePage {
 		fillInputField(vehicleMakeInput, make, id);
 		fillInputField(vehicleModelInput, model, id);
 		clickOnElement(addVehicleButton, id);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
@@ -442,7 +442,7 @@ public class BasePage {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(addLogDeleteVehicleButton, id);
 		clickOnElement(confirmDeleteVehicleButton, id);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
@@ -491,7 +491,7 @@ public class BasePage {
 		fillInputField(serviceLogMileageInput, mileage, id);
 		fillInputField(serviceLogServiceInput, service, id);
 		clickOnElement(addServiceLogButton, id);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
@@ -508,7 +508,7 @@ public class BasePage {
 		fillInputField(serviceLogServiceInput, service, id);
 		fillInputField(serviceLogCommentsInput, comments, id);
 		clickOnElement(addServiceLogButton, id);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 	}
 	
 	/**
