@@ -46,7 +46,7 @@ public class AddVehicleTest extends BasePage {
 		fillInputField(vehicleModelInput, vehicleModel, id);
 		clickOnElement(addVehicleButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), String.format(getProp("addVehicleSuccessNotification"), vehicleYear, vehicleMake, vehicleModel));
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		selectVehicle(vehicleYear, vehicleMake, vehicleModel);
 		assertEquals(getText(vehicleNameHeader, id), vehicle);
 		navigateToAccountPage();

@@ -50,10 +50,10 @@ public class AccountPageVerificationTest extends BasePage {
 		clickOnElement(advancedSettingsToggle, id);
 		assertEquals(getPlaceholderText(newEmailInput, id), testUser);
 		clickOnElement(submitNewEmailButton, id);
-		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
-		clickOnElement(toastNotificationErrorCloseButton, xpath);
+		assertEquals(getText(toastNotificationBody, xpath), emailCannotBeBlankErrorMessage);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		clickOnElement(submitNewPasswordButton, id);
-		assertEquals(getText(toastNotificationBody, xpath), noAuthorizationErrorMessage);
+		assertEquals(getText(toastNotificationBody, xpath), passwordCannotBeBlankErrorMessage);
 	}
 	
 	/**

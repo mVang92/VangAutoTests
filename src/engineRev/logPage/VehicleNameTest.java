@@ -32,7 +32,7 @@ public class VehicleNameTest extends BasePage {
 		fillInputField(vehicleNameInput, customVehicleName, id);
 		clickOnElement(confirmSaveEditVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		clickOnElement(applicationName, id);
 		selectVehicle(customVehicleName);
 		assertEquals(getText(vehicleNameHeader, id), customVehicleName);
@@ -52,7 +52,7 @@ public class VehicleNameTest extends BasePage {
 		clickOnElement(editVehicleNameButton, id);
 		clickOnElement(removeVehicleNameButton, id);
 		assertEquals(getText(toastNotificationBody, xpath), expectedEditVehicleInfoSuccessMessage);
-		clickOnElement(toastNotificationSuccessCloseButton, xpath);
+		clickOnElement(toastNotificationCloseButton, xpath);
 		clickOnElement(applicationName, id);
 		selectVehicle(year, make, model);
 		assertEquals(getText(vehicleNameHeader, id), defaultVehicleNameString);
